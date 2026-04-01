@@ -531,6 +531,58 @@
     color: #00b4d8;
   }
 
+  /* REHAB CATEGORY SECTIONS */
+  .rehab-category-section {
+    margin-bottom: 32px;
+  }
+  .category-header {
+    background: linear-gradient(135deg, #1a2332 0%, #1e2844 100%);
+    border: 1px solid rgba(0,180,216,0.3);
+    border-radius: 12px;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+  .category-header:hover {
+    background: linear-gradient(135deg, #1f2939 0%, #24314d 100%);
+    border-color: rgba(0,180,216,0.5);
+  }
+  .category-header-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .category-header .chevron {
+    color: var(--category-color, #00b4d8);
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    min-width: 20px;
+  }
+  .category-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--category-color, #00b4d8);
+    margin: 0;
+  }
+  .category-description {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: 0;
+    padding-left: 34px;
+    line-height: 1.5;
+  }
+  .category-exercises {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 18px;
+    transition: all 0.3s ease;
+  }
+
+
   @media (max-width: 768px) {
     .main { flex-direction: column; }
     .body-panel { width: 100%; height: auto; position: relative; }
@@ -586,7 +638,7 @@
         <path class="muscle-region" id="f-forearm-r" d="M228,208 Q235,225 236,270 Q234,285 220,288 Q208,286 202,275 L202,208 Q212,205 228,208 Z" fill="#f4a261" onclick="selectMuscle('forearms')"/>
 
         <!-- Abs (6-pack effect) -->
-        <path class="muscle-region" id="f-abs" d="M118,178 Q140,182 162,178 L165,280 Q140,285 115,280 Z" fill="#9b5de5" onclick="selectMuscle('abs')"/>
+        <path class="muscle-region" id="f-abs" d="M118,178 Q148,182 162,178 L165,280 Q140,285 115,280 Z" fill="#9b5de5" onclick="selectMuscle('abs')"/>
         <!-- Abs separators (visual) -->
         <line x1="119" y1="210" x2="161" y2="210" stroke="#1e2433" stroke-width="2" pointer-events="none"/>
         <line x1="118" y1="245" x2="162" y2="245" stroke="#1e2433" stroke-width="2" pointer-events="none"/>
@@ -752,7 +804,7 @@
     <div id="rehab-tab" class="tab-content">
       <div class="rehab-intro">
         <h3>Injury Prevention & Recovery</h3>
-        <p>This rehab section features therapeutic exercises designed for pain management and joint health. These movements target common problem areas like shoulder impingement, knee pain, lower back tightness, and neck tension. Each exercise emphasizes proper form, mobility, and controlled movement to address the root causes of discomfort. Always consult a healthcare provider before starting any rehab program.</p>
+        <p>This rehab section features therapeutic exercises designed for pain management and joint health. These movements target common problem areas like shoulder impingement, knee pain, lower back tightness, and neck tension. Always consult a healthcare provider before starting any rehab program.</p>
       </div>
       <div class="exercises-grid" id="rehab-grid"></div>
     </div>
@@ -793,6 +845,9 @@ const MUSCLES = {
         steps: [
           "Start in plank with hands slightly wider than shoulders",
           "Lower chest to near floor, keeping elbows at 45&#xB0; from body",
+          "Push back to start with full arm extension"
+        ],
+        sets: "3", reps: "12&#x2013;20", redy",
           "Push back to start with full arm extension"
         ],
         sets: "3", reps: "12&#x2013;20", rest: "60s"
@@ -1766,7 +1821,7 @@ const MUSCLES = {
         difficulty: 1,
         desc: "Targets forearm extensors (top side). Often neglected but important for balanced forearm development and wrist health.",
         steps: [
-          "Forearms on thigns, overhand grip, wrists hanging off",
+          "Forearms on thighs, overhand grip, wrists hanging off",
           "Extend wrists upward as high as possible",
           "Hold for 1 second, then lower slowly",
           "Use lighter weight than wrist curls"
@@ -2195,51 +2250,106 @@ const REHAB_EXERCISES = [
     description: "Stretches the anterior neck muscles and upper chest to relieve neck tension and improve forward head posture from excessive screen time.",
     steps: [
       "Sit upright or stand with good posture, chest up",
-      "Gently press your chin downward and slightly backward toward your neck, creating a 'double chin'",
+      "Gently press your chin downand slightly backward toward your neck, creating a 'double chin'",
       "Hold this retracted position and feel the stretch along the front and back of your neck",
       "Breathe deeply and maintain the position"
     ],
     setsReps: "Hold 2-3 sets x 30-45 seconds",
     duration: "30-45 seconds per set",
-    conditions: "Alleviates neck tension, improves posture, and reduces text neck syndrome"
+    conditions: "Alleviates neck tension, improves posture, and reducfeduces text neck syndrome"
   },
 ];
 
-// Render rehab exercises on page load
+// REHAB EXERCISE CATEGORIES
+const REHAB_CATEGORIES = {
+  "Mobility": {
+    title: "Mobility",
+    description: "Exercises focused on stretching and improving range of motion",
+    color: "#00d9ff",
+    exercises: ["Hip Flexor Stretch (Kneeling)", "Cat-Cow Stretch", "90/90 Hip Stretch", "Thoracic Rotation", "Ankle Circles", "Piriformis Stretch", "Doorway Chest Stretch"]
+  },
+  "Stability": {
+    title: "Stability",
+    description: "Exercises building joint stability and core control",
+    color: "#00b4d8",
+    exercises: ["Dead Bug", "Bird Dog", "Clamshells", "Pallof Press", "Wall Slides"]
+  },
+  "Pain Relief": {
+    title: "Pain Relief",
+    description: "Therapeutic and recovery exercises",
+    color: "#0096c7",
+    exercises: ["Band Pull-Aparts", "Cervical Nerve Glide", "Foam Roll IT Band"]
+  }
+};
+
+// Render rehab exercises on page load with categories
 document.addEventListener("DOMContentLoaded", function() {
   const rehabGrid = document.getElementById("rehab-grid");
   if (rehabGrid) {
-    rehabGrid.innerHTML = REHAB_EXERCISES.map(ex => `
-      <div class="rehab-card">
-        <div class="card-header">
-          <h3>${ex.name}</h3>
-          <span class="target-badge">${ex.target}</span>
-        </div>
-        <div class="card-body">
-          <div class="equipment-line">&#x2699;&#xFE0F; ${ex.equipment}</div>
-          <p class="description">${ex.description}</p>
-          <div class="steps-title">How to Perform</div>
-          <ul class="steps">
-            ${ex.steps.map((step, i) => `<li><span class="num">${i+1}</span><span>${step}</span></li>`).join('')}
-          </ul>
-          <div class="sets-reps-info">
-            <div class="stat">
-              <div class="val">${ex.setsReps.split('x')[0].trim()}</div>
-              <div class="lbl">SETS/REPS</div>
+    let html = '';
+    
+    // Create each category section
+    Object.entries(REHAB_CATEGORIES).forEach(([catKey, catData]) => {
+      const categoryExercises = REHAB_EXERCISES.filter(ex => catData.exercises.includes(ex.name));
+      
+      html += `
+        <div class="rehab-category-section">
+          <div class="category-header" onclick="toggleCategory(this)" style="--category-color: ${catData.color}">
+            <div class="category-header-content">
+              <div class="chevron">&#x25BC;</div>
+              <h2>${catData.title}</h2>
             </div>
-            <div class="stat">
-              <div class="val">${ex.duration}</div>
-              <div class="lbl">DURATION</div>
-            </div>
+            <p class="category-description">${catData.description}</p>
           </div>
-          <div class="conditions">
-            <strong>For:</strong> ${ex.conditions}
+          <div class="category-exercises" style="display: grid;">
+            ${categoryExercises.map(ex => `
+              <div class="rehab-card">
+                <div class="card-header">
+                  <h3>${ex.name}</h3>
+                  <span class="target-badge">${ex.target}</span>
+                </div>
+                <div class="card-body">
+                  <div class="equipment-line">&#x2699;&#xFE0F; ${ex.equipment}</div>
+                  <p class="description">${ex.description}</p>
+                  <div class="steps-title">How to Perform</div>
+                  <ul class="steps">
+                    ${ex.steps.map((step, i) => `<li><span class="num">${i+1}</span><span>${step}</span></li>`).join('')}
+                  </ul>
+                  <div class="sets-reps-info">
+                    <div class="stat">
+                      <div class="val">${ex.setsReps.split('x')[0].trim()}</div>
+                      <div class="lbl">SETS/REPS</div>
+                    </div>
+                    <div class="stat">
+                      <div class="val">${ex.duration}</div>
+                      <div class="lbl">DURATION</div>
+                    </div>
+                  </div>
+                  <div class="conditions">
+                    <strong>For:</strong> ${ex.conditions}
+                  </div>
+                </div>
+              </div>
+            `).join("")}
           </div>
         </div>
-      </div>
-    `).join("");
+      `;
+    });
+    
+    rehabGrid.innerHTML = html;
   }
 });
+
+// Toggle category expansion
+function toggleCategory(headerEl) {
+  const section = headerEl.closest('.rehab-category-section');
+  const exercisesDiv = section.querySelector('.category-exercises');
+  const chevron = headerEl.querySelector('.chevron');
+  const isExpanded = exercisesDiv.style.display !== 'none';
+  
+  exercisesDiv.style.display = isExpanded ? 'none' : 'grid';
+  chevron.textContent = isExpanded ? '&#x25B6;' : '&#x25BC;';
+}
 </script>
 </body>
 </html>
