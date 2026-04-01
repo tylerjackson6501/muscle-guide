@@ -350,6 +350,187 @@
   .ref-section a { color: var(--accent2); text-decoration: none; }
   .ref-section a:hover { text-decoration: underline; }
 
+  /* TAB NAVIGATION */
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--card);
+    padding: 0;
+    margin: 0;
+  }
+  .tab-nav .tab-button {
+    padding: 14px 24px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+  }
+  .tab-nav .tab-button:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.05);
+  }
+  .tab-nav .tab-button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .tab-nav .tab-button.rehab-tab.active {
+    color: #00b4d8;
+    border-bottom-color: #00b4d8;
+  }
+
+  /* TAB CONTENT */
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+
+  /* REHAB INTRO */
+  .rehab-intro {
+    background: linear-gradient(135deg, rgba(0,180,216,0.1) 0%, rgba(0,180,216,0.05) 100%);
+    border: 1px solid rgba(0,180,216,0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 28px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .rehab-intro h3 {
+    color: #00b4d8;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+  /* REHAB EXERCISE CARDS */
+  .rehab-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.25s;
+  }
+  .rehab-card:hover {
+    border-color: #00b4d8;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,180,216,0.2);
+  }
+  .rehab-card .card-header {
+    background: linear-gradient(135deg, #00b4d8 0%, #00a8cc 100%);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .rehab-card .card-header h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .rehab-card .target-badge {
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .rehab-card .card-body {
+    padding: 18px;
+  }
+  .rehab-card .equipment-line {
+    color: #00b4d8;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .rehab-card .description {
+    color: var(--text);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .rehab-card .steps-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .rehab-card .steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .rehab-card .steps li {
+    display: flex;
+    gap: 10px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .rehab-card .steps li .num {
+    min-width: 20px;
+    height: 20px;
+    background: #00b4d8;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+  .rehab-card .sets-reps-info {
+    background: var(--card2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .rehab-card .sets-reps-info .stat {
+    text-align: center;
+  }
+  .rehab-card .sets-reps-info .stat .val {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #00b4d8;
+  }
+  .rehab-card .sets-reps-info .stat .lbl {
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .rehab-card .conditions {
+    background: rgba(0,180,216,0.1);
+    border: 1px solid rgba(0,180,216,0.2);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .rehab-card .conditions strong {
+    color: #00b4d8;
+  }
+
   @media (max-width: 768px) {
     .main { flex-direction: column; }
     .body-panel { width: 100%; height: auto; position: relative; }
@@ -359,7 +540,7 @@
 </head>
 <body>
 <header>
-  <div class="logo">💪</div>
+  <div class="logo">ðª</div>
   <div>
     <h1>MUSCLE <span>MAP</span></h1>
     <p>Click a muscle group on the body to explore exercises</p>
@@ -529,8 +710,16 @@
 
   <!-- RIGHT: Exercise detail panel -->
   <div class="exercise-panel" id="exercise-panel">
-    <div class="welcome-screen" id="welcome-screen">
-      <div class="icon">🏋️</div>
+    <!-- TAB NAVIGATION -->
+    <div class="tab-nav">
+      <button class="tab-button active" onclick="switchTab('exercises')">Exercises</button>
+      <button class="tab-button rehab-tab" onclick="switchTab('rehab')">Rehab</button>
+    </div>
+
+    <!-- EXERCISES TAB -->
+    <div id="exercises-tab" class="tab-content active">
+      <div class="welcome-screen" id="welcome-screen">
+      <div class="icon">ðï¸</div>
       <h2>Select a Muscle Group</h2>
       <p>Click any highlighted muscle on the body diagram, or choose from the list to see targeted exercises and how to perform them.</p>
     </div>
@@ -540,22 +729,32 @@
       <h2 id="detail-name"></h2>
       <p class="desc" id="detail-desc"></p>
       <div class="anatomy-img">
-        📚 Learn more: <a id="detail-link" href="#" target="_blank" rel="noopener"></a>
+        ð Learn more: <a id="detail-link" href="#" target="_blank" rel="noopener"></a>
       </div>
     </div>
 
     <div class="exercises-grid" id="exercises-grid"></div>
 
     <div class="ref-section" id="ref-section" style="display:none">
-      <h4>📖 Sources & Further Reading</h4>
+      <h4>ð Sources & Further Reading</h4>
       <p>Exercise data sourced from:
         <a href="https://exrx.net" target="_blank" rel="noopener">ExRx.net</a>,
         <a href="https://www.acefitness.org" target="_blank" rel="noopener">ACE Fitness</a>,
         <a href="https://www.bodybuilding.com/exercises" target="_blank" rel="noopener">Bodybuilding.com Exercise Guide</a>,
         <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5534144/" target="_blank" rel="noopener">NSCA Strength & Conditioning</a>.
-        Anatomy diagrams: <a href="https://en.wikipedia.org/wiki/Human_body" target="_blank" rel="noopener">Wikipedia — Human Body</a>.
+        Anatomy diagrams: <a href="https://en.wikipedia.org/wiki/Human_body" target="_blank" rel="noopener">Wikipedia â Human Body</a>.
         Always consult a qualified trainer before starting a new program.
       </p>
+    </div>
+    </div>
+
+    <!-- REHAB TAB -->
+    <div id="rehab-tab" class="tab-content">
+      <div class="rehab-intro">
+        <h3>Injury Prevention & Recovery</h3>
+        <p>This rehab section features therapeutic exercises designed for pain management and joint health. These movements target common problem areas like shoulder impingement, knee pain, lower back tightness, and neck tension. Each exercise emphasizes proper form, mobility, and controlled movement to address the root causes of discomfort. Always consult a healthcare provider before starting any rehab program.</p>
+      </div>
+      <div class="exercises-grid" id="rehab-grid"></div>
     </div>
   </div>
 </div>
@@ -571,7 +770,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Pectoralis Major",
     exercises: [
       {
-        icon: "🏋️",
+        icon: "ðï¸",
         name: "Barbell Bench Press",
         equipment: "Barbell + Bench",
         category: "Compound",
@@ -582,10 +781,10 @@ const MUSCLES = {
           "Unrack bar, lower it with control to mid-chest",
           "Press explosively back to start, keeping feet flat and arch neutral"
         ],
-        sets: "4", reps: "6–10", rest: "90s"
+        sets: "4", reps: "6â10", rest: "90s"
       },
       {
-        icon: "🤸",
+        icon: "ð¤¸",
         name: "Push-Up",
         equipment: "Bodyweight",
         category: "Compound",
@@ -593,27 +792,27 @@ const MUSCLES = {
         desc: "The foundational chest movement. Scalable for any fitness level and hits chest, triceps, and front delts.",
         steps: [
           "Start in plank with hands slightly wider than shoulders",
-          "Lower chest to near floor, keeping elbows at 45° from body",
+          "Lower chest to near floor, keeping elbows at 45Â° from body",
           "Push back to start with full arm extension"
         ],
-        sets: "3", reps: "12–20", rest: "60s"
+        sets: "3", reps: "12â20", rest: "60s"
       },
       {
-        icon: "📐",
+        icon: "ð",
         name: "Incline Dumbbell Press",
         equipment: "Dumbbells + Incline Bench",
         category: "Compound",
         difficulty: 2,
         desc: "Emphasizes the upper chest (clavicular head) which is often underdeveloped. The incline angle shifts focus upward.",
         steps: [
-          "Set bench to 30–45°, hold dumbbells at shoulder height",
+          "Set bench to 30â45Â°, hold dumbbells at shoulder height",
           "Press up and slightly inward so dumbbells nearly touch at top",
           "Lower slowly with a slight stretch at the bottom"
         ],
-        sets: "3", reps: "10–12", rest: "75s"
+        sets: "3", reps: "10â12", rest: "75s"
       },
       {
-        icon: "🔄",
+        icon: "ð",
         name: "Cable Chest Fly",
         equipment: "Cable Machine",
         category: "Isolation",
@@ -625,7 +824,7 @@ const MUSCLES = {
           "Bring hands together in front of chest in an arc motion",
           "Slowly reverse to feel the stretch"
         ],
-        sets: "3", reps: "12–15", rest: "60s"
+        sets: "3", reps: "12â15", rest: "60s"
       }
     ]
   },
@@ -638,7 +837,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Latissimus Dorsi",
     exercises: [
       {
-        icon: "🔼",
+        icon: "ð¼",
         name: "Pull-Up / Lat Pulldown",
         equipment: "Pull-up Bar / Cable Machine",
         category: "Compound",
@@ -650,25 +849,25 @@ const MUSCLES = {
           "Squeeze lats at bottom when chin clears bar",
           "Lower slowly to full extension"
         ],
-        sets: "4", reps: "6–12", rest: "90s"
+        sets: "4", reps: "6â12", rest: "90s"
       },
       {
-        icon: "⬇️",
+        icon: "â¬ï¸",
         name: "Bent-Over Barbell Row",
         equipment: "Barbell",
         category: "Compound",
         difficulty: 3,
         desc: "Hits lats, rhomboids, and rear delts simultaneously. One of the best mass-builders for the back.",
         steps: [
-          "Hinge at hips until torso is ~45°, grip bar shoulder-width",
+          "Hinge at hips until torso is ~45Â°, grip bar shoulder-width",
           "Pull bar to lower sternum, driving elbows back",
           "Squeeze shoulder blades together at top",
           "Lower bar with control"
         ],
-        sets: "4", reps: "8–10", rest: "90s"
+        sets: "4", reps: "8â10", rest: "90s"
       },
       {
-        icon: "🪑",
+        icon: "ðª",
         name: "Seated Cable Row",
         equipment: "Cable Machine",
         category: "Compound",
@@ -679,10 +878,10 @@ const MUSCLES = {
           "Pull handle to lower abs, driving elbows behind body",
           "Hold squeeze for 1 second, then slowly extend arms"
         ],
-        sets: "3", reps: "10–12", rest: "75s"
+        sets: "3", reps: "10â12", rest: "75s"
       },
       {
-        icon: "💀",
+        icon: "ð",
         name: "Deadlift",
         equipment: "Barbell",
         category: "Compound",
@@ -694,7 +893,7 @@ const MUSCLES = {
           "Extend hips and knees simultaneously to stand",
           "Lower with a controlled hip hinge"
         ],
-        sets: "3", reps: "5–8", rest: "2–3min"
+        sets: "3", reps: "5â8", rest: "2â3min"
       }
     ]
   },
@@ -707,7 +906,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Deltoid Muscle",
     exercises: [
       {
-        icon: "🏋️",
+        icon: "ðï¸",
         name: "Overhead Press (OHP)",
         equipment: "Barbell or Dumbbells",
         category: "Compound",
@@ -719,10 +918,10 @@ const MUSCLES = {
           "Lock out arms at top without leaning back excessively",
           "Lower to shoulder level with full control"
         ],
-        sets: "4", reps: "6–10", rest: "90s"
+        sets: "4", reps: "6â10", rest: "90s"
       },
       {
-        icon: "⬆️",
+        icon: "â¬ï¸",
         name: "Dumbbell Front Raise",
         equipment: "Dumbbells",
         category: "Isolation",
@@ -732,39 +931,39 @@ const MUSCLES = {
           "Hold dumbbells in front of thighs, palms facing down",
           "Raise arms forward and up to shoulder height",
           "Keep a slight bend in the elbows throughout",
-          "Lower slowly over 3 seconds — do not swing"
+          "Lower slowly over 3 seconds â do not swing"
         ],
-        sets: "3", reps: "12–15", rest: "60s"
+        sets: "3", reps: "12â15", rest: "60s"
       },
       {
-        icon: "🔗",
+        icon: "ð",
         name: "Cable Front Raise",
         equipment: "Cable Machine",
         category: "Isolation",
         difficulty: 1,
-        desc: "Like dumbbell front raises but with constant cable tension — the front delt stays loaded through the full range of motion.",
+        desc: "Like dumbbell front raises but with constant cable tension â the front delt stays loaded through the full range of motion.",
         steps: [
           "Attach a straight bar or single handle at the low pulley",
           "Face away from the machine and raise the handle forward and up",
-          "Control the descent — do not let the cable snap back",
+          "Control the descent â do not let the cable snap back",
           "Keep your torso still; no body English"
         ],
-        sets: "3", reps: "12–15", rest: "60s"
+        sets: "3", reps: "12â15", rest: "60s"
       },
       {
-        icon: "💪",
+        icon: "ðª",
         name: "Arnold Press",
         equipment: "Dumbbells",
         category: "Compound",
         difficulty: 2,
-        desc: "Invented by Arnold Schwarzenegger — the rotating motion hits all three delt heads with extra front-delt recruitment at the bottom of each rep.",
+        desc: "Invented by Arnold Schwarzenegger â the rotating motion hits all three delt heads with extra front-delt recruitment at the bottom of each rep.",
         steps: [
           "Hold dumbbells at chin height, palms facing you",
           "Press up while rotating palms to face forward",
           "Fully extend overhead, then reverse the rotation on the way down",
-          "Full range of motion is key — don't cut the rotation short"
+          "Full range of motion is key â don't cut the rotation short"
         ],
-        sets: "3", reps: "10–12", rest: "75s"
+        sets: "3", reps: "10â12", rest: "75s"
       }
     ]
   },
@@ -777,7 +976,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Deltoid Muscle",
     exercises: [
       {
-        icon: "↔️",
+        icon: "âï¸",
         name: "Lateral Raise",
         equipment: "Dumbbells",
         category: "Isolation",
@@ -787,27 +986,27 @@ const MUSCLES = {
           "Hold dumbbells at sides, slight bend in elbows",
           "Raise arms out to sides until parallel to floor",
           "Lead with your elbows, not your wrists",
-          "Lower slowly — 3 seconds on the way down"
+          "Lower slowly â 3 seconds on the way down"
         ],
-        sets: "4", reps: "12–15", rest: "60s"
+        sets: "4", reps: "12â15", rest: "60s"
       },
       {
-        icon: "🔗",
+        icon: "ð",
         name: "Cable Lateral Raise",
         equipment: "Cable Machine",
         category: "Isolation",
         difficulty: 1,
-        desc: "Provides constant tension across the full range of motion — superior to dumbbells at the bottom of the rep where dumbbells go slack.",
+        desc: "Provides constant tension across the full range of motion â superior to dumbbells at the bottom of the rep where dumbbells go slack.",
         steps: [
           "Set cable at lowest position, stand side-on to the machine",
           "Cross the cable in front of your body and raise your arm out to the side",
           "Raise until arm is parallel to floor, then lower with control",
-          "Squeeze at the top — pause for 1 second"
+          "Squeeze at the top â pause for 1 second"
         ],
-        sets: "3", reps: "15–20", rest: "60s"
+        sets: "3", reps: "15â20", rest: "60s"
       },
       {
-        icon: "🏋️",
+        icon: "ðï¸",
         name: "Upright Row (Wide Grip)",
         equipment: "Barbell or Dumbbells",
         category: "Compound",
@@ -816,13 +1015,13 @@ const MUSCLES = {
         steps: [
           "Hold bar with a grip slightly wider than shoulder width",
           "Pull bar straight up along your body to chin height",
-          "Lead with your elbows — they should rise higher than your hands",
+          "Lead with your elbows â they should rise higher than your hands",
           "Lower slowly back to starting position"
         ],
-        sets: "3", reps: "10–12", rest: "75s"
+        sets: "3", reps: "10â12", rest: "75s"
       },
       {
-        icon: "⚙️",
+        icon: "âï¸",
         name: "Machine Lateral Raise",
         equipment: "Machine",
         category: "Isolation",
@@ -832,9 +1031,9 @@ const MUSCLES = {
           "Adjust the seat so the arm pad aligns with your shoulder joint",
           "Press your arms outward against the pads to shoulder height",
           "Pause at the top, then lower under full control",
-          "Keep tension — do not let the weight stack touch between reps"
+          "Keep tension â do not let the weight stack touch between reps"
         ],
-        sets: "3", reps: "12–15", rest: "60s"
+        sets: "3", reps: "12â15", rest: "60s"
       }
     ]
   },
@@ -847,22 +1046,22 @@ const MUSCLES = {
     wikiText: "Wikipedia: Deltoid Muscle",
     exercises: [
       {
-        icon: "🔗",
+        icon: "ð",
         name: "Face Pull",
         equipment: "Cable Machine + Rope",
         category: "Isolation",
         difficulty: 2,
-        desc: "The best all-round rear delt exercise. Also trains the rotator cuff and external rotators — do these every session for shoulder health.",
+        desc: "The best all-round rear delt exercise. Also trains the rotator cuff and external rotators â do these every session for shoulder health.",
         steps: [
           "Set cable at face height, grip rope with both hands",
           "Pull rope to face, separating hands as you pull",
           "Externally rotate so hands end up beside your ears",
           "Hold for 1 second, then slowly return"
         ],
-        sets: "4", reps: "15–20", rest: "60s"
+        sets: "4", reps: "15â20", rest: "60s"
       },
       {
-        icon: "💪",
+        icon: "ðª",
         name: "Bent-Over Lateral Raise",
         equipment: "Dumbbells",
         category: "Isolation",
@@ -874,25 +1073,25 @@ const MUSCLES = {
           "Raise arms out to sides until parallel to floor",
           "Squeeze the rear delts hard at the top"
         ],
-        sets: "3", reps: "12–15", rest: "60s"
+        sets: "3", reps: "12â15", rest: "60s"
       },
       {
-        icon: "⚙️",
+        icon: "âï¸",
         name: "Reverse Pec Deck",
         equipment: "Machine",
         category: "Isolation",
         difficulty: 1,
-        desc: "Machine version of the rear delt fly — allows strict isolation with no lower back involvement. Great for high-rep hypertrophy work.",
+        desc: "Machine version of the rear delt fly â allows strict isolation with no lower back involvement. Great for high-rep hypertrophy work.",
         steps: [
           "Sit facing the pad, adjust so arms are at shoulder height",
           "Grip handles with palms facing each other",
           "Pull handles back and outward in a wide arc",
-          "Squeeze rear delts at full extension — pause, then control back"
+          "Squeeze rear delts at full extension â pause, then control back"
         ],
-        sets: "3", reps: "12–15", rest: "60s"
+        sets: "3", reps: "12â15", rest: "60s"
       },
       {
-        icon: "🔗",
+        icon: "ð",
         name: "Wide-Grip Cable Row",
         equipment: "Cable Machine",
         category: "Compound",
@@ -900,11 +1099,11 @@ const MUSCLES = {
         desc: "A wide, high cable row hits the rear delt as a primary mover rather than the lats. Elbows should flare out, not stay tucked.",
         steps: [
           "Set cable at chest or face height, use a wide rope or bar",
-          "Pull elbows back and out — flare them wide, not tucked in",
+          "Pull elbows back and out â flare them wide, not tucked in",
           "Squeeze rear delts and upper back at end range",
-          "Extend arms with control — full stretch on each rep"
+          "Extend arms with control â full stretch on each rep"
         ],
-        sets: "3", reps: "10–12", rest: "75s"
+        sets: "3", reps: "10â12", rest: "75s"
       }
     ]
   },
@@ -917,7 +1116,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Biceps Brachii",
     exercises: [
       {
-        icon: "💪",
+        icon: "ðª",
         name: "Barbell Curl",
         equipment: "Barbell",
         category: "Isolation",
@@ -929,39 +1128,39 @@ const MUSCLES = {
           "Squeeze hard at the top for 1 second",
           "Lower slowly in 3 seconds"
         ],
-        sets: "4", reps: "8–12", rest: "75s"
+        sets: "4", reps: "8â12", rest: "75s"
       },
       {
-        icon: "🔨",
+        icon: "ð¨",
         name: "Hammer Curl",
         equipment: "Dumbbells",
         category: "Isolation",
         difficulty: 1,
-        desc: "Neutral grip hits the brachialis (underneath the bicep) and brachioradialis — pushing the bicep up to create more size.",
+  2     desc: "Neutral grip hits the brachialis (underneath the bicep) and brachioradialis â pushing the bicep up to create more size.",
         steps: [
           "Hold dumbbells at sides with palms facing each other",
           "Curl both dumbbells simultaneously or alternating",
           "Keep thumbs pointing up throughout the movement",
           "Lower slowly to full arm extension"
         ],
-        sets: "3", reps: "10–12", rest: "60s"
+        sets: "3", reps: "10â12", rest: "60s"
       },
       {
-        icon: "📐",
+        icon: "ð",
         name: "Incline Dumbbell Curl",
         equipment: "Dumbbells + Incline Bench",
         category: "Isolation",
         difficulty: 2,
         desc: "The incline position stretches the long head at the bottom, increasing its range of motion and muscle activation.",
         steps: [
-          "Sit on incline bench (60°), let arms hang naturally behind body",
+          "Sit on incline bench (60Â°), let arms hang naturally behind body",
           "Curl dumbbells up with a supinating twist",
-          "Do not let elbows swing forward — keep them pinned back"
+          "Do not let elbows swing forward â keep them pinned back"
         ],
-        sets: "3", reps: "10–15", rest: "60s"
+        sets: "3", reps: "10â15", rest: "60s"
       },
       {
-        icon: "🔌",
+        icon: "ð",
         name: "Cable Curl",
         equipment: "Cable Machine",
         category: "Isolation",
@@ -972,7 +1171,7 @@ const MUSCLES = {
           "Stand close to machine, curl handle up to chin level",
           "Squeeze at top and slowly lower back to start"
         ],
-        sets: "3", reps: "12–15", rest: "60s"
+        sets: "3", reps: "12â15", rest: "60s"
       }
     ]
   },
@@ -985,7 +1184,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Triceps Brachii",
     exercises: [
       {
-        icon: "⬇️",
+        icon: "â¬ï¸",
         name: "Tricep Pushdown",
         equipment: "Cable Machine",
         category: "Isolation",
@@ -993,14 +1192,14 @@ const MUSCLES = {
         desc: "The most popular tricep isolation exercise. Emphasizes the lateral and medial heads with constant cable tension.",
         steps: [
           "Attach rope or straight bar to high cable pulley",
-          "Stand close, elbows pinned to sides at 90°",
+          "Stand close, elbows pinned to sides at 90Â°",
           "Push handle down to full extension, separating rope at bottom",
-          "Slowly return to 90° — don't let elbows flare out"
+          "Slowly return to 90Â° â don't let elbows flare out"
         ],
-        sets: "4", reps: "12–15", rest: "60s"
+        sets: "4", reps: "12â15", rest: "60s"
       },
       {
-        icon: "💀",
+        icon: "ð",
         name: "Skull Crusher (Lying Tricep Extension)",
         equipment: "Barbell or EZ Bar + Bench",
         category: "Isolation",
@@ -1012,10 +1211,10 @@ const MUSCLES = {
           "Extend elbows fully to press bar back up",
           "Keep upper arms stationary throughout"
         ],
-        sets: "3", reps: "10–12", rest: "75s"
+    2   sets: "3", reps: "10â12", rest: "75s"
       },
       {
-        icon: "🙆",
+        icon: "ð",
         name: "Overhead Tricep Extension",
         equipment: "Dumbbell or Cable",
         category: "Isolation",
@@ -1027,10 +1226,10 @@ const MUSCLES = {
           "Keep upper arms close to ears throughout",
           "Extend elbows fully to return to start"
         ],
-        sets: "3", reps: "12–15", rest: "60s"
+        sets: "3", reps: "12â15", rest: "60s"
       },
       {
-        icon: "💺",
+        icon: "ðº",
         name: "Tricep Dips",
         equipment: "Parallel Bars or Bench",
         category: "Compound",
@@ -1042,7 +1241,7 @@ const MUSCLES = {
           "Stop when upper arms are parallel to floor",
           "Press back up to full extension"
         ],
-        sets: "3", reps: "10–15", rest: "75s"
+        sets: "3", reps: "10â15", rest: "75s"
       }
     ]
   },
@@ -1055,37 +1254,37 @@ const MUSCLES = {
     wikiText: "Wikipedia: Rectus Abdominis",
     exercises: [
       {
-        icon: "🏃",
+        icon: "ð",
         name: "Plank",
         equipment: "Bodyweight",
         category: "Isometric",
         difficulty: 1,
-        desc: "The ultimate core stability exercise. Works the entire core as a unit — abs, obliques, lower back, and hip flexors.",
+        desc: "The ultimate core stability exercise. Works the entire core as a unit â abs, obliques, lower back, and hip flexors.",
         steps: [
           "Place forearms on floor, elbows under shoulders",
           "Extend legs behind you, toes on floor",
           "Keep body in a straight line from head to heels",
           "Hold without letting hips sag or rise"
         ],
-        sets: "3", reps: "30–60s", rest: "60s"
+        sets: "3", reps: "30â60s", rest: "60s"
       },
       {
-        icon: "🔄",
+        icon: "ð",
         name: "Cable Crunch",
         equipment: "Cable Machine + Rope",
         category: "Isolation",
         difficulty: 2,
-        desc: "Allows progressive overloading of the abs — something crunches alone can't provide. Consistently ranked as a top abs exercise by EMG studies.",
+        desc: "Allows progressive overloading of the abs â something crunches alone can't provide. Consistently ranked as a top abs exercise by EMG studies.",
         steps: [
           "Kneel below high cable pulley, hold rope behind head",
           "Flex spine to crunch elbows toward knees",
-          "Focus on rounding the lumbar spine — don't just pull with arms",
+          "Focus on rounding the lumbar spine â don't just pull with arms",
           "Slowly extend back up without letting weight stack touch"
         ],
-        sets: "4", reps: "12–15", rest: "60s"
+        sets: "4", reps: "12â15", rest: "60s"
       },
       {
-        icon: "🦵",
+        icon: "ð¦µ",
         name: "Hanging Leg Raise",
         equipment: "Pull-up Bar",
         category: "Compound",
@@ -1094,13 +1293,13 @@ const MUSCLES = {
         steps: [
           "Hang from pull-up bar with arms extended",
           "Keeping legs straight (or bent for easier version), raise to hip or chest height",
-          "Avoid swinging — control the movement",
+          "Avoid swinging â control the movement",
           "Lower slowly to full hang"
         ],
-        sets: "3", reps: "10–15", rest: "75s"
+        sets: "3", reps: "10â15", rest: "75s"
       },
       {
-        icon: "🌀",
+        icon: "ð",
         name: "Ab Wheel Rollout",
         equipment: "Ab Wheel",
         category: "Compound",
@@ -1112,7 +1311,7 @@ const MUSCLES = {
           "Use core to pull yourself back to start position",
           "Start with partial reps if needed"
         ],
-        sets: "3", reps: "8–12", rest: "75s"
+        sets: "3", reps: "8â12", rest: "75s"
       }
     ]
   },
@@ -1125,14 +1324,14 @@ const MUSCLES = {
     wikiText: "Wikipedia: External Oblique",
     exercises: [
       {
-        icon: "🔀",
+        icon: "ð",
         name: "Russian Twist",
         equipment: "Bodyweight or Weight Plate",
         category: "Isolation",
         difficulty: 2,
         desc: "A rotational movement that directly targets both internal and external obliques through repeated twisting.",
         steps: [
-          "Sit with knees bent, lean back until core is engaged (45°)",
+          "Sit with knees bent, lean back until core is engaged (45Â°)",
           "Hold weight or clasp hands, rotate torso side to side",
           "Touch weight to floor on each side",
           "Keep feet off floor for extra challenge"
@@ -1140,22 +1339,22 @@ const MUSCLES = {
         sets: "3", reps: "20 total", rest: "60s"
       },
       {
-        icon: "⬅️",
+        icon: "â¬ï¸",
         name: "Side Plank",
         equipment: "Bodyweight",
         category: "Isometric",
         difficulty: 2,
-        desc: "Targets the lateral core — external oblique, internal oblique, and quadratus lumborum. Great for spinal stability.",
+        desc: "Targets the lateral core â external oblique, internal oblique, and quadratus lumborum. Great for spinal stability.",
         steps: [
           "Lie on side, stack feet and prop up on forearm",
           "Lift hips to create straight line from head to feet",
           "Hold without letting hips sag",
           "Perform on both sides equally"
         ],
-        sets: "3", reps: "30–45s each", rest: "60s"
+        sets: "3", reps: "30â45s each", rest: "60s"
       },
       {
-        icon: "🔌",
+        icon: "ð",
         name: "Cable Woodchop",
         equipment: "Cable Machine",
         category: "Compound",
@@ -1170,8 +1369,8 @@ const MUSCLES = {
         sets: "3", reps: "12 each side", rest: "60s"
       },
       {
-        icon: "↕️",
-        name: "Pallof Press",
+        icon: "âï¸",
+  2     name: "Pallof Press",
         equipment: "Cable Machine",
         category: "Isometric",
         difficulty: 2,
@@ -1180,9 +1379,9 @@ const MUSCLES = {
           "Set cable at chest height, stand perpendicular to machine",
           "Hold handle at chest with both hands",
           "Press handle straight out and hold for 2 seconds",
-          "Bring back to chest — resist rotating toward cable"
+          "Bring back to chest â resist rotating toward cable"
         ],
-        sets: "3", reps: "12–15 each side", rest: "60s"
+        sets: "3", reps: "12â15 each side", rest: "60s"
       }
     ]
   },
@@ -1195,7 +1394,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Quadriceps Femoris",
     exercises: [
       {
-        icon: "🏋️",
+        icon: "ðï¸",
         name: "Barbell Back Squat",
         equipment: "Barbell + Squat Rack",
         category: "Compound",
@@ -1207,10 +1406,10 @@ const MUSCLES = {
           "Aim for thighs parallel or below at the bottom",
           "Drive through heels to stand, squeezing glutes at top"
         ],
-        sets: "4", reps: "5–8", rest: "2–3min"
+        sets: "4", reps: "5â8", rest: "2â3min"
       },
       {
-        icon: "🦵",
+        icon: "ð¦µ",
         name: "Leg Press",
         equipment: "Leg Press Machine",
         category: "Compound",
@@ -1218,14 +1417,14 @@ const MUSCLES = {
         desc: "Allows heavy loading with lower back stability. Foot placement determines emphasis: high and wide = more glutes/hams, low = more quads.",
         steps: [
           "Sit in machine, feet shoulder-width on platform",
-          "Unlock safety, lower weight until 90° knee bend",
+          "Unlock safety, lower weight until 90Â° knee bend",
           "Press through heels to full extension (don't lock knees)",
-          "Control the descent — don't let weight crash down"
+          "Control the descent â don't let weight crash down"
         ],
-        sets: "4", reps: "10–12", rest: "90s"
+        sets: "4", reps: "10â12", rest: "90s"
       },
       {
-        icon: "🚶",
+        icon: "ð¶",
         name: "Walking Lunge",
         equipment: "Dumbbells or Barbell",
         category: "Compound",
@@ -1233,14 +1432,14 @@ const MUSCLES = {
         desc: "Develops quad strength and size with a balance component. Each leg works independently, addressing imbalances.",
         steps: [
           "Stand tall, step forward with right leg into deep lunge",
-          "Lower back knee toward floor — hover 1 inch above",
+          "Lower back knee toward floor â hover 1 inch above",
           "Push off front foot and bring back leg forward to step into next lunge",
           "Keep torso upright throughout"
         ],
         sets: "3", reps: "12 each leg", rest: "75s"
       },
       {
-        icon: "🔄",
+        icon: "ð",
         name: "Leg Extension",
         equipment: "Leg Extension Machine",
         category: "Isolation",
@@ -1250,9 +1449,9 @@ const MUSCLES = {
           "Sit in machine, back of knees at seat edge, pad on shins",
           "Extend knees fully, squeezing quads hard at the top",
           "Hold peak contraction for 1 second",
-          "Lower slowly — 3 count — to starting position"
+          "Lower slowly â 3 count â to starting position"
         ],
-        sets: "3", reps: "12–15", rest: "60s"
+        sets: "3", reps: "12â15", rest: "60s"
       }
     ]
   },
@@ -1265,7 +1464,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Hamstring",
     exercises: [
       {
-        icon: "🏋️",
+        icon: "ðï¸",
         name: "Romanian Deadlift (RDL)",
         equipment: "Barbell or Dumbbells",
         category: "Compound",
@@ -1275,12 +1474,12 @@ const MUSCLES = {
           "Hold bar at hip level, feet hip-width, slight knee bend",
           "Push hips back while lowering bar along legs",
           "Feel a deep stretch in hamstrings (bar reaches mid-shin level)",
-          "Drive hips forward to return — squeeze glutes at top"
+          "Drive hips forward to return â squeeze glutes at top"
         ],
-        sets: "4", reps: "8–10", rest: "90s"
+        sets: "4", reps: "8â10", rest: "90s"
       },
       {
-        icon: "🦵",
+        icon: "ð¦µ",
         name: "Lying Leg Curl",
         equipment: "Leg Curl Machine",
         category: "Isolation",
@@ -1292,10 +1491,10 @@ const MUSCLES = {
           "Squeeze hamstrings hard at peak contraction",
           "Lower slowly with a 3-second eccentric"
         ],
-        sets: "4", reps: "10–12", rest: "75s"
+        sets: "4", reps: "10â12", rest: "75s"
       },
       {
-        icon: "🔄",
+        icon: "ð",
         name: "Nordic Hamstring Curl",
         equipment: "Anchor (bench/partner)",
         category: "Compound",
@@ -1307,10 +1506,10 @@ const MUSCLES = {
           "Use hands to catch yourself at bottom",
           "Use momentum to get back to start"
         ],
-        sets: "3", reps: "5–8", rest: "90s"
+        sets: "3", reps: "5â8", rest: "90s"
       },
       {
-        icon: "🌅",
+        icon: "ð",
         name: "Good Morning",
         equipment: "Barbell",
         category: "Compound",
@@ -1319,10 +1518,10 @@ const MUSCLES = {
         steps: [
           "Bar on upper traps like a squat, feet shoulder-width",
           "Soft bend in knees, push hips back while lowering torso",
-          "Stop when torso is near parallel to floor — feel hamstring tension",
+          "Stop when torso is near parallel to floor â feel hamstring tension",
           "Drive hips forward to stand back up"
         ],
-        sets: "3", reps: "10–12", rest: "90s"
+        sets: "3", reps: "10â12", rest: "90s"
       }
     ]
   },
@@ -1335,7 +1534,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Gluteus Maximus",
     exercises: [
       {
-        icon: "🏋️",
+        icon: "ðï¸",
         name: "Hip Thrust",
         equipment: "Barbell + Bench",
         category: "Compound",
@@ -1343,14 +1542,14 @@ const MUSCLES = {
         desc: "Consistently rated #1 for glute EMG activation in research. Places the glutes in their strongest position for maximal loading.",
         steps: [
           "Sit with upper back against bench, bar across hips",
-          "Feet shoulder-width, knees bent at 90°",
+          "Feet shoulder-width, knees bent at 90Â°",
           "Drive hips up explosively until body is flat",
           "Squeeze glutes at top for 2 seconds, lower slowly"
         ],
-        sets: "4", reps: "10–15", rest: "90s"
+        sets: "4", reps: "10â15", rest: "90s"
       },
       {
-        icon: "🧗",
+        icon: "ð§",
         name: "Bulgarian Split Squat",
         equipment: "Dumbbells + Bench",
         category: "Compound",
@@ -1358,14 +1557,14 @@ const MUSCLES = {
         desc: "Places the glutes in a deep stretch at the bottom. One of the most effective single-leg glute exercises with high research support.",
         steps: [
           "Rear foot elevated on bench, front foot forward",
-          "Lower back knee toward floor — go deep",
+          "Lower back knee toward floor â go deep",
           "Press through front heel to stand",
           "Keep torso upright and core braced"
         ],
-        sets: "3", reps: "10–12 each", rest: "90s"
+        sets: "3", reps: "10â12 each", rest: "90s"
       },
       {
-        icon: "🔌",
+        icon: "ð",
         name: "Cable Kickback",
         equipment: "Cable Machine",
         category: "Isolation",
@@ -1374,25 +1573,25 @@ const MUSCLES = {
         steps: [
           "Attach ankle strap to low cable, face the machine",
           "Kick working leg straight back and up",
-          "Squeeze glute hard at peak — don't arch back",
+          "Squeeze glute hard at peak â don't arch back",
           "Slowly return leg forward"
         ],
-        sets: "3", reps: "15–20 each", rest: "60s"
+        sets: "3", reps: "15â20 each", rest: "60s"
       },
       {
-        icon: "🦁",
+        icon: "ð¦",
         name: "Sumo Deadlift",
         equipment: "Barbell",
         category: "Compound",
         difficulty: 3,
         desc: "The wide stance of sumo shifts emphasis from hamstrings to glutes compared to conventional deadlift. Excellent glute and inner thigh builder.",
         steps: [
-          "Wide stance (2x shoulder width), toes pointed 45° out",
+          "Wide stance (2x shoulder width), toes pointed 45Â° out",
           "Grip bar inside legs, keep chest tall",
           "Drive knees out and press floor away to stand",
           "Squeeze glutes fully at the top"
         ],
-        sets: "3", reps: "6–10", rest: "2min"
+        sets: "3", reps: "6â10", rest: "2min"
       }
     ]
   },
@@ -1405,7 +1604,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Gastrocnemius",
     exercises: [
       {
-        icon: "🦶",
+        icon: "ð¦¶",
         name: "Standing Calf Raise",
         equipment: "Machine or Smith Machine",
         category: "Isolation",
@@ -1415,27 +1614,27 @@ const MUSCLES = {
           "Balls of feet on edge of platform, heels hanging off",
           "Lower heels as far as possible for a full stretch",
           "Rise up on tiptoes as high as possible",
-          "Hold peak contraction 1 second — don't bounce"
+          "Hold peak contraction 1 second â don't bounce"
         ],
-        sets: "4", reps: "15–20", rest: "60s"
+        sets: "4", reps: "15â20", rest: "60s"
       },
       {
-        icon: "🪑",
+        icon: "ðª",
         name: "Seated Calf Raise",
         equipment: "Seated Calf Raise Machine",
         category: "Isolation",
         difficulty: 1,
-        desc: "The bent-knee position bypasses the gastrocnemius to isolate the soleus — the deeper, larger muscle that adds calf thickness.",
+        desc: "The bent-knee position bypasses the gastrocnemius to isolate the soleus â the deeper, larger muscle that adds calf thickness.",
         steps: [
           "Sit with pads on lower thighs, balls of feet on platform",
           "Lower heels to full stretch",
           "Press up to maximum height on toes",
           "Pause and squeeze at top"
         ],
-        sets: "4", reps: "15–20", rest: "60s"
+        sets: "4", reps: "15â20", rest: "60s"
       },
       {
-        icon: "🏃",
+        icon: "ð",
         name: "Single-Leg Calf Raise",
         equipment: "Bodyweight or Dumbbell",
         category: "Isolation",
@@ -1444,13 +1643,13 @@ const MUSCLES = {
         steps: [
           "Balance on one foot on edge of step, other foot behind",
           "Hold wall or dumbbell for balance",
-          "Full range of motion — deep stretch to full extension",
+          "Full range of motion â deep stretch to full extension",
           "Complete all reps on one side, then switch"
         ],
-        sets: "3", reps: "15–20 each", rest: "60s"
+        sets: "3", reps: "15â20 each", rest: "60s"
       },
       {
-        icon: "⬇️",
+        icon: "â¬ï¸",
         name: "Leg Press Calf Raise",
         equipment: "Leg Press Machine",
         category: "Isolation",
@@ -1462,7 +1661,7 @@ const MUSCLES = {
           "Push platform away by extending ankles fully",
           "Slowly return to deep stretch position"
         ],
-        sets: "3", reps: "20–25", rest: "60s"
+        sets: "3", reps: "20â25", rest: "60s"
       }
     ]
   },
@@ -1475,7 +1674,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Trapezius",
     exercises: [
       {
-        icon: "⬆️",
+        icon: "â¬ï¸",
         name: "Barbell Shrug",
         equipment: "Barbell",
         category: "Isolation",
@@ -1484,13 +1683,13 @@ const MUSCLES = {
         steps: [
           "Hold barbell in front at hip level with overhand grip",
           "Shrug shoulders straight up toward ears as high as possible",
-          "Hold at the top for 1–2 seconds",
-          "Lower slowly — don't roll shoulders forward"
+          "Hold at the top for 1â2 seconds",
+          "Lower slowly â don't roll shoulders forward"
         ],
-        sets: "4", reps: "12–15", rest: "75s"
+        sets: "4", reps: "12â15", rest: "75s"
       },
       {
-        icon: "🏋️",
+        icon: "ðï¸",
         name: "Rack Pull",
         equipment: "Barbell + Power Rack",
         category: "Compound",
@@ -1502,10 +1701,10 @@ const MUSCLES = {
           "Squeeze traps and upper back at lockout",
           "Lower bar back to rack with control"
         ],
-        sets: "3", reps: "5–8", rest: "2min"
+        sets: "3", reps: "5â8", rest: "2min"
       },
       {
-        icon: "🔄",
+        icon: "ð",
         name: "Face Pull",
         equipment: "Cable Machine + Rope",
         category: "Isolation",
@@ -1517,10 +1716,10 @@ const MUSCLES = {
           "Focus on squeezing the middle back and traps",
           "Slowly extend arms back to start"
         ],
-        sets: "3", reps: "15–20", rest: "60s"
+        sets: "3", reps: "15â20", rest: "60s"
       },
       {
-        icon: "🏋️",
+        icon: "ðï¸",
         name: "Farmer's Carry",
         equipment: "Dumbbells or Trap Bar",
         category: "Compound",
@@ -1529,7 +1728,7 @@ const MUSCLES = {
         steps: [
           "Hold heavy dumbbells at sides, stand tall",
           "Walk a set distance with controlled, even steps",
-          "Keep shoulders back and down — don't let them elevate",
+          "Keep shoulders back and down â don't let them elevate",
           "Focus on keeping good posture throughout"
         ],
         sets: "3", reps: "40m each", rest: "90s"
@@ -1545,7 +1744,7 @@ const MUSCLES = {
     wikiText: "Wikipedia: Forearm Muscles",
     exercises: [
       {
-        icon: "🤲",
+        icon: "ð¤²",
         name: "Wrist Curl",
         equipment: "Barbell or Dumbbell",
         category: "Isolation",
@@ -1557,40 +1756,40 @@ const MUSCLES = {
           "Curl wrists up as high as possible",
           "Lower slowly to full extension and open hands slightly"
         ],
-        sets: "3", reps: "15–20", rest: "60s"
+        sets: "3", reps: "15â20", rest: "60s"
       },
       {
-        icon: "🤸",
+        icon: "ð¤¸",
         name: "Reverse Wrist Curl",
         equipment: "Barbell or Dumbbell",
         category: "Isolation",
         difficulty: 1,
         desc: "Targets forearm extensors (top side). Often neglected but important for balanced forearm development and wrist health.",
         steps: [
-          "Forearms on thighs, overhand grip, wrists hanging off",
+          "Forearms on thigns, overhand grip, wrists hanging off",
           "Extend wrists upward as high as possible",
           "Hold for 1 second, then lower slowly",
           "Use lighter weight than wrist curls"
         ],
-        sets: "3", reps: "15–20", rest: "60s"
+        sets: "3", reps: "15â20", rest: "60s"
       },
       {
-        icon: "💪",
+        icon: "ðª",
         name: "Hammer Curl",
         equipment: "Dumbbells",
         category: "Compound",
         difficulty: 1,
-        desc: "The neutral grip works the brachioradialis — the large forearm muscle that runs up the outside of the arm — more than supinated curls.",
+        desc: "The neutral grip works the brachioradialis â the large forearm muscle that runs up the outside of the arm â more than supinated curls.",
         steps: [
           "Dumbbells at sides, palms facing each other",
           "Curl both arms up keeping thumbs pointed up",
-          "Full range of motion — squeeze at top",
+          "Full range of motion â squeeze at top",
           "Lower slowly with control"
         ],
-        sets: "3", reps: "10–12", rest: "60s"
+        sets: "3", reps: "10â12", rest: "60s"
       },
       {
-        icon: "🖐️",
+        icon: "ðï¸",
         name: "Dead Hang / Grip Work",
         equipment: "Pull-up Bar",
         category: "Isometric",
@@ -1598,11 +1797,11 @@ const MUSCLES = {
         desc: "Hanging from a bar builds crushing grip strength and hits all forearm muscles isometrically. Also decompresses the spine.",
         steps: [
           "Grip pull-up bar with both hands, hang freely",
-          "Try to 'bend' the bar with your grip — squeeze as hard as possible",
+          "Try to 'bend' the bar with your grip â squeeze as hard as possible",
           "Hold until grip fails",
           "Rest and repeat"
         ],
-        sets: "3", reps: "30–60s", rest: "90s"
+        sets: "3", reps: "30â60s", rest: "90s"
       }
     ]
   }
@@ -1670,22 +1869,22 @@ function selectMuscle(id) {
     if (cat === "Compound") {
       return {
         strength: {
-          sets: "4–6", reps: "1–5", load: "85–95% 1RM", rest: "3–5 min",
+          sets: "4â6", reps: "1â5", load: "85â95% 1RM", rest: "3â5 min",
           tip: "Max effort, full recovery between sets. Log your weights and aim to add load each session."
         },
         hypertrophy: {
-          sets: "3–4", reps: "6–12", load: "65–80% 1RM", rest: "60–90s",
+          sets: "3â4", reps: "6â12", load: "65â80% 1RM", rest: "60â90s",
           tip: "Moderate load with controlled eccentric. Keep tension on the muscle and avoid locking out at top."
         }
       };
     } else {
       return {
         strength: {
-          sets: "3–4", reps: "6–10", load: "75–85% effort", rest: "90–120s",
+          sets: "3â4", reps: "6â10", load: "75â85% effort", rest: "90â120s",
           tip: "Heavier than usual for an isolation move. Use full ROM and pause at peak contraction."
         },
         hypertrophy: {
-          sets: "3–4", reps: "12–20", load: "55–70% effort", rest: "45–75s",
+          sets: "3â4", reps: "12â20", load: "55â70% effort", rest: "45â75s",
           tip: "High reps, slow 3-sec eccentric, strong mind-muscle connection. The burn is the goal."
         }
       };
@@ -1753,6 +1952,293 @@ MUSCLE_LIST_CONFIG.forEach(m => {
   el.innerHTML = `<span class="dot" style="background:${m.color}"></span>${m.label}`;
   el.onclick = () => selectMuscle(m.id);
   listEl.appendChild(el);
+});
+
+// TAB SWITCHING
+function switchTab(tabName) {
+  // Hide all tabs
+  document.querySelectorAll(".tab-content").forEach(tab => {
+    tab.classList.remove("active");
+  });
+  document.querySelectorAll(".tab-button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  // Show selected tab
+  document.getElementById(tabName + "-tab").classList.add("active");
+  event.target.classList.add("active");
+
+  // Reset exercise panel if switching away from exercises
+  if (tabName === "rehab") {
+    document.getElementById("welcome-screen").style.display = "none";
+    document.getElementById("muscle-header").classList.remove("visible");
+    document.getElementById("ref-section").style.display = "none";
+  }
+}
+
+// REHAB EXERCISES DATA
+const REHAB_EXERCISES = [
+  {
+    name: "Band Pull-Aparts",
+    target: "Shoulder",
+    equipment: "Resistance Band",
+    description: "Strengthens rear delts and middle back to correct posture and reduce shoulder impingement syndrome. Excellent for desk workers.",
+    steps: [
+      "Stand with feet shoulder-width apart, hold band at arm's length in front of you at chest height",
+      "Keep a slight bend in your elbows and pull the band apart by driving your elbows back",
+      "Squeeze your shoulder blades together at the end of the movement",
+      "Slowly return to starting position with control"
+    ],
+    setsReps: "3 sets x 15-20 reps",
+    duration: "45-60 seconds per set",
+    conditions: "Helps with shoulder impingement, poor posture, and upper back weakness"
+  },
+  {
+    name: "Dead Bug",
+    target: "Lower Back/Core",
+    equipment: "Bodyweight",
+    description: "A fundamental core stability exercise that teaches proper spinal alignment and strengthens deep abdominal muscles without excessive loading.",
+    steps: [
+      "Lie on your back with arms extended straight up toward the ceiling",
+      "Bend hips and knees to 90 degrees so shins are parallel to the floor",
+      "Slowly lower your right arm overhead while straightening your left leg, hovering just above the floor",
+      "Return to center and repeat on the opposite side in a controlled alternating pattern"
+    ],
+    setsReps: "3 sets x 10-12 reps per side",
+    duration: "40-50 seconds per set",
+    conditions: "Excellent for lower back pain, core stability, and learning neutral spine"
+  },
+  {
+    name: "Clamshells",
+    target: "Hip/Glute",
+    equipment: "Bodyweight or Light Resistance Band",
+    description: "Targets the gluteus medius to strengthen the hip abductors, correcting hip imbalances and reducing knee pain from weak hip stability.",
+    steps: [
+      "Lie on your side with knees bent at 90 degrees and hips stacked",
+      "Keep your feet together and slowly raise your top knee as high as possible",
+      "Feel the stretch and activation in your outer hip and glute",
+      "Lower knee back down with control and repeat for all reps before switching sides"
+    ],
+    setsReps: "3 sets x 15-20 reps per side",
+    duration: "50-60 seconds per side",
+    conditions: "Helps with hip pain, knee pain from weak hip stability, and gluteal weakness"
+  },
+  {
+    name: "Wall Slides",
+    target: "Shoulder",
+    equipment: "Wall or Resistance Band",
+    description: "Teaches proper scapular mechanics and shoulder blade positioning while improving overhead mobility and shoulder stability.",
+    steps: [
+      "Stand with back against a wall, feet 6 inches away, knees slightly bent",
+      "Press arms against wall with elbows bent at 90 degrees at shoulder height",
+      "Slowly slide arms upward toward the ceiling, maintaining contact with the wall",
+      "Return to starting position, focusing on feeling your shoulder blades move"
+    ],
+    setsReps: "3 sets x 12-15 reps",
+    duration: "40-50 seconds per set",
+    conditions: "Ideal for shoulder impingement, limited overhead mobility, and postural correction"
+  },
+  {
+    name: "Hip Flexor Stretch (Kneeling)",
+    target: "Hip Flexor",
+    equipment: "Bodyweight or Yoga Mat",
+    description: "Targets tight hip flexors that become shortened from prolonged sitting, restoring proper hip mobility and reducing lower back strain.",
+    steps: [
+      "Kneel on one knee with the other leg in front, foot flat on the ground in a half-kneeling position",
+      "Lean your hips forward while keeping your torso upright and core engaged",
+      "You should feel a deep stretch in the hip flexor and front of the rear leg",
+      "Hold the stretch and breathe deeply for the duration"
+    ],
+    setsReps: "Hold 2-3 sets x 30-60 seconds per side",
+    duration: "30-60 seconds per side",
+    conditions: "Essential for hip flexor tightness, lower back pain, and posture improvement"
+  },
+  {
+    name: "Cat-Cow Stretch",
+    target: "Spine/Lower Back",
+    equipment: "Yoga Mat or Soft Surface",
+    description: "A dynamic spinal mobility exercise that improves segmental movement, releases lower back tension, and warms up the entire spine.",
+    steps: [
+      "Start on hands and knees in a tabletop position with neutral spine",
+      "Drop your belly and look upward, arching your back gently (Cow position)",
+      "Then round your spine, tuck your chin, and pull your belly in (Cat position)",
+      "Move between these positions fluidly in a rhythmic, controlled manner"
+    ],
+    setsReps: "2-3 sets x 10-12 full cycles",
+    duration: "40-50 seconds per set",
+    conditions: "Great for lower back stiffness, spinal mobility, and warm-up before training"
+  },
+  {
+    name: "Bird Dog",
+    target: "Lower Back/Core",
+    equipment: "Bodyweight or Yoga Mat",
+    description: "An advanced core stability exercise that teaches proper spinal alignment while strengthening the opposite arm and leg coordination.",
+    steps: [
+      "Start in tabletop position with hands under shoulders and knees under hips",
+      "Extend your right arm straight forward while simultaneously straightening your left leg behind you",
+      "Keep your spine neutral and avoid rotating your torso or tilting your hips",
+      "Return to starting position and repeat on the opposite side in controlled alternation"
+    ],
+    setsReps: "3 sets x 10-12 reps per side",
+    duration: "50-60 seconds per set",
+    conditions: "Improves core stability, reduces lower back pain, and corrects movement imbalances"
+  },
+  {
+    name: "90/90 Hip Stretch",
+    target: "Hip",
+    equipment: "Yoga Mat or Floor",
+    description: "A deep stretching position that opens the hip and improves rotational mobility, addressing hip tightness and internal/external rotation restrictions.",
+    steps: [
+      "Sit on the floor and position your front leg at 90 degrees in front of you, back leg at 90 degrees behind",
+      "Keep both shins perpendicular to your body with knees bent at 90 degrees",
+      "Fold your torso forward over your front leg, maintaining a neutral spine",
+      "Feel the stretch in your outer hip and hold, breathing deeply"
+    ],
+    setsReps: "Hold 2-3 sets x 45-90 seconds per side",
+    duration: "45-90 seconds per side",
+    conditions: "Essential for hip tightness, limited hip mobility, and hip flexor restrictions"
+  },
+  {
+    name: "Face Pull",
+    target: "Shoulder",
+    equipment: "Cable Machine with Rope Attachment",
+    description: "Strengthens rear deltoids and mid-back while improving shoulder blade retraction and external rotation, crucial for shoulder health.",
+    steps: [
+      "Set cable to face height with a rope attachment, stand facing the machine",
+      "Pull the rope toward your face while separating the rope ends, driving elbows back",
+      "Focus on pinching your shoulder blades together at peak contraction",
+      "Control the return to starting position while maintaining tension"
+    ],
+    setsReps: "3 sets x 15-20 reps",
+    duration: "50-60 seconds per set",
+    conditions: "Improves shoulder impingement, neck tension, and postural control"
+  },
+  {
+    name: "Terminal Knee Extension (TKE)",
+    target: "Knee",
+    equipment: "Resistance Band",
+    description: "Isolates the quad in full extension to strengthen the vastus medialis oblique, improving knee stability and reducing knee pain.",
+    steps: [
+      "Loop a resistance band around a sturdy object at knee height, then loop it around the back of your knee",
+      "Bend your knee slightly to create tension on the band",
+      "Straighten your leg against the band resistance, focusing on full knee extension",
+      "Control the return to the starting position"
+    ],
+    setsReps: "3 sets x 15-20 reps per leg",
+    duration: "50-60 seconds per leg",
+    conditions: "Helps with knee pain, patellar tracking issues, and quad weakness"
+  },
+  {
+    name: "Jefferson Curl",
+    target: "Lower Back/Hamstring",
+    equipment: "Bodyweight",
+    description: "A controlled, segmental stretching exercise that flexes the spine one vertebra at a time, improving hamstring flexibility and spinal mobility.",
+    steps: [
+      "Stand with feet hip-width apart and slowly round your upper back, dropping your chin to chest",
+      "Gradually articulate downward through each vertebra, rolling through your thoracic and lumbar spine",
+      "Let gravity gently pull you forward as you reach toward your toes",
+      "Reverse the motion, stacking each vertebra back to neutral slowly and deliberately"
+    ],
+    setsReps: "2-3 sets x 5-8 full rolls",
+    duration: "60-90 seconds per set",
+    conditions: "Great for lower back tightness, hamstring flexibility, and spinal mobility"
+  },
+  {
+    name: "Thoracic Rotation",
+    target: "Upper Back/Spine",
+    equipment: "Bodyweight or Yoga Mat",
+    description: "Improves thoracic spine rotational mobility and reduces upper back stiffness, essential for shoulder health and proper movement patterns.",
+    steps: [
+      "Get into tabletop position with hands under shoulders and knees under hips",
+      "Place your right hand behind your head with your elbow bent",
+      "Rotate your torso to open your right elbow up toward the ceiling while keeping your hips stable",
+      "Feel the rotation in your mid-back and return to center, repeat for all reps, then switch sides"
+    ],
+    setsReps: "3 sets x 10-12 reps per side",
+    duration: "50-60 seconds per set",
+    conditions: "Improves thoracic mobility, reduces upper back tension, and corrects postural issues"
+  },
+  {
+    name: "Side-Lying External Rotation",
+    target: "Shoulder",
+    equipment: "Light Dumbbell or Resistance Band",
+    description: "Strengthens the infraspinatus and teres minor (rotator cuff muscles) to stabilize the shoulder joint and prevent impingement.",
+    steps: [
+      "Lie on your side with the lower arm underneath, top arm bent at 90 degrees with forearm down",
+      "Keeping your elbow against your ribs, rotate your forearm upward against resistance",
+      "Feel the activation in your rear shoulder and upper back",
+      "Control the return to starting position"
+    ],
+    setsReps: "3 sets x 12-15 reps per side",
+    duration: "40-50 seconds per side",
+    conditions: "Critical for rotator cuff health, shoulder impingement prevention, and stability"
+  },
+  {
+    name: "Prone Cobra (Baby Cobra)",
+    target: "Lower Back/Chest",
+    equipment: "Bodyweight or Yoga Mat",
+    description: "A gentle back extension that engages the erector spinae and opens the anterior chain while maintaining spinal safety with core engagement.",
+    steps: [
+      "Lie face down with hands under your shoulders and elbows close to your body",
+      "Push your chest upward using your back muscles, keeping your hands helping minimally",
+      "Keep your core engaged and pelvis on the ground throughout the movement",
+      "Hold the top position briefly and lower back down with control"
+    ],
+    setsReps: "3 sets x 10-12 reps",
+    duration: "45-55 seconds per set",
+    conditions: "Helps with lower back tightness, improves back strength, and opens hip flexors"
+  },
+  {
+    name: "Neck Flexor Stretch",
+    target: "Neck",
+    equipment: "Bodyweight",
+    description: "Stretches the anterior neck muscles and upper chest to relieve neck tension and improve forward head posture from excessive screen time.",
+    steps: [
+      "Sit upright or stand with good posture, chest up",
+      "Gently press your chin downward and slightly backward toward your neck, creating a 'double chin'",
+      "Hold this retracted position and feel the stretch along the front and back of your neck",
+      "Breathe deeply and maintain the position"
+    ],
+    setsReps: "Hold 2-3 sets x 30-45 seconds",
+    duration: "30-45 seconds per set",
+    conditions: "Alleviates neck tension, improves posture, and reduces text neck syndrome"
+  },
+];
+
+// Render rehab exercises on page load
+document.addEventListener("DOMContentLoaded", function() {
+  const rehabGrid = document.getElementById("rehab-grid");
+  if (rehabGrid) {
+    rehabGrid.innerHTML = REHAB_EXERCISES.map(ex => `
+      <div class="rehab-card">
+        <div class="card-header">
+          <h3>${ex.name}</h3>
+          <span class="target-badge">${ex.target}</span>
+        </div>
+        <div class="card-body">
+          <div class="equipment-line">âï¸ ${ex.equipment}</div>
+          <p class="description">${ex.description}</p>
+          <div class="steps-title">How to Perform</div>
+          <ul class="steps">
+            ${ex.steps.map((step, i) => `<li><span class="num">${i+1}</span><span>${step}</span></li>`).join('')}
+          </ul>
+          <div class="sets-reps-info">
+            <div class="stat">
+              <div class="val">${ex.setsReps.split('x')[0].trim()}</div>
+              <div class="lbl">SETS/REPS</div>
+            </div>
+            <div class="stat">
+              <div class="val">${ex.duration}</div>
+              <div class="lbl">DURATION</div>
+            </div>
+          </div>
+          <div class="conditions">
+            <strong>For:</strong> ${ex.conditions}
+          </div>
+        </div>
+      </div>
+    `).join("");
+  }
 });
 </script>
 </body>
