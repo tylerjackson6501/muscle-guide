@@ -638,7 +638,7 @@
         <path class="muscle-region" id="f-forearm-r" d="M228,208 Q235,225 236,270 Q234,285 220,288 Q208,286 202,275 L202,208 Q212,205 228,208 Z" fill="#f4a261" onclick="selectMuscle('forearms')"/>
 
         <!-- Abs (6-pack effect) -->
-        <path class="muscle-region" id="f-abs" d="M118,178 Q148,182 162,178 L165,280 Q140,285 115,280 Z" fill="#9b5de5" onclick="selectMuscle('abs')"/>
+        <path class="muscle-region" id="f-abs" d="M118,178 Q140,182 162,178 L165,280 Q140,285 115,280 Z" fill="#9b5de5" onclick="selectMuscle('abs')"/>
         <!-- Abs separators (visual) -->
         <line x1="119" y1="210" x2="161" y2="210" stroke="#1e2433" stroke-width="2" pointer-events="none"/>
         <line x1="118" y1="245" x2="162" y2="245" stroke="#1e2433" stroke-width="2" pointer-events="none"/>
@@ -705,10 +705,10 @@
         <path class="muscle-region" id="b-lat-r" d="M190,118 Q204,135 208,175 Q210,210 195,240 L162,248 L165,118 Z" fill="#9b5de5" onclick="selectMuscle('back')"/>
 
         <!-- Rhomboids / Mid back -->
-        <path class="muscle-region" id="b-rhomboids" d="M115,118 L165,118 L162,195 L118,195 Z" fill="#f77f00" onclick="selectMuscle('back')"/>
+        <path class="muscle-region" id="b-rhomboids" d="M115,118 L165,118 L162,195%L118,195 Z" fill="#f77f00" onclick="selectMuscle('back')"/>
 
         <!-- Lower back (erectors) -->
-        <path class="muscle-region" id="b-lowerback" d="M118,195 L162,195 L165,278 Q140,285 115,278 Z" fill="#f4a261" onclick="selectMuscle('back')"/>
+        <path class="muscle-region" id="b-lowerback" d="M118,195 L162,195%L165,278 Q140,285 115,278 Z" fill="#f4a261" onclick="selectMuscle('back')"/>
 
         <!-- Left Tricep -->
         <path class="muscle-region" id="b-tricep-l" d="M60,118 Q52,135 50,180 Q52,205 65,210 Q76,208 84,205 L84,168 Q78,140 72,122 Z" fill="#2dc653" onclick="selectMuscle('triceps')"/>
@@ -728,7 +728,7 @@
         <path class="muscle-region" id="b-glutes-r" d="M190,305 Q174,318 142,322 L146,380 Q170,385 188,372 Z" fill="#e63946" onclick="selectMuscle('glutes')"/>
 
         <!-- Left Hamstring -->
-        <path class="muscle-region" id="b-ham-l" d="M92,375 Q108,385 134,384 L130,470 Q108,476 94,466 Z" fill="#0077b6" onclick="selectMuscle('hamstrings')"/>
+        <path class="muscle-region" id="b-ham-l" d="M92,375 Q110,385 134,382 L130,470 Q108,476 94,466 Z" fill="#0077b6" onclick="selectMuscle('hamstrings')"/>
         <!-- Right Hamstring -->
         <path class="muscle-region" id="b-ham-r" d="M188,375 Q170,385 146,382 L150,470 Q172,476 186,466 Z" fill="#0077b6" onclick="selectMuscle('hamstrings')"/>
 
@@ -806,7 +806,7 @@
         <h3>Injury Prevention & Recovery</h3>
         <p>This rehab section features therapeutic exercises designed for pain management and joint health. These movements target common problem areas like shoulder impingement, knee pain, lower back tightness, and neck tension. Each exercise emphasizes proper form, mobility, and controlled movement to address the root causes of discomfort. Always consult a healthcare provider before starting any rehab program.</p>
       </div>
-      <div class="exercises-grid" id="rehab-grid"></div>
+      <div clss="exercises-grid" id="rehab-grid"></div>
     </div>
   </div>
 </div>
@@ -824,12 +824,12 @@ const MUSCLES = {
       {
         icon: "&#x1F3CB;&#xFE0F;",
         name: "Barbell Bench Press",
-        equipment: "Barbell + Bench",
+        equipment: "Barbell + Benh",
         category: "Compound",
         difficulty: 3,
         desc: "The king of chest exercises. Targets the entire pectoralis major with heavy load potential.",
         steps: [
-          "Lie flat on bench, grip bar slightly wider than shoulder-width",
+          "Lie flat on bench, grip bar sl	ghtly wider than shoulder-width",
           "Unrack bar, lower it with control to mid-chest",
           "Press explosively back to start, keeping feet flat and arch neutral"
         ],
@@ -844,283 +844,25 @@ const MUSCLES = {
         desc: "The foundational chest movement. Scalable for any fitness level and hits chest, triceps, and front delts.",
         steps: [
           "Start in plank with hands slightly wider than shoulders",
-          "Lower chest to near floor, keeping elbows at 45&#xB0; from body",
+          "Lower chest to near floor, keeping elbows at 45&#xB0; from bod	",
           "Push back to start with full arm extension"
         ],
-        sets: "3", reps: "12&#x2013;20", rest: "60s"
-      },
-      {
-        icon: "&#x1F4D0;",
-        name: "Incline Dumbbell Press",
-        equipment: "Dumbbells + Incline Bench",
-        category: "Compound",
-        difficulty: 2,
-        desc: "Emphasizes the upper chest (clavicular head) which is often underdeveloped. The incline angle shifts focus upward.",
-        steps: [
-          "Set bench to 30&#x2013;45&#xB0;, hold dumbbells at shoulder height",
-          "Press up and slightly inward so dumbbells nearly touch at top",
-          "Lower slowly with a slight stretch at the bottom"
-        ],
-        sets: "3", reps: "10&#x2013;12", rest: "75s"
-      },
-      {
-        icon: "&#x1F504;",
-        name: "Cable Chest Fly",
-        equipment: "Cable Machine",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "Constant cable tension throughout the movement provides excellent chest stretch and contraction, great for definition.",
-        steps: [
-          "Set cables to shoulder height, stand centered between them",
-          "Step forward, arms slightly bent and extended out to sides",
-          "Bring hands together in front of chest in an arc motion",
-          "Slowly reverse to feel the stretch"
-        ],
-        sets: "3", reps: "12&#x2013;15", rest: "60s"
-      }
-    ]
-  },
-  back: {
-    name: "Back (Lats, Traps & Rhomboids)",
-    tag: "UPPER BODY",
-    color: "#9b5de5",
-    desc: "The back is composed of several major muscles: the latissimus dorsi (lats) create the V-taper, the trapezius controls shoulder blade movement, and the rhomboids pull the scapulae together. A strong back improves posture and protects the spine.",
-    wikiLink: "https://en.wikipedia.org/wiki/Latissimus_dorsi_muscle",
-    wikiText: "Wikipedia: Latissimus Dorsi",
-    exercises: [
-      {
-        icon: "&#x1F53C;",
-        name: "Pull-Up / Lat Pulldown",
-        equipment: "Pull-up Bar / Cable Machine",
-        category: "Compound",
-        difficulty: 3,
-        desc: "The best upper back builder. Pull-ups use bodyweight; lat pulldowns allow weight adjustment for beginners.",
-        steps: [
-          "Grip bar slightly wider than shoulder-width, palms forward",
-          "Pull elbows down and back, leading with the chest",
-          "Squeeze lats at bottom when chin clears bar",
-          "Lower slowly to full extension"
-        ],
-        sets: "4", reps: "6&#x2013;12", rest: "90s"
-      },
-      {
-        icon: "&#x2B07;&#xFE0F;",
-        name: "Bent-Over Barbell Row",
-        equipment: "Barbell",
-        category: "Compound",
-        difficulty: 3,
-        desc: "Hits lats, rhomboids, and rear delts simultaneously. One of the best mass-builders for the back.",
-        steps: [
-          "Hinge at hips until torso is ~45&#xB0;, grip bar shoulder-width",
-          "Pull bar to lower sternum, driving elbows back",
-          "Squeeze shoulder blades together at top",
-          "Lower bar with control"
-        ],
-        sets: "4", reps: "8&#x2013;10", rest: "90s"
-      },
-      {
-        icon: "&#x1FA91;",
-        name: "Seated Cable Row",
-        equipment: "Cable Machine",
-        category: "Compound",
-        difficulty: 2,
-        desc: "Excellent for mid-back thickness. The cable provides constant tension throughout the pulling motion.",
-        steps: [
-          "Sit tall, feet on foot plate, grip handle with straight arms",
-          "Pull handle to lower abs, driving elbows behind body",
-          "Hold squeeze for 1 second, then slowly extend arms"
-        ],
-        sets: "3", reps: "10&#x2013;12", rest: "75s"
-      },
-      {
-        icon: "&#x1F480;",
-        name: "Deadlift",
-        equipment: "Barbell",
-        category: "Compound",
-        difficulty: 4,
-        desc: "The ultimate full-posterior chain exercise. Works lats, traps, erectors, glutes, and hamstrings together.",
-        steps: [
-          "Feet hip-width, bar over mid-foot, grip just outside shins",
-          "Brace core, chest up, hinge and drive through the floor",
-          "Extend hips and knees simultaneously to stand",
-          "Lower with a controlled hip hinge"
-        ],
-        sets: "3", reps: "5&#x2013;8", rest: "2&#x2013;3min"
-      }
-    ]
-  },
-  front_delts: {
-    name: "Front Delts (Anterior Deltoid)",
-    tag: "UPPER BODY",
-    color: "#3a7ca5",
-    desc: "The anterior deltoid is the front portion of the shoulder. It drives shoulder flexion (raising arm forward) and assists in pressing movements. Heavy compound pressing is the best way to overload the front delts for size and strength.",
-    wikiLink: "https://en.wikipedia.org/wiki/Deltoid_muscle",
-    wikiText: "Wikipedia: Deltoid Muscle",
-    exercises: [
-      {
-        icon: "&#x1F3CB;&#xFE0F;",
-        name: "Overhead Press (OHP)",
-        equipment: "Barbell or Dumbbells",
-        category: "Compound",
-        difficulty: 3,
-        desc: "The king of shoulder exercises. Works the entire deltoid, especially the anterior head, plus triceps and upper traps.",
-        steps: [
-          "Hold bar at shoulder height, grip just outside shoulders",
-          "Brace core and press bar straight overhead",
-          "Lock out arms at top without leaning back excessively",
-          "Lower to shoulder level with full control"
-        ],
-        sets: "4", reps: "6&#x2013;10", rest: "90s"
-      },
-      {
-        icon: "&#x2B06;&#xFE0F;",
-        name: "Dumbbell Front Raise",
-        equipment: "Dumbbells",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "Directly isolates the anterior deltoid through shoulder flexion. Best performed with a slow eccentric to maximise stretch.",
-        steps: [
-          "Hold dumbbells in front of thighs, palms facing down",
-          "Raise arms forward and up to shoulder height",
-          "Keep a slight bend in the elbows throughout",
-          "Lower slowly over 3 seconds &#x2014; do not swing"
-        ],
-        sets: "3", reps: "12&#x2013;15", rest: "60s"
-      },
-      {
-        icon: "&#x1F517;",
-        name: "Cable Front Raise",
-        equipment: "Cable Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "Like dumbbell front raises but with constant cable tension &#x2014; the front delt stays loaded through the full range of motion.",
-        steps: [
-          "Attach a straight bar or single handle at the low pulley",
-          "Face away from the machine and raise the handle forward and up",
+        sets: "3", reps: "12&#x201377C�#c2 �������6��"b7�cDC�"����S�$��6Ɩ�RGV�&&V��&W72"��WV��V�C�$GV�&&V��2���6Ɩ�R&V�6�"��6FVv�'��$6���V�B"��F�ff�7V�G��"��FW63�$V��6��W2F�RWW"6�W7B�6�f�7V�"�VB�v��6��2�gFV�V�FW&FWfV��VB�F�R��6Ɩ�R�v�R6��gG2f�7W2Wv&B�"��7FW3���%6WB&V�6�F�3b7�#3�CRb7�#�����BGV�&&V��2B6��V�FW"�V�v�B"��%&W72W�B6Ɩv�Fǒ��v&B6�GV�&&V��2�V&ǒF�V6�BF�"��$��vW"6��vǒv�F�6Ɩv�B7G&WF6�BF�R&�GF�� ����6WG3�#2"�&W3�#b7�#3�""�&W7C�#sW2 �������6��"b7�cSC�"����S�$6&�R6�W7Bfǒ"��WV��V�C�$6&�R�6���R"��6FVv�'��$�6��F���"��F�ff�7V�G��"��FW63�$6��7F�B6&�RFV�6���F�&�Vv��WBF�R��fV�V�B&�f�FW2W�6V��V�B6�W7B7G&WF6��B6��G&7F����w&VBf�"FVf��F����"��7FW3���%6WB6&�W2F�6��V�FW"�V�v�B�7F�B6V�FW&VB&WGvVV�F�V�"��%7FWf�'v&B�&�26Ɩv�Fǒ&V�B�BW�FV�FVB�WBF�6�FW2"��$'&��r��G2F�vWF�W"��g&��B�b6�W7B���&2��F���"��%6��vǒ&WfW'6RF�fVV�F�R7G&WF6� ����6WG3�#2"�&W3�#"b7�#3�R"�&W7C�#c2 �ТТ���&6������S�$&6���G2�G&2b&���&��G2�"��Fs�%UU"$�E�"��6���#�"3�#VFSR"��FW63�%F�R&6��26���6VB�b6WfW&����"�W66�W3�F�R�F�76��W2F�'6���G2�7&VFRF�Rb�FW"�F�RG&W��W26��G&��26��V�FW"&�FR��fV�V�B��BF�R&���&��G2V��F�R66V�RF�vWF�W"�7G&��r&6���&�fW2�7GW&R�B&�FV7G2F�R7��R�"��v���Ɩ波&�GG3���V��v���VF���&r�v�����F�76��W5�F�'6���W66�R"��v���FW�C�%v���VF���F�76��W2F�'6�"��W�W&6�6W3������6��"b7�cS43�"����S�%V���W��BV��F�v�"��WV��V�C�%V���W&"�6&�R�6���R"��6FVv�'��$6���V�B"��F�ff�7V�G��2��FW63�%F�R&W7BWW"&6�'V��FW"�V���W2W6R&�G�vV�v�C��BV��F�v�2���rvV�v�BF�W7F�V�Bf�"&Vv���W'2�"��7FW3���$w&�&"6Ɩv�Fǒv�FW"F��6��V�FW"�v�GF����2f�'v&B"��%V��V�&�w2F�v��B&6���VF��rv�F�F�R6�W7B"��%7VVW�R�G2B&�GF��v�V�6���6�V'2&""��$��vW"6��vǒF�gV��W�FV�6��� ����6WG3�#B"�&W3�#bb7�#3�""�&W7C�#�2 �������6��"b7�$#s�b7�dSc�"����S�$&V�B��fW"&&&V��&�r"��WV��V�C�$&&&V��"��6FVv�'��$6���V�B"��F�ff�7V�G��2��FW63�$��G2�G2�&���&��G2��B&V"FV�G26��V�F�V�W6ǒ���R�bF�R&W7B�72�'V��FW'2f�"F�R&6��"��7FW3���$���vRB��2V�F��F�'6��2�CRb7�#��w&�&"6��V�FW"�v�GF�"��%V��&"F���vW"7FW&�V��G&�f��rV�&�w2&6�"��%7VVW�R6��V�FW"&�FW2F�vWF�W"BF�"��$��vW"&"v�F�6��G&�� �"���6WG3�#B"�&W3�#�b7�#3�"�&W7C�#�2 �������6��"b7�d��"����S�%6VFVB6&�R&�r"��WV��V�C�$6&�R�6���R"��6FVv�'��$6���V�B"��F�ff�7V�G��"��FW63�$W�6V��V�Bf�"֖B�&6�F��6��W72�F�R6&�R&�f�FW26��7F�BFV�6���F�&�Vv��WBF�RV�Ɩ�r��F����"��7FW3���%6�BF���fVWB��f��B�FR�w&���F�Rv�F�7G&�v�B&�2"��%V����F�RF���vW"'2�G&�f��rV�&�w2&V���B&�G�"��$���B7VVW�Rf�"6V6��B�F�V�6��vǒW�FV�B&�2 ����6WG3�#2"�&W3�#b7�#3�""�&W7C�#sW2 �������6��"b7�cC��"����S�$FVFƖgB"��WV��V�C�$&&&V��"��6FVv�'��$6���V�B"��F�ff�7V�G��B�� FW63�%F�RV�F��FRgV����7FW&��"6���W�W&6�6R�v�&�2�G2�G&2�W&V7F�'2�v�WFW2��B��7G&��w2F�vWF�W"�"��7FW3���$fVWB���v�GF��&"�fW"֖B�f��B�w&��W7B�WG6�FR6���2"��$'&6R6�&R�6�W7BW����vR�BG&�fRF�&�Vv�F�Rf���""��$W�FV�B��2�B��VW26��V�F�V�W6ǒF�7F�B"��$��vW"v�F�6��G&���VB�����vR ����6WG3�#2"�&W3�#Rb7�#3��"�&W7C�#"b7�#3�6֖� �ТТ���g&��E�FV�G3�����S�$g&��BFV�G2��FW&��"FV�F��B�"��Fs�%UU"$�E�"��6���#�"36v6R"��FW63�%F�R�FW&��"FV�F��B�2F�Rg&��B�'F����bF�R6��V�FW"��BG&�fW26��V�FW"f�W�����&�6��r&�f�'v&B��B76�7G2��&W76��r��fV�V�G2��Vg�6���V�B&W76��r�2F�R&W7Bv�F��fW&��BF�Rg&��BFV�G2f�"6��R�B7G&V�wF��"��v���Ɩ波&�GG3���V��v���VF���&r�v����FV�F��E��W66�R"��v���FW�C�%v���VF��FV�F��B�W66�R"��W�W&6�6W3������6��"b7�c44#�b7�dSc�"����S�$�fW&�VB&W72���"��WV��V�C�$&&&V���"GV�&&V��2"��6FVv�'��$6���V�B"��F�ff�7V�G��2��FW63�%F�R���r�b6��V�FW"W�W&6�6W2�v�&�2F�RV�F�&RFV�F��B�W7V6��ǒF�R�FW&��"�VB��W2G&�6W2�BWW"G&2�"��7FW3���$���B&"B6��V�FW"�V�v�B�w&��W7B�WG6�FR6��V�FW'2"�� $'&6R6�&R�B&W72&"7G&�v�B�fW&�VB"��$��6��WB&�2BF�v�F��WB�V��r&6�W�6W76�fVǒ"��$��vW"F�6��V�FW"�WfV�v�F�gV��6��G&�� ����6WG3�#B"�&W3�#bb7�#3�"� W7C�#�2 �������6��"b7�$#c�b7�dSc�"����S�$GV�&&V��g&��B&�6R"��WV��V�C�$GV�&&V��2"��6FVv�'��$�6��F���"��F�ff�7V�G����FW63�$F�&V7Fǒ�6��FW2F�R�FW&��"FV�F��BF�&�Vv�6��V�FW"f�W�����&W7BW&f�&�VBv�F�6��rV66V�G&�2F����֗6R7G&WF6��"��7FW3���$���BGV�&&V��2��g&��B�bF��v�2���2f6��rF�v�"��%&�6R&�2f�'v&B�BWF�6��ձ��ȁ�����Ј�(�����������-������ͱ���Ё��������ѡ�������́ѡɽ՝���Ј�(�����������1�ݕȁͱ�ݱ䁽ٕȀ͕́����̀�������쁑����Ё�ݥ���(��������t�(��������͕��耈̈��ɕ��耈�Ș��������Ԉ��ɕ��耈��̈(��������(�������(������������耈�
+�����숰(������������耉
+�����ɽ�ЁI��͔��(����������ե�����耉
+�����5��������(����������ѕ����耉%ͽ��ѥ����(��������������ձ���İ(����������͌耉1�����յ�������ɽ�ЁɅ�͕́��ЁݥѠ�����х�Ё������ѕ�ͥ�����������ѡ���ɽ�Ё���Ё�х�́�������ѡɽ՝��ѡ���ձ��Ʌ���������ѥ�����(���������ѕ���l(������������х�������Ʌ���Ё��ȁ�ȁͥ�������������Ёѡ����܁�ձ��䈰(����������������݅�ɽ��ѡ��������������Ʌ�͔�ѡ������������݅ɐ�������",
           "Control the descent &#x2014; do not let the cable snap back",
           "Keep your torso still; no body English"
         ],
         sets: "3", reps: "12&#x2013;15", rest: "60s"
       },
       {
-        icon: "&#x1F4AA;",
+        icon: "&#xMF4AA;",
         name: "Arnold Press",
         equipment: "Dumbbells",
         category: "Compound",
         difficulty: 2,
-        desc: "Invented by Arnold Schwarzenegger &#x2014; the rotating motion hits all three delt heads with extra front-delt recruitment at the bottom of each rep.",
-        steps: [
-          "Hold dumbbells at chin height, palms facing you",
-          "Press up while rotating palms to face forward",
-          "Fully extend overhead, then reverse the rotation on the way down",
-          "Full range of motion is key &#x2014; don't cut the rotation short"
-        ],
-        sets: "3", reps: "10&#x2013;12", rest: "75s"
-      }
-    ]
-  },
-  side_delts: {
-    name: "Side Delts (Lateral Deltoid)",
-    tag: "UPPER BODY",
-    color: "#3a7ca5",
-    desc: "The lateral (medial) deltoid creates shoulder width and the coveted 'capped' look. It is primarily responsible for arm abduction (raising arms to the sides). High-rep isolation work with constant tension is most effective for this head.",
-    wikiLink: "https://en.wikipedia.org/wiki/Deltoid_muscle",
-    wikiText: "Wikipedia: Deltoid Muscle",
-    exercises: [
-      {
-        icon: "&#x2194;&#xFE0F;",
-        name: "Lateral Raise",
-        equipment: "Dumbbells",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "The single best exercise for building shoulder width. Lead with your elbows and use a controlled tempo to keep tension on the lateral head.",
-        steps: [
-          "Hold dumbbells at sides, slight bend in elbows",
-          "Raise arms out to sides until parallel to floor",
-          "Lead with your elbows, not your wrists",
-          "Lower slowly &#x2014; 3 seconds on the way down"
-        ],
-        sets: "4", reps: "12&#x2013;15", rest: "60s"
-      },
-      {
-        icon: "&#x1F517;",
-        name: "Cable Lateral Raise",
-        equipment: "Cable Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "Provides constant tension across the full range of motion &#x2014; superior to dumbbells at the bottom of the rep where dumbbells go slack.",
-        steps: [
-          "Set cable at lowest position, stand side-on to the machine",
-          "Cross the cable in front of your body and raise your arm out to the side",
-          "Raise until arm is parallel to floor, then lower with control",
-          "Squeeze at the top &#x2014; pause for 1 second"
-        ],
-        sets: "3", reps: "15&#x2013;20", rest: "60s"
-      },
-      {
-        icon: "&#x1F3CB;&#xFE0F;",
-        name: "Upright Row (Wide Grip)",
-        equipment: "Barbell or Dumbbells",
-        category: "Compound",
-        difficulty: 2,
-        desc: "A compound pull that strongly recruits the lateral deltoid when performed with a wide grip. Avoid narrow grips that impinge the shoulder.",
-        steps: [
-          "Hold bar with a grip slightly wider than shoulder width",
-          "Pull bar straight up along your body to chin height",
-          "Lead with your elbows &#x2014; they should rise higher than your hands",
-          "Lower slowly back to starting position"
-        ],
-        sets: "3", reps: "10&#x2013;12", rest: "75s"
-      },
-      {
-        icon: "&#x2699;&#xFE0F;",
-        name: "Machine Lateral Raise",
-        equipment: "Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "Machines provide a fixed arc of motion, making it easier to overload the side delts safely and with consistent form under fatigue.",
-        steps: [
-          "Adjust the seat so the arm pad aligns with your shoulder joint",
-          "Press your arms outward against the pads to shoulder height",
-          "Pause at the top, then lower under full control",
-          "Keep tension &#x2014; do not let the weight stack touch between reps"
-        ],
-        sets: "3", reps: "12&#x2013;15", rest: "60s"
-      }
-    ]
-  },
-  rear_delts: {
-    name: "Rear Delts (Posterior Deltoid)",
-    tag: "UPPER BODY",
-    color: "#3a7ca5",
-    desc: "The posterior deltoid is the most neglected head of the shoulder. It handles shoulder extension, horizontal abduction, and external rotation. Strong rear delts improve posture, protect the shoulder joint, and balance pushing strength.",
-    wikiLink: "https://en.wikipedia.org/wiki/Deltoid_muscle",
-    wikiText: "Wikipedia: Deltoid Muscle",
-    exercises: [
-      {
-        icon: "&#x1F517;",
-        name: "Face Pull",
-        equipment: "Cable Machine + Rope",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "The best all-round rear delt exercise. Also trains the rotator cuff and external rotators &#x2014; do these every session for shoulder health.",
-        steps: [
-          "Set cable at face height, grip rope with both hands",
-          "Pull rope to face, separating hands as you pull",
-          "Externally rotate so hands end up beside your ears",
-          "Hold for 1 second, then slowly return"
-        ],
-        sets: "4", reps: "15&#x2013;20", rest: "60s"
-      },
-      {
-        icon: "&#x1F4AA;",
-        name: "Bent-Over Lateral Raise",
-        equipment: "Dumbbells",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "Directly targets the posterior deltoid. Bending over places the rear delt as the primary mover rather than the traps or side delts.",
-        steps: [
-          "Hinge at hips until torso is nearly parallel to floor",
+        desc: "Invented by Arnold Schwarzenegger &#x2014; the rotating motion hits all three delt hXY��]^�H��۝Y[�XܝZ]Y[�]H���HوXX��\����\Έ��[X��[�]�[�ZY�[\��X�[��[�H����\��\�[H��][��[\���X�H�ܝ�\�����[H^[�ݙ\�XY[��]�\��HH��][ۈۈH�^H�ۈ����[�[��Hو[�[ۈ\��^H	���M�ۉ��]H��][ۈ�ܝ��K��]Έ�ȋ�\Έ�L	���L��L���\����\Ȃ�B�B�K��YW�V�G3�����S�%6�FRFV�G2��FW&�FV�F��B�"��Fs�%UU"$�E�"��6���#�"36v6R"��FW6FW&���VF�FV�F��B7&VFW26��V�FW"v�GF��BF�R6�fWFVBv6VBr������B�2&��&�ǒ&W7��6�&�Rf�"&�&GV7F����&�6��r&�2F�F�R6�FW2����v��&W�6��F���v�&�v�F�6��7F�BFV�6����2��7BVffV7F�fRf�"F��2�VB�"��v���Ɩ波&�GG3���V��v���VF���&r�v����FV�F��E��W66�R"��v���FW�C�%v���VF��FV�F��B�W66�R"��W�W&6�6W3������6��"b7�#�C�b7�dSc�"����S�$�FW&�&�6R"��WV��V�C�$GV�&&V��2"��6FVv�'��$�6��F���"��F�ff�7V�G����FW63�%F�R6��v�R&W7BW�W&6�6Rf�"'V��F��r6��V�FW"v�GF���VBv�F���W"V�&�w2�BW6R6��G&���VBFV��F��VWFV�6�����F�R�FW&��VB�"��"7FW3���$���BGV�&&V��2B6�FW2�6Ɩv�B&V�B��V�&�w2"��%&�6R&�2�WBF�6�FW2V�F��&��V�F�f���""��$�VBv�F���W"V�&�w2���B��W"w&�7G2"��$��vW"6��vǒb7�#C�26V6��G2��F�Rv�F�v� ����6WG3�#B"�&W3�#"b7�#3�R"�&W7C�#c2 �������6��"b7�cSs�"����S�$6&�R�FW&�&�6R"��WV��V�C�$6&�R�6���R"��6FVv�'��$�6��F���"��F�ff�7V�G����FW63�%&�f�FW26��7F�BFV�6���7&�72F�RgV��&�vR�b��F���b7�#C�7WW&��"F�GV�&&V��2BF�R&�GF���bF�R&Wv�W&RGV�&&V��2v�6�6��"��7FW3���%6WB6&�RB��vW7B�6�F����7F�B6�FR���F�F�R�6���R"��$7&�72F�R6&�R��g&��B�b��W"&�G��B&�6R��W"&��WBF�F�R6�FR"��%&�6RV�F��&��2&��V�F�f���"�F�V���vW"v�F�6��G&��"��%7VVW�RBF�RF�b7�#C�W6Rf�"6V6��B ����6WG3�#2"�&W3�#Rb7�#3�#"�&W7C�#c2 �������6��"b7�c44#�b7�dSc�"����S�%W&�v�B&�r�v�FRw&��"��WV��V�C�$&&&V���"GV�&&V��2"��6FVv�'��$6���V�B"��F�ff�7V�G��"��FW63�$6���V�BV��F�B7G&��vǒ&V7'V�G2F�R�FW&�FV�F��Bv�V�W&f�&�VBv�F�v�FRw&��f��B�'&�rw&�2F�B����vRF�R6��V�FW"�"��7FW3���$���B&"v�F�w&�6Ɩv�Fǒv�FW"F��6��V�FW"v�GF�"��%V��&"7G&�v�BW���r��W"&�G�F�6����V�v�B"��$�VBv�F���W"V�&�w2b7�#C�F�W�6��V�B&�6R��v�W"F����W"��G2"��$��vW"6��vǒ&6�F�7F'F��r�6�F��� ����6WG3�#2"�&W3�#b7�#3�""�&W7C�#sW2 �������6��"b7�#c���b7�dSc�"����S�$�6���R�FW&�&�6R"��"WV��V�C�$�6���R"��6FVv�'��$�6��F���"��F�ff�7V�G����FW63�$�6���W2&�f�FRf��VB&2�b��F��������r�BV6�W"F��fW&��BF�R6�FRFV�G26fVǒ�Bv�F�6��6�7FV�Bf�&�V�FW"fF�wVR�"��7FW3���$F�W7BF�R6VB6�F�R&�BƖv�2v�F���W"6��V�FW"����B"��%&W72��W"&�2�WGv&Bv��7BF�RG2F�6��V�FW"�V�v�B"��%W6RBF�RF��F�V���vW"V�FW"gV��6��G&��"��$�VWFV�6���b7�#C�F���B�WBF�RvV�v�B7F6�F�V6�&WGvVV�&W2 ����6WG3�#2"�&W3�#"b7�#3�R"�&W7C�#c2 �ТТ���&V%�FV�G3�����S�%&V"FV�G2��7FW&��"FV�F��B�"��Fs�%UU"$�E�"��6���#�"36v6R"��FW63�%F�R�7FW&��"FV�F��B�2F�R��7B�Vv�V7FVB�VB�bF�R6��V�FW"��B��F�W26��V�FW"W�FV�6������&����F�&GV7F�����BW�FW&��&�FF����7G&��r&V"FV�G2��&�fR�7GW&R�&�FV7BF�R6��V�FW"����B��B&��6RW6���r7G&V�wF��"��v���Ɩ波&�GG3���V��v���VF���&r�v����FV�F��E��W66�R"��v���FW�C�%v���VF��FV�F��B�W66�R"��W�W&6�6W3������6��"b7�cSs�"����S�$f6RV��"��WV��V�C�$6&�R�6���R�&�R"��6FVv�'��$�6��F���"��F�ff�7V�G��"��FW63�%F�R&W7B���&�V�B&V"FV�BW�W&6�6R��6�G&��2F�R&�FF�"7Vfb�BW�FW&��&�FF�'2b7�#C�F�F�W6RWfW'�6W76���f�"6��V�FW"�V�F��"��7FW3���%6WB6&�RBf6R�V�v�B�w&�&�Rv�F�&�F���G2"��%V��&�RF�f6R�6W&F��r��G22��RV��"��$W�FW&��ǒ&�FFR6���G2V�BW&W6�FR��W"V'2"��$���Bf�"6V6��B�F�V�6��vǒ&WGW&� ���� 6WG3�#B"�&W3�#Rb7�#3�#"�&W7C�#c2 �������6��"b7�cD�"����S�$&V�B��fW"�FW&�&�6R"��WV��V�C�$GV�&&V��2"��6FVv�'��$�6��F���"��F�ff�7V�G��"����͌耉�ɕ�ѱ�хɝ��́ѡ�����ѕɥ�ȁ���ѽ����	��������ٕȁ�����́ѡ��ɕ�ȁ���Ё�́ѡ���ɥ���䁵�ٕȁɅѡ�ȁѡ���ѡ���Ʌ�́�ȁͥ�������̸��(���������ѕ���l(�����������!������Ё���́չѥ��ѽ�ͼ��́���ɱ���Ʌ�����Ѽ�����Ȉ�
           "Let dumbbells hang directly below your shoulders",
           "Raise arms out to sides until parallel to floor",
           "Squeeze the rear delts hard at the top"
@@ -1140,130 +882,21 @@ const MUSCLES = {
           "Pull handles back and outward in a wide arc",
           "Squeeze rear delts at full extension &#x2014; pause, then control back"
         ],
-        sets: "3", reps: "12&#x2013;15", rest: "60s"
-      },
-      {
-        icon: "&#x1F517;",
-        name: "Wide-Grip Cable Row",
-        equipment: "Cable Machine",
-        category: "Compound",
-        difficulty: 2,
-        desc: "A wide, high cable row hits the rear delt as a primary mover rather than the lats. Elbows should flare out, not stay tucked.",
-        steps: [
-          "Set cable at chest or face height, use a wide rope or bar",
-          "Pull elbows back and out &#x2014; flare them wide, not tucked in",
-          "Squeeze rear delts and upper back at end range",
-          "Extend arms with control &#x2014; full stretch on each rep"
-        ],
-        sets: "3", reps: "10&#x2013;12", rest: "75s"
-      }
-    ]
-  },
-  biceps: {
-    name: "Biceps (Biceps Brachii)",
-    tag: "UPPER BODY",
-    color: "#2dc653",
-    desc: "The biceps brachii has a long head and short head, both responsible for elbow flexion and forearm supination. The long head creates the iconic bicep 'peak.' Training biceps at different angles ensures complete development.",
-    wikiLink: "https://en.wikipedia.org/wiki/Biceps",
-    wikiText: "Wikipedia: Biceps Brachii",
-    exercises: [
-      {
-        icon: "&#x1F4AA;",
-        name: "Barbell Curl",
-        equipment: "Barbell",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "The classic bicep builder. Allows heavy loading and targets both heads of the biceps effectively.",
-        steps: [
-          "Hold bar with shoulder-width underhand grip, stand tall",
-          "Curl bar to shoulder level, keeping elbows tucked to sides",
-          "Squeeze hard at the top for 1 second",
-          "Lower slowly in 3 seconds"
-        ],
-        sets: "4", reps: "8&#x2013;12", rest: "75s"
-      },
-      {
-        icon: "&#x1F528;",
-        name: "Hammer Curl",
-        equipment: "Dumbbells",
+        sets: "3", reps: "12&#x2013;15", re7C�#c2 �������6��"b7�cSs�"����S�%v�FR�w&�6&�R&�r"��WV��V�C�$6&�R�6���R"��6FVv�'��$6���V�B"��F�ff�7V�G��"��FW63�$v�FR���v�6&�R&�r��G2A���ɕ�ȁ���Ё�́���ɥ���䁵�ٕȁɅѡ�ȁѡ���ѡ�����̸�����́͡�ձ�����ɔ���а���Ё�х��Ս������(���������ѕ���l(�����������M�Ё�������Ё����Ё�ȁ����������а��͔���ݥ���ɽ����ȁ��Ȉ�(�����������Aձ�������́�����������Ѐ�������쁙��ɔ�ѡ���ݥ������Ё�Ս��������(�����������M�Օ�锁ɕ�ȁ����́��������ȁ������Ё����Ʌ�����(������������ѕ����ɵ́ݥѠ�����ɽ���������쁙ձ����ɕэ����������ɕ��(��������t�(��������͕��耈̈��ɕ��耈�����������Ȉ��ɕ�����\Ȃ�B�B�K��X�\Έ�[YN���X�\�
+�X�\���X�ZJH��YΈ�TT���H����܎��̙͍Lȋ�\�Έ�H�X�\���X�ZH\�Hۙ�XY[��ܝXY���\�ۜ�X�H�܈[����^[ۈ[��ܙX\�H�\[�][ۋ�Hۙ�XYܙX]\�HX�ۚX��X�\	�XZˉ��Z[�[���X�\�]Y��\�[�[��\�[��\�\���\]H]�[�Y[�����Z�S[�Έ�΋��[���Z�\YXK�ܙ���Z�KКX�\ȋ��Z�U^���Z�\YXN��X�\���X���"��W�W&6�6W3������6��"b7�cD�"����S�$&&&V��7W&�"��WV��V�C�$&&&V��"��6FVv�'��$�6��F���"��F�ff�7V�G��"��FW63�%F�R6�76�2&�6W'V��FW"����w2�Vg���F��r�BF&vWG2&�F��VG2�bF�R&�6W2VffV7F�fVǒ�"��7FW3���$���B&"v�F�6��V�FW"�v�GF�V�FW&��Bw&��7F�BF��"��$7W&�&"F�6��V�FW"�WfV���VW��rV�&�w2GV6�VBF�6�FW2"��  ����M�Օ�锁��ɐ��Ёѡ��ѽ����Ȁā͕������(�����������1�ݕȁͱ�ݱ䁥��͕́����̈(��������t�(��������͕��耈Ј��ɕ��耈����������Ȉ��ɕ��耈��̈(��������(�������(������������耈�������숰(������������耉!����ȁ
+�ɰ��(��������equipment: "Dumbbells",
         category: "Isolation",
         difficulty: 1,
-        desc: "Neutral grip hits the brachialis (underneath the bicep) and brachioradialis &#x2014; pushing the bicep up to create more size.",
-        steps: [
-          "Hold dumbbells at sides with palms facing each other",
-          "Curl both dumbbells simultaneously or alternating",
-          "Keep thumbs pointing up throughout the movement",
-          "Lower slowly to full arm extension"
-        ],
-        sets: "3", reps: "10&#x2013;12", rest: "60s"
-      },
-      {
-        icon: "&#x1F4D0;",
-        name: "Incline Dumbbell Curl",
-        equipment: "Dumbbells + Incline Bench",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "The incline position stretches the long head at the bottom, increasing its range of motion and muscle activation.",
-        steps: [
-          "Sit on incline bench (60&#xB0;), let arms hang naturally behind body",
-          "Curl dumbbells up with a supinating twist",
-          "Do not let elbows swing forward &#x2014; keep them pinned back"
-        ],
-        sets: "3", reps: "10&#x2013;15", rest: "60s"
-      },
-      {
-        icon: "&#x1F50C;",
-        name: "Cable Curl",
-        equipment: "Cable Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "Cables maintain constant tension throughout the entire range of motion, unlike free weights where tension drops at the top.",
-        steps: [
-          "Attach straight or EZ bar to low cable pulley",
-          "Stand close to machine, curl handle up to chin level",
-          "Squeeze at top and slowly lower back to start"
-        ],
-        sets: "3", reps: "12&#x2013;15", rest: "60s"
-      }
-    ]
-  },
-  triceps: {
-    name: "Triceps (Triceps Brachii)",
-    tag: "UPPER BODY",
-    color: "#2dc653",
-    desc: "The triceps make up roughly two-thirds of your upper arm mass. They consist of three heads: long, lateral, and medial. The long head is the largest and only crosses the shoulder joint, so overhead exercises are key for full development.",
-    wikiLink: "https://en.wikipedia.org/wiki/Triceps_brachii",
-    wikiText: "Wikipedia: Triceps Brachii",
-    exercises: [
-      {
-        icon: "&#x2B07;&#xFE0F;",
-        name: "Tricep Pushdown",
-        equipment: "Cable Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "The most popular tricep isolation exercise. Emphasizes the lateral and medial heads with constant cable tension.",
-        steps: [
-          "Attach rope or straight bar to high cable pulley",
-          "Stand close, elbows pinned to sides at 90&#xB0;",
-          "Push handle down to full extension, separating rope at bottom",
-          "Slowly return to 90&#xB0; &#x2014; don't let elbows flare out"
-        ],
-        sets: "4", reps: "12&#x2013;15", rest: "60s"
-      },
-      {
-        icon: "&#x1F480;",
-        name: "Skull Crusher (Lying Tricep Extension)",
-        equipment: "Barbell or EZ Bar + Bench",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "Excellent for all three tricep heads with emphasis on the long head. Heavy loading possible.",
-        steps: [
-          "Lie on bench, hold bar with narrow overhand grip above chest",
-          "Keep upper arms vertical, bend elbows to lower bar to forehead",
-          "Extend elbows fully to press bar back up",
-          "Keep upper arms stationary throughout"
-        ],
-        sets: "3", reps: "10&#x2013;12", rest: "75s"
+        desc: "NeutrZH��X�X[\�
+[�\��X]H�X�\
+H[���X�[ܘYX[\�	���M�\�[��H�X�\\�ܙX]H[ܙH�^�K����\Έ��[X��[�]�Y\��][\��X�[��XX��\�����\���[X��[��[][[�[�\�H܈[\��][�ȋ���Y\[X���[�[��\��Y��]H[ݙ[Y[������\����H��[\�H^[��[ۈ��K��]Έ�ȋ�\Έ�L	���L��L���\����Ȃ�K��X�ێ����Q�ȋ��[YN��[��[�H[X��[�\���\]Z\Y[���[X��[�
+�[��[�H�[�����]Y�ܞN��\��][ۈ��Y��X�[N���\�Έ�H[��[�H��][ۈ��]�\�Hۙ�XY]H���K[�ܙX\�[��]��[��Hو[�[ۈ[�]\��HX�]�][ۋ����\Έ��]ۈ[��[�H�[��
+
+�	����K]\�\�[���]\�[H�Z[���H����\�[X��[�\�]H�\[�][���\��������][������[���ܝ�\�	���M��Y\[H[��Y�X�Ȃ�K��]Έ�ȋ�\Έ�L	���L��MH��\����Ȃ�K�X�ێ����Q�L�ȋ��[YN���X�H�\���\]Z\Y[����X�HXX�[�H���]Y�ܞN��\��][ۈ��Y��X�[N�K�\�Έ��X�\�XZ[�Z[��ۜ�[�[��[ۈ��Y��]H[�\�H�[��Hو[�[ۋ[�Z�H��YH�ZY���\�H[��[ۈ���]H�����\Έ�]X���ZY�܈V��\�����X�H[^H����[����H�XX�[�K�\�[�H\��[�]�[����]YY^�H]�[����H��\��X����\���K��]Έ�ȋ�\Έ�L����L��MH��\����Ȃ�B�B�K��X�\Έ�[YN���X�\�
+�X�\���X�ZJH��YΈ�TT���H����܎��̙͍Lȋ�\�Έ�H�X�\�XZ�H\��Y�H��]\��و[�\�\\�\�HX\�ˈ^H�ۜ�\�و�YHXYΈۙ�]\�[[�YYX[�Hۙ�XY\�H\��\�[�ۛHܛ���\�H��[\���[���ݙ\�XY^\��\�\�\�H�^H�܈�[]�[�Y[�����Z�S[�Έ�΋��[���Z�\YXK�ܙ���Z�K��X�\�؜�X�ZH���Z�U^���Z�\YXN��X�\���X�ZH��^\��\�\ΈX�ێ������
+�Ɉ��L�ȋ��[YN���X�\\��ۈ��\]Z\Y[����X�HXX�[�H���]Y�ܞN��\��][ۈ��Y��X�[N�K�\�Έ�H[���[\��X�\\��][ۈ^\��\�K�[\\�^�\�H]\�[[�YYX[XY��]�ۜ�[��X�H[��[ۋ����\Έ�]X���H܈��ZY��\��Y��X�H[^H�����[����K[����[��Y��Y\�]L	���ȋ��\�[�H�ۈ��[^[��[ۋ�\\�][����H]���H������H�]\���L	����	���M�ۉ�][�����\�H�]��K��]Έ���\Έ�L����L��MH��\����Ȃ�K�X�ێ����Q�ȋ��[YN����[ܝ\�\�
+Z[���X�\^[��[ۊH��\]Z\Y[����\��[܈V��\�
+��[�����]Y�ܞN��\��][ۈ���Y��X�[N���\�Έ�^�[[��܈[�YH�X�\XY��][\\�\�ۈHۙ�XY�X]�H�Y[�����X�K����\Έ�YHۈ�[����\��]�\����ݙ\�[�ܚ\X�ݙH�\���"%fVWWW"&�2fW'F�6��&V�BV�&�w2F���vW"&"F�f�&V�VB"��$W�FV�BV�&�w2gV�ǒF�&W72&"&6�W"��$�VWWW"&�27FF���'�F�&�Vv��WB ����6WG3�#2"�&W3�#b7�#3�" , rest: "75s"
       },
       {
         icon: "&#x1F646;",
@@ -1271,28 +904,9 @@ const MUSCLES = {
         equipment: "Dumbbell or Cable",
         category: "Isolation",
         difficulty: 2,
-        desc: "The overhead position fully stretches the long head of the tricep, providing superior muscle activation and growth stimulus.",
-        steps: [
-          "Hold dumbbell with both hands overhead, arms extended",
-          "Bend elbows to lower weight behind head",
-          "Keep upper arms close to ears throughout",
-          "Extend elbows fully to return to start"
-        ],
-        sets: "3", reps: "12&#x2013;15", rest: "60s"
-      },
-      {
-        icon: "&#x1F4BA;",
-        name: "Tricep Dips",
-        equipment: "Parallel Bars or Bench",
-        category: "Compound",
-        difficulty: 2,
-        desc: "A bodyweight compound movement that works all three tricep heads along with chest and front delts. Can be loaded with weight belt.",
-        steps: [
-          "Grip parallel bars, start with arms straight",
-          "Lower body by bending elbows, keep torso upright (vertical = more tricep focus)",
-          "Stop when upper arms are parallel to floor",
-          "Press back up to full extension"
-        ],
+        desc: "The overhead position fully stretches the long head of the tricep, providing superior muscle activation and growth stimulus." ��������ѕ���l(�����������!�����յ������ݥѠ���Ѡ�����́�ٕɡ������ɵ́��ѕ������(�����������	���������́Ѽ���ݕȁݕ���Ё�������������(�����������-��������ȁ�ɵ́���͔�Ѽ����́ѡɽ՝���Ј�(������������ѕ��������́�ձ��Ѽ�ɕ��ɸ�Ѽ��х�Ј(��������t�(��������͕��耈̈��ɕ��耈�Ș��������Ԉ��ɕ��耈��̈(��������(�������(������������耈�����	숰(������������耉Qɥ������̈�(����������ե�����耉A�Ʌ�����	��́�ȁ	������(����������ѕ����耉
+����չ���(��������������ձ���Ȱ(����������͌耉�����ݕ���Ё�����չ����ٕ���Ёѡ�Ёݽɭ́����ѡɕ���ɥ��������́������ݥѠ�����Ё�����ɽ�Ё����̸�
+�������������ݥѠ�ݕ���Ё���и��(���������ѕ���l(�����������ɥ����Ʌ��������̰����ЁݥѠ��ɵ́��Ʌ���Ј�(�����������1�ݕȁ���䁉䁉������������̰������ѽ�ͼ���ɥ��Ѐ�ٕ�ѥ����􁵽ɔ��ɥ��������̤��(�����������Mѽ��ݡ�������ȁ�ɵ́�ɔ���Ʌ�����Ѽ�����Ȉ�(�����������Aɕ�́��������Ѽ��ձ����ѕ�ͥ���(��������],
         sets: "3", reps: "10&#x2013;15", rest: "75s"
       }
     ]
@@ -1301,47 +915,11 @@ const MUSCLES = {
     name: "Abs (Rectus Abdominis)",
     tag: "CORE",
     color: "#9b5de5",
-    desc: "The rectus abdominis runs vertically down the front of the abdomen and creates the 'six-pack' appearance when body fat is low. It works as a trunk flexor. Training abs builds core stability and helps prevent lower back injury.",
-    wikiLink: "https://en.wikipedia.org/wiki/Rectus_abdominis_muscle",
-    wikiText: "Wikipedia: Rectus Abdominis",
-    exercises: [
-      {
-        icon: "&#x1F3C3;",
-        name: "Plank",
-        equipment: "Bodyweight",
-        category: "Isometric",
-        difficulty: 1,
-        desc: "The ultimate core stability exercise. Works the entire core as a unit &#x2014; abs, obliques, lower back, and hip flexors.",
-        steps: [
-          "Place forearms on floor, elbows under shoulders",
-          "Extend legs behind you, toes on floor",
-          "Keep body in a straight line from head to heels",
-          "Hold without letting hips sag or rise"
-        ],
-        sets: "3", reps: "30&#x2013;60s", rest: "60s"
-      },
-      {
-        icon: "&#x1F504;",
-        name: "Cable Crunch",
-        equipment: "Cable Machine + Rope",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "Allows progressive overloading of the abs &#x2014; something crunches alone can't provide. Consistently ranked as a top abs exercise by EMG studies.",
-        steps: [
-          "Kneel below high cable pulley, hold rope behind head",
-          "Flex spine to crunch elbows toward knees",
-          "Focus on rounding the lumbar spine &#x2014; don't just pull with arms",
-          "Slowly extend back up without letting weight stack touch"
-        ],
-        sets: "4", reps: "12&#x2013;15", rest: "60s"
-      },
-      {
-        icon: "&#x1F9B5;",
-        name: "Hanging Leg Raise",
-        equipment: "Pull-up Bar",
-        category: "Compound",
-        difficulty: 3,
-        desc: "Targets the lower portion of the rectus abdominis and the hip flexors. One of the hardest and most effective ab exercises.",
+    desc: "The rectus abdominis runs vertically down the front ofHX��Y[�[�ܙX]\�H	��^\X���\X\�[��H�[���H�]\��ˈ]�ܚ��\�H�[���^܋��Z[�[��X���Z[��ܙH�X�[]H[�[��]�[���\��X��[��\�K����Z�S[�Έ�΋��[���Z�\YXK�ܙ���Z�KԙX�\�}���������}��͍����(����ݥ��Q���耉]���������I����́�������̈�(������ɍ�͕��l(�������(������������耈������숰(������������耉A������(����������ե�����耉	���ݕ���Ј�(����������ѕ����耉%ͽ���ɥ���(��������������ձ���Ȱ����������͌耉Q���ձѥ��є���ɔ��х�����䁕�ɍ�͔��]�ɭ́ѡ����ѥɔ���ɔ��́��չ�Ѐ�������쁅�̰������Օ̰���ݕȁ�������������������̸��(���������ѕ���l(�����������A�������ɕ�ɵ́�������Ȱ������́չ��ȁ͡�ձ���̈�(���� �������ѕ������́��������԰�ѽ�́�������Ȉ�(�����������-�������䁥������Ʌ���Ё������ɽ�������Ѽ�����̈�(�����������!����ݥѡ��Ё���ѥ������́ͅ���ȁɥ͔�(��������t�(��������͕��耈̈��ɕ��耈������������̈��ɕ��耈��̈(�� �����(�������(������������耈�������숰(������������耉
+�����
+�չ����(����������ե�����耉
+�����5���������I�����(����������ѕ����耉%ͽ��ѥ����(��������������ձ���Ȱ(����������͌耉����́�ɽ�ɕ�ͥٔ��ٕɱ����������ѡ�����	���M���Y][��ܝ[��\�[ۙH�[���ݚYK��ۜ�\�[�H�[��Y\�H�X��^\��\�H�HSQ��YY\ˈ���\Έ�ۙY[�[��Y��X�H[^K���H�Z[�XY����^�[�H�ܝ[��A����́ѽ݅ɐ�����̈�(��������������́���ɽչ�����ѡ���յ��ȁ�������������쁑���Ё���Ё�ձ��ݥѠ��ɵ̈�(�����������M��ݱ䁕�ѕ�����������ݥѡ��Ё���ѥ���ݕ���Ё�х���ѽՍ��(��������t�(��������͕��耈Ј��ɕ��耈�Ș��������Ԉ��ɕ��耈��̈(��������(�������(������������耈������숰(������������耉!�������1���I��͔��(����������ե�����耉Aձ�����	�Ȉ�(����������ѕ����耉
+����չ���(��������������ձ���̰(����������͌耉Q�ɝ��́ѡ����ݕȁ���ѥ������Ѡe rectus abdominis and the hip flexors. One of the hardest and most effective ab exercises.",
         steps: [
           "Hang from pull-up bar with arms extended",
           "Keeping legs straight (or bent for easier version), raise to hip or chest height",
@@ -1351,84 +929,12 @@ const MUSCLES = {
         sets: "3", reps: "10&#x2013;15", rest: "75s"
       },
       {
-        icon: "&#x1F300;",
+        icon: "&#x1F300;",
         name: "Ab Wheel Rollout",
         equipment: "Ab Wheel",
         category: "Compound",
         difficulty: 3,
-        desc: "Combines anti-extension core strength with rectus abdominis activation. Studies show it produces very high muscle activation.",
-        steps: [
-          "Kneel on floor holding ab wheel with both hands",
-          "Slowly roll forward as far as possible without arching lower back",
-          "Use core to pull yourself back to start position",
-          "Start with partial reps if needed"
-        ],
-        sets: "3", reps: "8&#x2013;12", rest: "75s"
-      }
-    ]
-  },
-  obliques: {
-    name: "Obliques",
-    tag: "CORE",
-    color: "#f77f00",
-    desc: "The obliques (internal and external) run diagonally across the sides of the abdomen. They're responsible for trunk rotation and lateral flexion. Strong obliques create the athletic 'V-taper' at the waist and protect the spine.",
-    wikiLink: "https://en.wikipedia.org/wiki/Abdominal_external_oblique_muscle",
-    wikiText: "Wikipedia: External Oblique",
-    exercises: [
-      {
-        icon: "&#x1F500;",
-        name: "Russian Twist",
-        equipment: "Bodyweight or Weight Plate",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "A rotational movement that directly targets both internal and external obliques through repeated twisting.",
-        steps: [
-          "Sit with knees bent, lean back until core is engaged (45&#xB0;)",
-          "Hold weight or clasp hands, rotate torso side to side",
-          "Touch weight to floor on each side",
-          "Keep feet off floor for extra challenge"
-        ],
-        sets: "3", reps: "20 total", rest: "60s"
-      },
-      {
-        icon: "&#x2B05;&#xFE0F;",
-        name: "Side Plank",
-        equipment: "Bodyweight",
-        category: "Isometric",
-        difficulty: 2,
-        desc: "Targets the lateral core &#x2014; external oblique, internal oblique, and quadratus lumborum. Great for spinal stability.",
-        steps: [
-          "Lie on side, stack feet and prop up on forearm",
-          "Lift hips to create straight line from head to feet",
-          "Hold without letting hips sag",
-          "Perform on both sides equally"
-        ],
-        sets: "3", reps: "30&#x2013;45s each", rest: "60s"
-      },
-      {
-        icon: "&#x1F50C;",
-        name: "Cable Woodchop",
-        equipment: "Cable Machine",
-        category: "Compound",
-        difficulty: 2,
-        desc: "Trains the obliques through rotation with resistance. One of the most functional core exercises mimicking real-world movements.",
-        steps: [
-          "Set cable high, stand sideways to machine",
-          "Grip handle with both hands, arms extended",
-          "Rotate and pull cable diagonally down and across body",
-          "Keep arms straight and use core, not arms, to rotate"
-        ],
-        sets: "3", reps: "12 each side", rest: "60s"
-      },
-      {
-        icon: "&#x2195;&#xFE0F;",
-        name: "Pallof Press",
-        equipment: "Cable Machine",
-        category: "Isometric",
-        difficulty: 2,
-        desc: "An anti-rotation core exercise that resists rotational force from the cable, creating strong oblique and core stability.",
-        steps: [
-          "Set cable at chest height, stand perpendicular to machine",
+        desc: "Combines anti-extension core strength with rectus abdominis activation. Studies6��r�B&�GV6W2fW'���v��W66�R7F�fF����"��7FW3���$��VV���f���"���B&�F���G2"��%6��vǒ&���f�'v&B2f"2�76�&�Rv�F��WB&6���r��vW"&6�"��%W6R6�&RF�V����W'6V�b&6�F�7F'B�6�F���"��%7F'Bv�F�'F��&W2�b�VVFVB ����6WG3�#2"�&W3�#�b7�#3�""�&W7C�#sW2 �ТТ����&ƗVW3�����S�$�&ƗVW2"��Fs�$4�$R"��6���#�"6csvc"��FW63�%F�R�&ƗVW2���FW&���BW�FW&�'V�F�v���ǒ7&�72F�R6�FW2�bF�R&F��V��F�W�w&R&W7��6�&�Rf�"G'V�&�FF����B�FW&�f�W�����7G&��r�&ƗVW27&VFRF�RF��WF�2ub�FW"rBF�Rv�7B�B&�FV7BF�R7��R�"��v���Ɩ波&�GG3���V��v���VF���&r�v����&F�֖���W�FW&����&ƗVU��W66�R"��v���FW�C�%v���VF��W�FW&���&ƗVR"��W�W&6�6W3������6��"b7�cS�"����S�%'W76��Gv�7B"��WV��V�C�$&�G�vV�v�B�"vV�v�B�FR"��6FVv�'��$�6��F���"��F�ff�7V�G��"��FW63�$&�FF������fV�V�BF�BF�&V7FǒF&vWG2&�F���FW&���BW�FW&���&ƗVW2F�&�Vv�&WVFVBGv�7F��r�"��7FW3���%6�Bv�F���VW2&V�B��V�&6�V�F��6�&R�2V�vvVB�CRb7�#��"��$���BvV�v�B�"6�7��G2�&�FFRF�'6�6�FRF�6�FR"��%F�V6�vV�v�BF�f���"��V6�6�FR"��$�VWfVWB�fbf���"f�"W�G&6���V�vR ����6WG3�#2"�&W3�##F�F�"�&W7C�#c2 �������6��"b7�$#S�b7�dSc�"����S�%6�FR��"��WV��V�C�$&�G�vV�v�B"��6FVv�'��$�6��WG&�2"��F�ff�7V�G��"��FW63�%F&vWG2F�R�FW&�6�&Rb7�#C�W�FW&���&ƗVR���FW&���&ƗVR��BVG&GW2�V�&�'V��w&VBf�"7���7F&�ƗG��"��7FW3���$ƖR��6�FR�7F6�fVWB�B&�W��f�&V&�"��$ƖgB��2F�7&VFR7G&�v�BƖ�Rg&���VBF�fVWB"��$���Bv�F��WB�WGF��r��26r"��%W&f�&���&�F�6�FW2WV�ǒ ����6WG3�#2"�&W3�#3b7�#3�CW2V6�"�&W7C�#c2 �������6��"b7�cS3�"����S�$6&�Rv��F6��"��WV��V�C�$6&�R�6���R"��6FVv�'��$6���V�B"��F�ff�7V�G��"��FW63�%G&��2F�R�&ƗVW2F�&�Vv�&�FF���v�F�&W6�7F�6R���R�bF�R��7BgV�7F����6�&RW�W&6�6W2֖֖6���r&V��v�&�B��fV�V�G2�"��7FW3���%6WB6&�R��v��7F�B6�FWv�2F��6���R"��$w&���F�Rv�F�&�F���G2�&�2W�FV�FVB"��%&�FFR�BV��6&�RF�v���ǒF�v��B7&�72&�G�"��$�VW&�27G&�v�B�BW6R6�&R���B&�2�F�&�FFR ����6WG3�#2"�&W3�#"V6�6�FR"�&W7C�#c2 �������6��"b7�#�S�b7�dSc�"����S�%���b&W72"��WV��V�C�$6&�R�6���R"��6FVv�'��$�6��WG&�2"��F�ff�7V�G��"��FW63�$��F��&�FF���6�&RW�W&6�6RF�B&W6�7G2&�FF����f�&6Rg&��F�R6&�R�7&VF��r7G&��r�&ƗVR�B6�&R7F&�ƗG��"��7FW3���   "Set cable at chest height, stand perpendicular to machine",
           "Hold handle at chest with both hands",
           "Press handle straight out and hold for 2 seconds",
           "Bring back to chest &#x2014; resist rotating toward cable"
@@ -1443,373 +949,39 @@ const MUSCLES = {
     color: "#0077b6",
     desc: "The quadriceps are four muscles on the front of the thigh (rectus femoris, vastus lateralis, vastus medialis, vastus intermedius). They're the primary knee extensors and are critical for almost all lower body movement. The quads are the largest muscle group in the body.",
     wikiLink: "https://en.wikipedia.org/wiki/Quadriceps_femoris_muscle",
-    wikiText: "Wikipedia: Quadriceps Femoris",
+    wikiTj "Wikipedia: Quadriceps Femoris",
     exercises: [
       {
         icon: "&#x1F3CB;&#xFE0F;",
         name: "Barbell Back Squat",
         equipment: "Barbell + Squat Rack",
         category: "Compound",
-        difficulty: 4,
+        difficulty: 4
         desc: "The undisputed king of leg exercises. Targets quads, glutes, hamstrings, and core simultaneously with maximum loading potential.",
         steps: [
-          "Bar rests on upper traps, feet shoulder-width, toes slightly out",
-          "Descend by pushing knees out and hips back simultaneously",
-          "Aim for thighs parallel or below at the bottom",
-          "Drive through heels to stand, squeezing glutes at top"
-        ],
-        sets: "4", reps: "5&#x2013;8", rest: "2&#x2013;3min"
-      },
-      {
-        icon: "&#x1F9B5;",
-        name: "Leg Press",
-        equipment: "Leg Press Machine",
-        category: "Compound",
-        difficulty: 2,
-        desc: "Allows heavy loading with lower back stability. Foot placement determines emphasis: high and wide = more glutes/hams, low = more quads.",
-        steps: [
-          "Sit in machine, feet shoulder-width on platform",
-          "Unlock safety, lower weight until 90&#xB0; knee bend",
-          "Press through heels to full extension (don't lock knees)",
-          "Control the descent &#x2014; don't let weight crash down"
-        ],
-        sets: "4", reps: "10&#x2013;12", rest: "90s"
-      },
-      {
-        icon: "&#x1F6B6;",
-        name: "Walking Lunge",
-        equipment: "Dumbbells or Barbell",
-        category: "Compound",
-        difficulty: 2,
-        desc: "Develops quad strength and size with a balance component. Each leg works independently, addressing imbalances.",
-        steps: [
-          "Stand tall, step forward with right leg into deep lunge",
-          "Lower back knee toward floor &#x2014; hover 1 inch above",
-          "Push off front foot and bring back leg forward to step into next lunge",
-          "Keep torso upright throughout"
-        ],
-        sets: "3", reps: "12 each leg", rest: "75s"
-      },
-      {
-        icon: "&#x1F504;",
-        name: "Leg Extension",
-        equipment: "Leg Extension Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "The only true quad isolation exercise. Excellent for developing the teardrop (VMO) and overall quad definition.",
-        steps: [
-          "Sit in machine, back of knees at seat edge, pad on shins",
-          "Extend knees fully, squeezing quads hard at the top",
-          "Hold peak contraction for 1 second",
-          "Lower slowly &#x2014; 3 count &#x2014; to starting position"
-        ],
-        sets: "3", reps: "12&#x2013;15", rest: "60s"
-      }
-    ]
-  },
-  hamstrings: {
-    name: "Hamstrings",
-    tag: "LOWER BODY",
-    color: "#0077b6",
-    desc: "The hamstrings are three muscles on the back of the thigh (biceps femoris, semimembranosus, semitendinosus). They perform knee flexion and hip extension. Underdeveloped hamstrings are a common cause of knee and lower back injury.",
-    wikiLink: "https://en.wikipedia.org/wiki/Hamstring",
-    wikiText: "Wikipedia: Hamstring",
-    exercises: [
-      {
-        icon: "&#x1F3CB;&#xFE0F;",
-        name: "Romanian Deadlift (RDL)",
-        equipment: "Barbell or Dumbbells",
-        category: "Compound",
-        difficulty: 3,
-        desc: "The best hamstring mass-builder. The hip hinge pattern provides a full hamstring stretch under load at the bottom of each rep.",
-        steps: [
-          "Hold bar at hip level, feet hip-width, slight knee bend",
-          "Push hips back while lowering bar along legs",
-          "Feel a deep stretch in hamstrings (bar reaches mid-shin level)",
-          "Drive hips forward to return &#x2014; squeeze glutes at top"
-        ],
-        sets: "4", reps: "8&#x2013;10", rest: "90s"
-      },
-      {
-        icon: "&#x1F9B5;",
-        name: "Lying Leg Curl",
-        equipment: "Leg Curl Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "The primary hamstring isolation exercise. Targets knee flexion function of the hamstrings with constant machine tension.",
-        steps: [
-          "Lie face-down, pad behind ankles, hips flat on bench",
-          "Curl feet toward glutes as far as possible",
-          "Squeeze hamstrings hard at peak contraction",
-          "Lower slowly with a 3-second eccentric"
-        ],
-        sets: "4", reps: "10&#x2013;12", rest: "75s"
-      },
-      {
-        icon: "&#x1F504;",
-        name: "Nordic Hamstring Curl",
-        equipment: "Anchor (bench/partner)",
-        category: "Compound",
-        difficulty: 4,
-        desc: "Research-backed as one of the most effective hamstring exercises. Trains the eccentric phase which is when most hamstring tears occur.",
-        steps: [
-          "Kneel with feet anchored behind you",
-          "Lower your body forward as slowly as possible",
-          "Use hands to catch yourself at bottom",
-          "Use momentum to get back to start"
-        ],
-        sets: "3", reps: "5&#x2013;8", rest: "90s"
-      },
-      {
-        icon: "&#x1F305;",
-        name: "Good Morning",
-        equipment: "Barbell",
-        category: "Compound",
-        difficulty: 3,
-        desc: "An underrated hamstring and lower back exercise. The name comes from the resemblance to bowing good morning. Builds hip hinge strength.",
-        steps: [
-          "Bar on upper traps like a squat, feet shoulder-width",
-          "Soft bend in knees, push hips back while lowering torso",
-          "Stop when torso is near parallel to floor &#x2014; feel hamstring tension",
-          "Drive hips forward to stand back up"
-        ],
-        sets: "3", reps: "10&#x2013;12", rest: "90s"
-      }
-    ]
-  },
-  glutes: {
-    name: "Glutes (Gluteus Maximus)",
-    tag: "LOWER BODY",
-    color: "#e63946",
-    desc: "The gluteus maximus is the largest muscle in the human body. It's responsible for hip extension, external rotation, and leg abduction. Strong glutes are essential for athletic performance, aesthetics, and protecting the knees and lower back.",
-    wikiLink: "https://en.wikipedia.org/wiki/Gluteus_maximus",
-    wikiText: "Wikipedia: Gluteus Maximus",
-    exercises: [
-      {
-        icon: "&#x1F3CB;&#xFE0F;",
-        name: "Hip Thrust",
-        equipment: "Barbell + Bench",
-        category: "Compound",
-        difficulty: 2,
-        desc: "Consistently rated #1 for glute EMG activation in research. Places the glutes in their strongest position for maximal loading.",
-        steps: [
-          "Sit with upper back against bench, bar across hips",
-          "Feet shoulder-width, knees bent at 90&#xB0;",
-          "Drive hips up explosively until body is flat",
-          "Squeeze glutes at top for 2 seconds, lower slowly"
-        ],
-        sets: "4", reps: "10&#x2013;15", rest: "90s"
-      },
-      {
-        icon: "&#x1F9D7;",
-        name: "Bulgarian Split Squat",
-        equipment: "Dumbbells + Bench",
-        category: "Compound",
-        difficulty: 3,
-        desc: "Places the glutes in a deep stretch at the bottom. One of the most effective single-leg glute exercises with high research support.",
-        steps: [
-          "Rear foot elevated on bench, front foot forward",
-          "Lower back knee toward floor &#x2014; go deep",
-          "Press through front heel to stand",
-          "Keep torso upright and core braced"
-        ],
-        sets: "3", reps: "10&#x2013;12 each", rest: "90s"
-      },
-      {
-        icon: "&#x1F50C;",
-        name: "Cable Kickback",
-        equipment: "Cable Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "Directly isolates the glute by extending the hip against cable resistance. Great for the finishing burn.",
-        steps: [
-          "Attach ankle strap to low cable, face the machine",
-          "Kick working leg straight back and up",
-          "Squeeze glute hard at peak &#x2014; don't arch back",
-          "Slowly return leg forward"
-        ],
-        sets: "3", reps: "15&#x2013;20 each", rest: "60s"
-      },
-      {
-        icon: "&#x1F981;",
-        name: "Sumo Deadlift",
-        equipment: "Barbell",
-        category: "Compound",
-        difficulty: 3,
-        desc: "The wide stance of sumo shifts emphasis from hamstrings to glutes compared to conventional deadlift. Excellent glute and inner thigh builder.",
-        steps: [
-          "Wide stance (2x shoulder width), toes pointed 45&#xB0; out",
-          "Grip bar inside legs, keep chest tall",
-          "Drive knees out and press floor away to stand",
-          "Squeeze glutes fully at the top"
-        ],
-        sets: "3", reps: "6&#x2013;10", rest: "2min"
-      }
-    ]
-  },
-  calves: {
-    name: "Calves (Gastrocnemius & Soleus)",
-    tag: "LOWER BODY",
-    color: "#48cae4",
-    desc: "The calf complex includes the gastrocnemius (two-headed, visible muscle that creates the calf shape) and the soleus (deeper, works when knee is bent). Both perform plantarflexion (pointing the foot). Calves require high volume and full range of motion.",
+          "Bar rests on upper traps, feet shoulder-width, toe́ͱ���ѱ䁽�Ј�(������������͍��������͡��������́��Ё�������́�����ͥ�ձх����ͱ䈰(����������������ȁѡ���́��Ʌ������ȁ����܁�Ёѡ�����ѽ���(�����������ɥٔ�ѡɽ՝������́Ѽ��х������Օ�饹�����ѕ́�Ёѽ��(��������t�(��������͕��耈Ј��ɕ��耈Ԙ�����������ɕ��耈Ș�������͵���(��������(�������(������������耈������숰(������������耉1���Aɕ�̈�(����������ե�����耉1���Aɕ�́5��������(����������ѕ����耉
+����չ���(��������������ձ���Ȱ(����������͌耉����́����䁱�������ݥѠ���ݕȁ������х�����丁��Ё��������Ё��ѕɵ���́�����ͥ�聡��������ݥ���􁵽ɔ����ѕ̽���̰���܀􁵽ɔ��Յ�̸��(���������ѕ���l(�����������M�Ё���������������Ё͡�ձ��ȵݥ�Ѡ���������ܛH���[�����Y�]K��\��ZY�[�[L	����ۙYH�[�����\����Y�Y[���[^[��[ۈ
+ۉ����ۙY\�H����۝��H\��[�	���M�ۉ�]�ZY�ܘ\��ۈ��K �������͕��耈Ј��ɕ��耈�����������Ȉ��ɕ��耈��̈(��������(�������(������������耈������숰(������������耉]�������1չ����(����������ե�����耉յ�����́�ȁ	�ɉ�����(����������ѕ����耉
+����չ���(��������������ձ���Ȱ����������͌耉�ٕ���́�Յ����ɕ��Ѡ�����ͥ锁ݥѠ�������������������и���������ݽɭ́����������ѱ䰁���ɕ�ͥ������������̸��(���������ѕ���l(�����������Mх���х�����ѕ�����݅ɐ�ݥѠ�ɥ��Ё������Ѽ�������չ����(�����������1�ݕȁ����������ѽ݅ɐ�����Ȁ�������쁡�ٕȀā��������ٔ��(�����������A�͠������ɽ�Ё���Ё�����ɥ���������������݅ɐ�Ѽ��ѕ����Ѽ����Ё�չ����(�����������-����ѽ�ͼ���ɥ��Ёѡɽ՝���Ј(��������t�(��������͕��耈̈��ɕ��耈�ȁ����Yȋ�\����\Ȃ�K�X�ێ����Q�L
+ȋ��[YN��Y�^[��[ۈ��\]Z\Y[���Y�^[��[ۈXX�[�H���]Y�ܞN��\��][ۈ��Y��X�[N�K�\�Έ�HۛH�YH]XY\��][ۈ^\��\�K�^�[[��܈]�[�[��HX\���
+�S�H[�ݙ\�[]XYY�[�][ۋ����\Έ��][�XX�[�K�X��وۙY\�]�X]Y�KYۈ�[�ȋ��^[�ۙY\��[K�]YY^�[��VG2�&BBF�RF�"��$���BV�6��G&7F���f�"6V6��B"��$��vW"6��vǒb7�#C�26�V�Bb7�#C�F�7F'F��r�6�F��� ����6WG3�#2"�&W3�#"b7�#3�R"�&W7C�#c2 �ТТ�����7G&��w3�����S�$��7G&��w2"��Fs�$��tU"$�E�"��6���#�"3sv#b"��FW63�%F�R��7G&��w2&RF�&VR�W66�W2��F�R&6��bF�RF��v��&�6W2fV��&�2�6V֖�V�'&��7W2�6V֗FV�F���7W2��F�W�W&f�&���VRf�W�����B��W�FV�6����V�FW&FWfV��VB��7G&��w2&R6�����6W6R�b��VR�B��vW"&6���W'��"��v���Ɩ波&�GG3���V��v���VF���&r�v�����7G&��r"��v���FW�C�%v���VF����7G&��r"��W�W&6�6W3������6��"b7�c44#�b7�dSc�"����S�%&����FVFƖgB�$D"��WV��V�C�$&&&V���"GV�&&V��2"��6FVv�'��$6���V�B"��F�ff�7V�G��2��FW63�%F�R&W7B��7G&��r�72�'V��FW"�F�R�����vRGFW&�&�f�FW2gV����7G&��r7G&WF6�V�FW"��BBF�R&�GF���bV6�&W�"��7FW3���$���B&"B���WfV��fVWB���v�GF��6Ɩv�B��VR&V�B"��%W6���2&6�v���R��vW&��r&"����r�Vw2"��$fVV�FVW7G&WF6�����7G&��w2�&"&V6�W2֖B�6����WfV"��$G&�g&BF�&WGW&�b7�#C�7VVW�Rv�WFW2BF� ����6WG3�#B"�&W3�#�b7�#3�"�&W7C�#�2 �������6��"b7�c�#S�"����S�$ǖ��r�Vr7W&�"��WV��V�C�$�Vr7W&��6���R"��"6FVv�'��$�6��F���"��F�ff�7V�G����FW63�%F�R&��'���7G&��r�6��F���W�W&6�6R�F&vWG2��VRf�W����gV�7F����bF�R��7G&��w2v�F�6��7F�B�6���RFV�6����"��7FW3���$ƖRf6R�F�v��B&V���B��W2���2f�B��&V�6�"��$7W&�fVWBF�v&Bv�WFW22f"2�76�&�R"��%7VVW�R��7G&��w2�&BBV�6��G&7F���"��$��vW"6��vǒv�F�2�6V6��BV66V�G&�2 ����"6WG3�#B"�&W3�#b7�#3�""�&W7C�#sW2 �������6��"b7�cSC�"����S�$��&F�2��7G&��r7W&�"��WV��V�C�$�6��"�&V�6��'F�W"�"��6FVv�'��$6���V�B"��F�ff�7V�G��B��FW63�%&W6V&6��&6�VB2��R�bF�R��7BVffV7F�fR��7G&��rW�W&6�6W2�G&��2F�RV66V�G&�2�6Rv��6��2v�V���7B��7G&��rFV'2�67W"�"��7FW3���$��VV�v�F�fVWB�6��&VB&V���B��R"��$��vW"��W"&�G�f�'v&B26��vǒ2�76�&�R"��%W6R��G2F�6F6���W'6V�bB&�GF��"��%W6R���V�GV�F�vWB&6�F�7F'B ����6WG3�#2"�&W3�#Rb7�#3��"�&W7C�#�2 �������6��"b7�c3S�"����S�$v��B��&��r"��WV��V�C�$&&&V��"��6FVv�'��$6���V�B"��F�ff�7V�G��2��FW63�$�V�FW'&FVB��7G&��r�B��vW"&6�W�W&6�6R�F�R��R6��W2g&��F�R&W6V�&��6RF�&�v��rv��B��&��r�'V��G2�����vR7G&V�wF��"��7FW3���$&"��WW"G&2Ɩ�R7VB�fVWB6��V�FW"�v�GF�"��%6�gB&V�B����VW2�W6���2&6�v���R��vW&��rF�'6�"��%7F�v�V�F�'6��2�V"&��V�F�f���"b7�#C�fVV���7G&��rFV�6���"��$G&�fR��2f�'v&BF�7F�B&6�W ����6WG3�#2"�&W3�#b7�#3�""�&W7C�#�2 �ТТ���&v�WFW3�����S�$v�WFW2�v�WFWW2����W2�"��Fs�$��tU"$�E�"��6���#�"6Sc3�Cb"��FW63�%F�Rv�WFWW2����W2�2F�R�&vW7B�W66�R��F�R�V��&�G���Bw2&W7��6�&�Rf�"��W�FV�6����W�FW&��&�FF�����B�Vr&GV7F����7G&��rv�WFW2&RW76V�F��f�"F��WF�2W&f�&��6R�W7F�WF�72��B&�FV7F��rF�R��VW2�B��vW"&6��"��v���Ɩ波&�GG3���V��v���VF���&r�v����v�WFWW5�����W2"��v���FW�C�%v���VF��v�WFWW2����W2"��W�W&6�6W3������6��"b7�c44#�b7�dSc�"����S�$��F�'W7B"��WV��V�C�$&&&V���&V�6�"��6FVv�'��$6���V�B"��F�ff�7V�G��"��FW63�$6��6�7FV�Fǒ&FVB3f�"v�WFRT�r7F�fF�����&W6V&6���6W2F�Rv�WFW2��F�V�"7G&��vW7B�6�F���f�"�������F��r�"��7FW3���%6�Bv�F�WW"&6�v��7B&V�6��&"7&�72��2"��$fVWB6��V�FW"�v�GF����VW2&V�BB�b7�#�"��$G&�fR��2WW���6�fVǒV�F��&�G��2f�B"��%7VVW�Rv�WFW2BF�f�""6V6��G2���vW"6��vǒ ����6WG3�#B"�&W3�#b7�#3�R"�&W7C�#�2 ������&�6��"b7�c�Cs�"����S�$'V�v&��7ƗB7VB"��WV��V�C�$GV�&&V��2�&V�6�"��6FVv�'��$6���V�B"��F�ff�7V�G��2��FW63�%�6W2F�Rv�WFW2��FVW7G&WF6�BF�R&�GF�����R�bF�R��7BVffV7F�fR6��v�R��Vrv�WFRW�W&6�6W2v�F���v�&W6V&6�7W�'B�"��7FW3���%&V"f��BV�WfFVB��&V�6��g&��Bf��Bf�'v&B"��$��vW"&6���VRF�v&Bf���"b7�#C�v�FVW"��%&W72F�&�Vv�g&��B�VV�F�7F�B"��$�VWF�'6�W&�v�B�B6�&R'&6VB ����6WG3�#2"� W3�#b7�#3�"V6�"�&W7C�#�2 �������6��"b7�cS3�"����S�$6&�R��6�&6�"��WV��V�C�$6&�R�6���R"��6FVv�'��$�6��F���"��F�ff�7V�G����FW63�$F�&V7Fǒ�6��FW2F�Rv�WFR'�W�FV�F��rF�R��v��7B6&�R&W6�7F�6R�w&VBf�"F�Rf��6���r'W&��"��7FW3���$GF6���R7G&F���r6&�R�f6RF�R�6���R"��$��6�v�&���r�Vr7G&�v�B&6��BW"��%7VVW�Rv�WFR�&BBV�b7�#C�F��wB&6�&6�"��%6��vǒ&WGW&��Vrf�'v&B ����6WG3�#2"�&W3�#Rb7�#3�#V6�"�&W7C�#c2 �������6��"b7�c���"�� ���������耉Mյ��������Ј�(����������ե�����耉	�ɉ�����(����������ѕ����耉
+����չ���(��������������ձ���̰(����������͌耉Q���ݥ����х��������յ��͡���́�����ͥ́�ɽ�������ɥ��́Ѽ����ѕ́�����ɕ��Ѽ����ٕ�ѥ������������и�ፕ����Ё���є���������ȁѡ�����ե���ȸ��(���������ѕ���l(�����������]�����х��������͡�ձ��ȁݥ�Ѡ���ѽ�́����ѕ���Ԙ���쁽�Ј�(�����������ɥ����ȁ��ͥ������̰����������Ёх����(�����������ɥٔ�����́��Ё�����ɕ�́����ȁ�݅�Ѽ��х����(�����������M�Օ�锁���ѕ́�ձ�䁅Ёѡ��ѽ��(��������t�(��������͕��耈̈��ɕ��耈ؘ������������ɕ��耈ɵ���(�������(����t(����(�����ٕ���(��������耉
+��ٕ̀����ɽ������̀��M����̤��(����х�耉1=]H�	=d��(���������耈��ፅ�Ј�(������͌耉Q��������������������Ց�́ѡ������ɽ������̀��ݼ���������٥ͥ������͍���ѡ�Ё�ɕ�ѕ́ѡ�������͡���������ѡ��ͽ���̀������Ȱ�ݽɭ́ݡ���������́���Ф��	�Ѡ���ə�ɴ�����хə��᥽�������ѥ����he foot). Calves require high volume and full range of motion.",
     wikiLink: "https://en.wikipedia.org/wiki/Gastrocnemius_muscle",
     wikiText: "Wikipedia: Gastrocnemius",
     exercises: [
       {
-        icon: "&#x1F9B6;",
+        icon: "&#x1F9B6;"
         name: "Standing Calf Raise",
         equipment: "Machine or Smith Machine",
         category: "Isolation",
         difficulty: 1,
-        desc: "The primary gastrocnemius builder. Straight-leg position fully activates the two-headed gastrocnemius.",
-        steps: [
-          "Balls of feet on edge of platform, heels hanging off",
-          "Lower heels as far as possible for a full stretch",
-          "Rise up on tiptoes as high as possible",
-          "Hold peak contraction 1 second &#x2014; don't bounce"
-        ],
-        sets: "4", reps: "15&#x2013;20", rest: "60s"
-      },
-      {
-        icon: "&#x1FA91;",
-        name: "Seated Calf Raise",
-        equipment: "Seated Calf Raise Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "The bent-knee position bypasses the gastrocnemius to isolate the soleus &#x2014; the deeper, larger muscle that adds calf thickness.",
-        steps: [
-          "Sit with pads on lower thighs, balls of feet on platform",
-          "Lower heels to full stretch",
-          "Press up to maximum height on toes",
-          "Pause and squeeze at top"
-        ],
-        sets: "4", reps: "15&#x2013;20", rest: "60s"
-      },
-      {
-        icon: "&#x1F3C3;",
-        name: "Single-Leg Calf Raise",
-        equipment: "Bodyweight or Dumbbell",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "Working one leg at a time doubles the load on each calf and corrects imbalances. Hold a dumbbell for added resistance.",
-        steps: [
-          "Balance on one foot on edge of step, other foot behind",
-          "Hold wall or dumbbell for balance",
-          "Full range of motion &#x2014; deep stretch to full extension",
-          "Complete all reps on one side, then switch"
-        ],
-        sets: "3", reps: "15&#x2013;20 each", rest: "60s"
-      },
-      {
-        icon: "&#x2B07;&#xFE0F;",
-        name: "Leg Press Calf Raise",
-        equipment: "Leg Press Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "Allows very heavy loading of the calves safely. Particularly useful for those with balance issues on standing calf raises.",
-        steps: [
-          "Sit in leg press, place balls of feet at bottom edge of plate",
-          "Keep legs nearly straight (small bend in knees)",
-          "Push platform away by extending ankles fully",
-          "Slowly return to deep stretch position"
-        ],
-        sets: "3", reps: "20&#x2013;25", rest: "60s"
-      }
-    ]
-  },
-  traps: {
-    name: "Trapezius",
-    tag: "UPPER BODY",
-    color: "#e63946",
-    desc: "The trapezius is a large diamond-shaped muscle covering the upper back and neck. It has upper (elevation), middle (retraction), and lower (depression) fibers. Well-developed traps give that powerful 'bull neck' and thick upper back appearance.",
-    wikiLink: "https://en.wikipedia.org/wiki/Trapezius_muscle",
-    wikiText: "Wikipedia: Trapezius",
-    exercises: [
-      {
-        icon: "&#x2B06;&#xFE0F;",
-        name: "Barbell Shrug",
-        equipment: "Barbell",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "The classic upper trap builder. Allows the heaviest loading of any trap exercise for maximum size and strength gains.",
-        steps: [
-          "Hold barbell in front at hip level with overhand grip",
-          "Shrug shoulders straight up toward ears as high as possible",
-          "Hold at the top for 1&#x2013;2 seconds",
-          "Lower slowly &#x2014; don't roll shoulders forward"
-        ],
-        sets: "4", reps: "12&#x2013;15", rest: "75s"
-      },
-      {
-        icon: "&#x1F3CB;&#xFE0F;",
-        name: "Rack Pull",
-        equipment: "Barbell + Power Rack",
-        category: "Compound",
-        difficulty: 3,
-        desc: "A partial deadlift that places heavy stress on traps and upper back through the isometric hold and lockout phase.",
-        steps: [
-          "Set bar in rack at knee height",
-          "Deadlift bar from rack to full hip extension",
-          "Squeeze traps and upper back at lockout",
-          "Lower bar back to rack with control"
-        ],
-        sets: "3", reps: "5&#x2013;8", rest: "2min"
-      },
-      {
-        icon: "&#x1F504;",
-        name: "Face Pull",
-        equipment: "Cable Machine + Rope",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "Works the middle and upper traps alongside the rear delts. Critical for shoulder health and posture correction.",
-        steps: [
-          "Set cable at face height, grip rope attachment",
-          "Pull rope to face, separating rope ends beside ears",
-          "Focus on squeezing the middle back and traps",
-          "Slowly extend arms back to start"
-        ],
-        sets: "3", reps: "15&#x2013;20", rest: "60s"
-      },
-      {
-        icon: "&#x1F3CB;&#xFE0F;",
-        name: "Farmer's Carry",
-        equipment: "Dumbbells or Trap Bar",
-        category: "Compound",
-        difficulty: 2,
-        desc: "Walking with heavy weights engages the traps isometrically to stabilize the shoulder and neck. Also builds grip strength and core.",
-        steps: [
-          "Hold heavy dumbbells at sides, stand tall",
-          "Walk a set distance with controlled, even steps",
-          "Keep shoulders back and down &#x2014; don't let them elevate",
-          "Focus on keeping good posture throughout"
-        ],
-        sets: "3", reps: "40m each", rest: "90s"
-      }
-    ]
-  },
-  forearms: {
-    name: "Forearms",
-    tag: "UPPER BODY",
-    color: "#f4a261",
-    desc: "The forearms contain over 20 muscles controlling wrist and finger movement. Key muscles include the flexors (palm side) and extensors (back side). Strong forearms improve grip strength across all pulling exercises and add to a complete arm appearance.",
-    wikiLink: "https://en.wikipedia.org/wiki/Forearm",
-    wikiText: "Wikipedia: Forearm Muscles",
-    exercises: [
-      {
-        icon: "&#x1F932;",
-        name: "Wrist Curl",
-        equipment: "Barbell or Dumbbell",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "Directly targets the forearm flexors (the underside of the forearm). Simple, effective, and easy to overload progressively.",
-        steps: [
-          "Sit, forearms on thighs, wrists hanging off knees",
-          "Hold barbell with underhand grip",
-          "Curl wrists up as high as possible",
-          "Lower slowly to full extension and open hands slightly"
-        ],
-        sets: "3", reps: "15&#x2013;20", rest: "60s"
-      },
+        desc: "The primary gastrocnemius builder. Straight-leg position fully activat\�H��ZXYY�\���ۙ[Z]\ˈ���\Έ��[�و�Y]ۈY�Hو]�ܛKY[�[��[��ٙ������\�Y[�\��\�\����X�H�܈H�[��]�����\�H\ۈ\�\�\�Y�\����������(�����������!�������������Ʌ�ѥ���ā͕������������쁑���Ё��չ���(��������t�(��������͕��耈Ј��ɕ��耈�Ԙ������������ɕ��耈��̈(��������(�������(������������耈������숰(������������耉M��ѕ��
+����I��͔��(���������Eե�����耉M��ѕ��
+����I��͔�5��������(����������ѕ����耉%ͽ��ѥ����(��������������ձ���İ(����������͌耉Q������е�������ͥѥ��������͕́ѡ������ɽ������́Ѽ��ͽ��є�ѡ��ͽ���̀��������ѡ�������Ȱ���ɝ�ȁ��͍���ѡ�Ё���́��bF��6��W72�"��7FW3���%6�Bv�F�G2����vW"F��v�2�&��2�bfVWB���Ff�&�"��$��vW"�VV�2F�gV��7G&WF6�"��%&W72WF�����V��V�v�B��F�W2"��%W6R�B7VVW�R@�ѽ��(��������t�(��������͕��耈Ј��ɕ��耈�Ԙ������������ɕ��耈��̈(��������(�������(������������耈������숰(������������耉M������1���
+����I��͔��(����������ե�����耉	���ݕ���Ё�ȁյ�������(����������ѕ����耉%ͽ��ѥ����(��������������ձ���Ȱ(����������͌耉]�ɭ�������������Ё��ѥ�����Չ��́ѡ���������������������������ɕ��́���������̸�!�������յ��������ȁ������ɕͥ�х������(���������ѕ���l(�����������	�����������������Ё������������ѕ����ѡ�ȁ���Ё��������(�����������!����݅����ȁ�յ��������ȁ���������(�����������ձ��Ʌ���������ѥ����������쁑������ɕэ��Ѽ��ձ����ѕ�ͥ����(�����������
+�����є�����ɕ�́�������ͥ����ѡ����ݥэ��(��������t�(��������͕��耈���\Έ�MI���L�̌XX���\����Ȃ�K�X�ێ������
+�Ɉ��L�ȋ�&W726�b&�6R"��WV��V�C�$�Vr&W72�6���R"��6FVv�'��$�6��F���"��F�ff�7V�G����FW63�$���w2fW'��Vg���F��r�bF�R6�fW26fVǒ�'F�7V�&ǒW6VgV�f�"F��6Rv�F�&��6R�77VW2��7F�F��r6�b&�6W2�"��7FW3���%6�B���Vr&W72��6R&��2�bfVWBB&�GF��VFvR�b�FR"��$�VW�Vw2�V&ǒ7G&�v�B�6���&V�B����VW2�"��%W6��Ff�&�v�'�W�FV�F��r��W2gV�ǒ"��%6��vǒ&WGW&�F�FVW7G&WF6��6�F��� ����6WG3�#2"�&W3�##b7�#3�#R"�&W7C�#c2 �ТТ���G&3�����S�%G&W��W2"��Fs�%UU"$�E�"��6���#�"6Sc3�Cb"��FW63�%F�RG&W��W2�2�&vRF����B�6�VB�W66�R6�fW&��rF�RWW"&6��B�V6���B�2WW"�V�WfF����֖FF�R�&WG&7F�����B��vW"�FW&W76���f�&W'2�vV���FWfV��VBG&2v�fRF�B�vW&gV�v'V���V6�r�BF��6�WW"&6�V&�6R�"��v���Ɩ波&�GG3���V��v���VF���&r�v����G&W��W5��W66�R"��v���FW�C�%v���VF��G&W��W2"��W�W&6�6W3������6��"b7�$#c�b7�dSc�"����S�$&&&V��6�'Vr"��WV��V�C�$&&&V��"��6FVv�'��$�6��F���"��F�ff�7V�G����FW63�%F�R6�76�2WW"G&'V��FW"����w2F�R�Vf�W7B��F��r�b�G&W�W&6�6Rf�"����V�6��R�B7G&V�wF�v��2�"��"7FW3���$���B&&&V����g&��BB���WfV�v�F��fW&��Bw&�"��%6�'Vr6��V�FW'27G&�v�BWF�v&BV'22��v�2�76�&�R"��$���BBF�RF�f�"b7�#3�"6V6��G2"��$��vW"6��vǒb7�#C�F��wB&���6��V�FW'2f�'v&B ����6WG3�#B"�&W3�#"b7�#3�R"�&W7C�#sW2 �������6��"b7�c44#�b7�dSc�"����S�%&6�V��"��WV��V�C�$&&&V����vW"&6�"��6FVv�'��$6���V�B"��F�ff�7V�G��2��FW63�$'F��FVFƖgBF�B�6W2�Vg�7G&W72��G&2�BWW"&6�F�&�Vv�F�R�6��WG&�2���B�B��6��WB�6R�"��7FW3���%6WB&"��&6�B��VR�V�v�B"��$FVFƖgB&"g&��&6�F�gV����W�FV�6���"��%7VVW�RG&2�BWW"&6�B��6��WB"��$��vW"&"&6�F�&6�v�F�6��G&�� ����6WG3�#2"�&W3�#Rb7�#3��"�&W7C�#&֖� �������6��"b7�cSC�"����S�$f6RV��"��WV��V�C�$6&�R�6���R�&�R"��6FVv�'��$�6��F���"��F�ff�7V�G��"��FW63�%v�&�2F�R֖FF�R�BWW"G&2���w6�FRF�R&V"FV�G2�7&�F�6�f�"6��V�FW"�V�F��B�7GW&R6�'&V7F����"��7FW3���%6WB6&�RBf6R�V�v�B�w&�&�RGF6��V�B"��%V��&�RF�f6R�6W&F��r&�RV�G2&W6�FRV'2"��$f�7W2��7VVW���rF�R֖FF�R&6��BG&2"��%6��vǒW�FV�B&�2&6�F�7F'B ����6WG3�#2"�&W3�#Rb7�#3�#"�&W7C�#c2 �������6��"b7�c44#�b7�dSc�"����S�$f&�W"w26''�"��WV��V�C�$GV�&&V��2�"G&&""��6FVv�'��$6���V�B"��F�ff�7V�G��"��FW63�%vƶ��rv�F��Vg�vV�v�G2V�vvW2F�RG&2�6��WG&�6�ǒF�7F&�Ɨ�RF�R6��V�FW"�B�V6���6�'V��G2w&�7G&V�wF��B6�&R�"��7FW3���$���B�Vg�GV�&&V��2B6�FW2�7F�BF��"��%vƲ6WBF�7F�6Rv�F�6��G&���VB�WfV�7FW2"��$�VW6��V�FW'2&6��BF�v�b7�#C�F��wB�WBF�V�V�WfFR"��$f�7W2���VW��rv��B�7GW&RF�&�Vv��WB ����6WG3�#2"�&W3�#C�V6�"�&W7C�#�2 �ТТ���f�&V&�3�����S�$f�&V&�2"��Fs�%UU"$�E�"��6���#�"6cF#c"��FW63�%F�Rf�&V&�26��F���fW"#�W66�W26��G&��Ɩ�rw&�7B�Bf��vW"��fV�V�B� vW��W66�W2��6�VFRF�Rf�W��'2���6�FR��BW�FV�6�'2�&6�6�FR��7G&��rf�&V&�2��&�fRw&�7G&V�wF�7&�72��V�Ɩ�rW�W&6�6W2�BFBF�6���WFR&�V&�6R�"��v���Ɩ波&�GG3���V��v���VF���&r�v����f�&V&�"��v���FW�C�%v���VF��f�&V&��W66�W2"��W�W&6�6W3������6��"b7�c�3#�"����S�%w&�7B7W&�"��WV��V�C�$&&&V���"GV�&&V��"��6FVv�'��$�6��F���"��F�ff�7V�G�� ��FW63�$F�&V7FǒF&vWG2F�Rf�&V&�f�W��'2�F�RV�FW'6�FR�bF�Rf�&V&Ғ�6���R�VffV7F�fR��BV7�F��fW&��B&�w&W76�fVǒ�"��7FW3���%6�B�f�&V&�2��F��v�2�w&�7G2��v��r�fb��VW2"��$���B&&&V��v�F�V�FW&��Bw&�"��$7W&�w&�7G2W2��v�2�76�&�R"��$��vW"6��vǒF�gV��W�FV�6����B�V���G26Ɩv�Fǒ ����6WG3�#2"�&W3�#Rb7�#3�#"�&W7C�#c2 �     },
       {
         icon: "&#x1F938;",
         name: "Reverse Wrist Curl",
@@ -1820,18 +992,9 @@ const MUSCLES = {
         steps: [
           "Forearms on thighs, overhand grip, wrists hanging off",
           "Extend wrists upward as high as possible",
-          "Hold for 1 second, then lower slowly",
-          "Use lighter weight than wrist curls"
-        ],
-        sets: "3", reps: "15&#x2013;20", rest: "60s"
-      },
-      {
-        icon: "&#x1F4AA;",
-        name: "Hammer Curl",
-        equipment: "Dumbbells",
-        category: "Compound",
-        difficulty: 1,
-        desc: "The neutral grip works the brachioradialis &#x2014; the large forearm muscle that runs up the outside of the arm &#x2014; more than supinated curls.",
+$���Bf�"6V6��B�F�V���vW"6��vǒ"��%W6RƖv�FW"vV�v�BF��w&�7B7W&�2 ����6WG3�#2"�&W3�#Rb7�#3�#"�&W7C�#c2 �������6��"b7�cD�"����S�$�A��ȁ
+�ɰ��(����������ե�����耉յ�����̈�(����������ѕ����耉
+����չ���(��������������ձ���İ(����������͌耉Q�������Ʌ���ɥ��ݽɭ́ѡ���Ʌ����Ʌ�����̀��������ѡ����ɝ����ɕ�ɴ���͍���ѡ�Ё�չ́���ѡ�����ͥ������ѡ���ɴ����2014; more than supinated curls.",
         steps: [
           "Dumbbells at sides, palms facing each other",
           "Curl both arms up keeping thumbs pointed up",
@@ -1853,202 +1016,8 @@ const MUSCLES = {
           "Hold until grip fails",
           "Rest and repeat"
         ],
-        sets: "3", reps: "30&#x2013;60s", rest: "90s"
-      }
-    ]
-  }
-};
-
-const MUSCLE_LIST_CONFIG = [
-  { id: "chest", label: "Chest", color: "#e63946", view: "front" },
-  { id: "back", label: "Back (Lats & Rhomboids)", color: "#9b5de5", view: "back" },
-  { id: "traps", label: "Trapezius", color: "#e63946", view: "back" },
-  { id: "front_delts", label: "Front Delts (Anterior)", color: "#3a7ca5", view: "front" },
-  { id: "side_delts",  label: "Side Delts (Lateral)",  color: "#3a7ca5", view: "front" },
-  { id: "rear_delts",  label: "Rear Delts (Posterior)", color: "#3a7ca5", view: "back"  },
-  { id: "biceps", label: "Biceps", color: "#2dc653", view: "front" },
-  { id: "triceps", label: "Triceps", color: "#2dc653", view: "back" },
-  { id: "forearms", label: "Forearms", color: "#f4a261", view: "front" },
-  { id: "abs", label: "Abs", color: "#9b5de5", view: "front" },
-  { id: "obliques", label: "Obliques", color: "#f77f00", view: "front" },
-  { id: "quads", label: "Quadriceps", color: "#0077b6", view: "front" },
-  { id: "hamstrings", label: "Hamstrings", color: "#0077b6", view: "back" },
-  { id: "glutes", label: "Glutes", color: "#e63946", view: "back" },
-  { id: "calves", label: "Calves", color: "#48cae4", view: "front" }
-];
-
-let currentView = "front";
-let currentMuscle = null;
-
-function setView(view) {
-  currentView = view;
-  document.getElementById("svg-front").style.display = view === "front" ? "block" : "none";
-  document.getElementById("svg-back").style.display = view === "back" ? "block" : "none";
-  document.querySelectorAll(".view-toggle button").forEach((btn, i) => {
-    btn.classList.toggle("active", (i === 0 && view === "front") || (i === 1 && view === "back"));
-  });
-}
-
-function selectMuscle(id) {
-  currentMuscle = id;
-  const data = MUSCLES[id];
-  if (!data) return;
-
-  // Update SVG active states
-  document.querySelectorAll(".muscle-region").forEach(el => el.classList.remove("active"));
-
-  // Find config and set view
-  const config = MUSCLE_LIST_CONFIG.find(m => m.id === id);
-  if (config) {
-    setView(config.view);
-    document.querySelectorAll(".muscle-list-item").forEach(el => {
-      el.classList.toggle("active", el.dataset.id === id);
-    });
-  }
-
-  // Show details
-  document.getElementById("welcome-screen").style.display = "none";
-  const header = document.getElementById("muscle-header");
-  header.classList.add("visible");
-  document.getElementById("detail-tag").textContent = data.tag;
-  document.getElementById("detail-name").textContent = data.name;
-  document.getElementById("detail-desc").textContent = data.desc;
-  document.getElementById("detail-link").href = data.wikiLink;
-  document.getElementById("detail-link").textContent = data.wikiText;
-
-  // Training goal guidance by category
-  function getTrainingGoals(cat) {
-    if (cat === "Compound") {
-      return {
-        strength: {
-          sets: "4&#x2013;6", reps: "1&#x2013;5", load: "85&#x2013;95% 1RM", rest: "3&#x2013;5 min",
-          tip: "Max effort, full recovery between sets. Log your weights and aim to add load each session."
-        },
-        hypertrophy: {
-          sets: "3&#x2013;4", reps: "6&#x2013;12", load: "65&#x2013;80% 1RM", rest: "60&#x2013;90s",
-          tip: "Moderate load with controlled eccentric. Keep tension on the muscle and avoid locking out at top."
-        }
-      };
-    } else {
-      return {
-        strength: {
-          sets: "3&#x2013;4", reps: "6&#x2013;10", load: "75&#x2013;85% effort", rest: "90&#x2013;120s",
-          tip: "Heavier than usual for an isolation move. Use full ROM and pause at peak contraction."
-        },
-        hypertrophy: {
-          sets: "3&#x2013;4", reps: "12&#x2013;20", load: "55&#x2013;70% effort", rest: "45&#x2013;75s",
-          tip: "High reps, slow 3-sec eccentric, strong mind-muscle connection. The burn is the goal."
-        }
-      };
-    }
-  }
-
-  // Render exercise cards
-  const grid = document.getElementById("exercises-grid");
-  grid.innerHTML = data.exercises.map(ex => {
-    const goals = getTrainingGoals(ex.category);
-    return `
-    <div class="exercise-card">
-      <div class="card-img" style="background: linear-gradient(135deg, #1e2433 0%, #0d1220 100%);">
-        <div class="big-icon">${ex.icon}</div>
-        <div class="category-badge">${ex.category}</div>
-        <div class="difficulty">
-          ${[1,2,3,4].map(i => `<span class="${i <= ex.difficulty ? 'filled' : ''}"></span>`).join('')}
-        </div>
-      </div>
-      <div class="card-body">
-        <h3>${ex.name}</h3>
-        <div class="equipment">&#9881;&#65039; ${ex.equipment}</div>
-        <p>${ex.desc}</p>
-        <ul class="steps">
-          ${ex.steps.map((s, i) => `<li><span class="num">${i+1}</span><span>${s}</span></li>`).join('')}
-        </ul>
-        <div class="sets-reps">
-          <div class="stat"><div class="val">${ex.sets}</div><div class="lbl">SETS</div></div>
-          <div class="stat"><div class="val">${ex.reps}</div><div class="lbl">REPS</div></div>
-          <div class="stat"><div class="val">${ex.rest}</div><div class="lbl">REST</div></div>
-        </div>
-        <div class="training-goals-title">Training Goal</div>
-        <div class="training-goals">
-          <div class="training-goal-box strength">
-            <div class="goal-title">&#128170; Strength</div>
-            <div class="goal-line"><strong>Sets:</strong> ${goals.strength.sets}</div>
-            <div class="goal-line"><strong>Reps:</strong> ${goals.strength.reps}</div>
-            <div class="goal-line"><strong>Load:</strong> ${goals.strength.load}</div>
-            <div class="goal-line"><strong>Rest:</strong> ${goals.strength.rest}</div>
-            <div class="goal-tip">${goals.strength.tip}</div>
-          </div>
-          <div class="training-goal-box hypertrophy">
-            <div class="goal-title">&#128293; Hypertrophy</div>
-            <div class="goal-line"><strong>Sets:</strong> ${goals.hypertrophy.sets}</div>
-            <div class="goal-line"><strong>Reps:</strong> ${goals.hypertrophy.reps}</div>
-            <div class="goal-line"><strong>Load:</strong> ${goals.hypertrophy.load}</div>
-            <div class="goal-line"><strong>Rest:</strong> ${goals.hypertrophy.rest}</div>
-            <div class="goal-tip">${goals.hypertrophy.tip}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `}).join("");
-
-  document.getElementById("ref-section").style.display = "block";
-  document.getElementById("exercise-panel").scrollTo({ top: 0, behavior: "smooth" });
-}
-
-// Build muscle list
-const listEl = document.getElementById("muscle-list");
-MUSCLE_LIST_CONFIG.forEach(m => {
-  const el = document.createElement("div");
-  el.className = "muscle-list-item";
-  el.dataset.id = m.id;
-  el.innerHTML = `<span class="dot" style="background:${m.color}"></span>${m.label}`;
-  el.onclick = () => selectMuscle(m.id);
-  listEl.appendChild(el);
-});
-
-// TAB SWITCHING
-function switchTab(tabName) {
-  // Hide all tabs
-  document.querySelectorAll(".tab-content").forEach(tab => {
-    tab.classList.remove("active");
-  });
-  document.querySelectorAll(".tab-button").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  // Show selected tab
-  document.getElementById(tabName + "-tab").classList.add("active");
-  event.target.classList.add("active");
-
-  // Reset exercise panel if switching away from exercises
-  if (tabName === "rehab") {
-    document.getElementById("welcome-screen").style.display = "none";
-    document.getElementById("muscle-header").classList.remove("visible");
-    document.getElementById("ref-section").style.display = "none";
-  }
-}
-
-// REHAB EXERCISES DATA
-const REHAB_EXERCISES = [
-  {
-    name: "Band Pull-Aparts",
-    target: "Shoulder",
-    equipment: "Resistance Band",
-    description: "Strengthens rear delts and middle back to correct posture and reduce shoulder impingement syndrome. Excellent for desk workers.",
-    steps: [
-      "Stand with feet shoulder-width apart, hold band at arm's length in front of you at chest height",
-      "Keep a slight bend in your elbows and pull the band apart by driving your elbows back",
-      "Squeeze your shoulder blades together at the end of the movement",
-      "Slowly return to starting position with control"
-    ],
-    setsReps: "3 sets x 15-20 reps",
-    duration: "45-60 seconds per set",
-    conditions: "Helps with shoulder impingement, poor posture, and upper back weakness"
-  },
-  {
-    name: "Dead Bug",
-    target: "Lower Back/Core",
-    equipment: "Bodyweight",
+        sets: "3", rW3�#3b7�#3�c2"�&W7C�#�2 �ТТЧӰ��6��7B�U44�U�ĕ5E�4��d�r�����C�&6�W7B"��&Vâ$6�W7B"�6���#�"6Sc3�Cb"�f�Ws�&g&��B"�����C�&&6�"��&Vâ$&6���G2b&���&��G2�"�6���#�"3�#VFSR"�f�Ws�&&6�"�����C�'G&2"��&Vâ%G&W��W2"�6���#�"6Sc3�Cb"�f�Ws�&&6�"�����C�&g&��E�FV�G2"��&Vâ$g&��BFV�G2��FW&��"�"�6���#�"36v6R"�f�Ws�&g&��B"�����C�'6�FU�FV�G2"��&Vâ%6�FRFV�G2��FW&"�6���#�"36v6R"�f�Ws�&g&��B"�����C�'&V%�FV�G2"��&Vâ%&V"FV�G2��7FW&��"�"�6���#�"36v6R"�f�Ws�&&6�"�����C�&&�6W2"��&Vâ$&�6W2"�6���#�"3&F3cS2"�f�Ws�&g&��B"�����C�'G&�6W2"��&V�耉Qɥ���̈�������耈�ɑ���̈��٥��耉��������(��쁥�耉��ɕ�ɵ̈�������耉�ɕ�ɵ̈�������耈��ф��Ĉ��٥��耉�ɽ�Ј���(��쁥�耉��̈�������耉�̈�������耈��Ց�Ԉ��٥��耉�ɽ�Ј���(��쁥�耉�����Օ̈�������耉=����Օ̈�����or: "#f77f00", view: "front" },
+  { id: "quads", label: "Quadriceps", color: "#0077b6", view: "front#�&��7G&��w2"��&Vâ$��7G&��w2"�6���#�"3sv#b"�f�Ws�&&6�"�����C�&v�WFW2"��&Vâ$v�WFW2"�6���#�"6Sc3�Cb"�f�Ws�&&6�"�����C�&6�fW2"��&Vâ$6�fW2"�6���#�"3C�6SB"�f�Ws�&g&��B"ХӰ���WB7W'&V�Ef�Wr�&g&��B#���WB7W'&V�D�W66�R��V�ð��gV�7F���6WEf�Wr�f�Wr���7W'&V�Ef�Wr�f�Ws��F�7V�V�B�vWDV�V�V�D'��B�'7fr�g&��B"��7G��R�F�7���f�Wr���&g&��B"�&&��6�"�&���R#��F�7V�V�B�vWDV�V�V�D'��B�'7fr�&6�"��7G��R�F�7���f�Wr���&&6�"�&&��6�"�&���R#��F�7V�V�B�VW'�6V�V7F�$�"�f�Wr�F�vv�R'WGF��"��f�$V6���'F��������'F��6�74Ɨ7B�F�vv�R�&7F�fR"������bbf�Wr���&g&��B"��������bbf�Wr���&&6�"����ғ��Р�gV�7F���6V�V7D�W66�R��B���7W'&V�D�W66�R��C��6��7BFF��U44�U5��EӰ��b�FF�&WGW&㰠���WFFR5dr7F�fR7FFW0�F�7V�V�B�VW'�6V�V7F�$�"��W66�R�&Vv���"��f�$V6��V���V��6�74Ɨ7B�&V��fR�&7F�fR"�������f��B6��f�r�B6WBf�Wp�6��7B6��f�r��U44�U�ĕ5E�4��d�r�f��B������B����B����b�6��f�r���6WEf�Wr�6��f�r�f�Wr���F�7V�V�B�VW'�6V�V7F�$�"��W66�R�Ɨ7B֗FV�"��f�$V6��V�����V��6�74Ɨ7B�F�vv�R�&7F�fR"�V��FF6WB�B����B���ғ��Р���6��rFWF��0�F�7V�V�B�vWDV�V�V�D'��B�'vV�6��R�67&VV�"��7G��R�F�7���&���R#��6��7B�VFW"�F�7V�V�B�vWDV�V�V�D'��B�&�W66�RֆVFW""����VFW"�6�74Ɨ7B�FB�'f�6�&�R"���F�7V�V�B�vWDV�V�V�D'��B�&FWF���Fr"��FW�D6��FV�B�FF�Fs��F�7V�V�B�vWDV�V�V�D'��B�&FWF�����R"��FW�D6��FV�B�FF���S��F�7V�V�B�vWDV�V�V�D'��B�&FWF���FW62"��FW�D6��FV�B�FF�FW63��F�7V�V�B�vWDV�V�V�D'��B�&FWF���Ɩ�"��&Vb�FF�v���Ɩ泰�F�7V�V�B�vWDV�V�V�D'��B�&FWF���Ɩ�"��FW�D6��FV�B�FF�v���FW�C�����G&���rv��wV�F�6R'�6FVv�'��gV�7F���vWEG&���tv��2�6B����b�6B���$6���V�B"���&WGW&���7G&V�wF����6WG3�#Bb7�#3�b"�&W3�#b7�#3�R"���C�#�Rb7�#3��RR$�"�&W7C�#2b7�#3�R֖�"��F��$��Vff�'B�gV��&V6�fW'�&WGvVV�6WG2���r��W"vV�v�G2�B��F�FB��BV6�6W76���� ������W'G&������6WG3�#2b7�#3�B"�&W3�#bb7�#3�""���C�#cRb7�#3��R$�"�&W7C�#cb7�#3��2"��F��$��FW&FR��Bv�F�6��G&���VBV66V�G&�2��VWFV�6�����F�R�W66�R�Bf��B��6���r�WBBF�� �ТӰ��V�6R��&WGW&���7G&V�wF����6WG3�#2b7�#3�B"�&W3�#bb7�#3�"���C�#sRb7�#3��RRVff�'B"�&W7C�#�b7�#3�#2"��F��$�Vf�W"F��W7V�f�"��6��F�����fR�W6RgV��$���BW6RBV�6��G&7F���� ������W'G&������6WG3�#2b7�#3�B"�&W3�#"b7�#3�#"���C�#SRb7�#3�sRVff�'B"�&W7C�#CRb7�#3�sW2"��"F��$��v�&W2�6��r2�6V2V66V�G&�2�7G&��r֖�B��W66�R6���V7F����F�R'W&��2F�Rv��� �ТӰ�ТР���&V�FW"W�W&6�6R6&G0�6��7Bw&�B�F�7V�V�B�vWDV�V�V�D'��B�&W�W&6�6W2�w&�B"���w&�B���W$�D���FF�W�W&6�6W2���W�����6��7Bv��2�vWEG&���tv��2�W��6FVv�'����&WGW&� ��F�b6�73�&W�W&6�6R�6&B#��F�b6�73�&6&B֖�r"7G��S�&&6�w&�V�C�Ɩ�V"�w&F�V�B�3VFVr�3S#C32R�3C##R��#��F�b6�73�&&�r֖6��#�G�W��6�����F�c��F�b6�73�&6FVv�'��&FvR#�G�W��6FVv�'����F�c��F�b6�73�&F�ff�7V�G�#�G���"�2�E��������7�6�73�"G����W��F�ff�7V�G��vf���VBr�rw�#���7�������rr�Т��F�c���F�c��F�b6�73�&6&B�&�G�#�ƃ3�G�W����W����3��F�b6�73�&WV��V�B#�b3����b3cS3��G�W��WV��V�G���F�c���G�W��FW67�����V�6�73�'7FW2#�G�W��7FW2����2������Ɠ��7�6�73�&�V�#�G������7���7��G�7���7����Ɠ������rr�Т ��V���F�b6�73�'6WG2�&W2#��F�b6�73�'7FB#��F�b6�73�'f�#�G�W��6WG7���F�c��F�b6�73�&�&�#�4UE3��F�c���F�c��F�b6�73�'7FB#��F�b6�73�'f�#�G�W��&W7���F�c��F�b6�73�&�&�#�$U3��F�c���F�c��F�b6�73�'7FB#��F�b6�73�'f�#�G�W��&W7G���F�c��F�b6�73�&�&�#�$U5C��F�c���F�c���F�c��F�b6�73�'G&���r�v��2�F�F�R#�G&���rv����F�c��F�b6�73�'G&���r�v��2#��F�b6�73�'G&���r�v���&��7G&V�wF�#��F�b6�73�&v���F�F�R#�b3#�s�7G&V�wF���F�c��F�b6�73�&v���Ɩ�R#��7G&��s�6WG3���7G&��s�G�v��2�7G&V�wF��6WG7���F�c��F�b6�73�&v���Ɩ�R#��7G&��s�&W3���7G&��s�G�v��2�7G&V�wF��&W7���F�c��F�b6�73�&v���Ɩ�R#��7G&��s���C���7G&��s�G�v��2�7G&V�wF����G���F�c��F�b6�73�&v���Ɩ�R#��7G&��s�&W7C���7G&��s�G�v��2�7G&V�wF��&W7G���F�c��F�b6�73�&v���F�#�G�v��2�7G&V�wF��F����F�c���F�c��F�b6�73�'G&���r�v���&����W'G&���#��F�b6�73�&v���F�F�R#�b3#�#�3���W'G&�����F�c��F�b6�73�&v���Ɩ�R#��7G&��s�6WG3���7G&��s�G�v��2懗W'G&����6WG7���F�c��F�b6�73�&v���Ɩ�R#��7G&��s�&W3���7G&��s�G�v��2懗W'G&����&W7���F�c��F�b6�73�&v���Ɩ�R#��7G&��s���C���7G&��s�G�v��2懗W'G&������G���F�c��F�b6�73�&v���Ɩ�R#��7G&��s�&W7C���7G&��s�G�v��2懗W'G&����&W7G���F�c��F�b6�73�&v���F�#�G�v��2懗W'G&����F����F�c���F�c���F�c���F�c���F�c�Ғ����""����F�7V�V�B�vWDV�V�V�D'��B�'&Vb�6V7F���"��7G��R�F�7���&&��6�#��F�7V�V�B�vWDV�V�V�D'��B�&W�W&6�6R��V�"��67&���F�F���&V�f��#�'6���F�"ғ��Р���'V��B�W66�RƗ7@�6��7BƗ7DV��F�7V�V�B�vWDV�V�V�D'��B�&�W66�R�Ɨ7B"����U44�U�ĕ5E�4��d�r�f�$V6�������6��7BV��F�7V�V�B�7&VFTV�V�V�B�&F�b"���V��6�74��R�&�W66�R�Ɨ7B֗FV�#��V��FF6WB�B���C��V����W$�D����7�6�73�&F�B"7G��S�&&6�w&�V�C�G���6���'�#���7��G����&V����V����6Ɩ6������6V�V7D�W66�R���B���Ɨ7DV��V�D6���B�V��ғ�����D"5t�D4���p�gV�7F���7v�F6�F"�F$��R�������FR��F'0�F�7V�V�B�VW'�6V�V7F�$�"�F"�6��FV�B"��f�$V6��F"����F"�6�74Ɨ7B�&V��fR�&7F�fR"���ғ��F�7V�V�B�VW'�6V�V7F�$�"�F"�'WGF��"��f�$V6��'F�����'F��6�74Ɨ7B�&V��fR�&7F�fR"���ғ�����6��r6V�V7FVBF �F�7V�V�B�vWDV�V�V�D'��B�F$��R�"�F""��6�74Ɨ7B�FB�&7F�fR"���WfV�B�F&vWB�6�74Ɨ7B�FB�&7F�fR"������&W6WBW�W&6�6R�V��b7v�F6���rv�g&��W�W&6�6W0��b�F$��R���'&V�""���F�7V�V�B�vWDV�V�V�D'��B�'vV�6��R�67&VV�"��7G��R�F�7���&���R#��F�7V�V�B�vWDV�V�V�D'��B�&�W66�RֆVFW""��6�74Ɨ7B�&V��fR�'f�6�&�R"���F�7V�V�B�vWDV�V�V�D'��B�'&Vb�6V7F���"��7G��R�F�7���&���R#��ЧР���$T�"U�U$4�4U2DD�6��7B$T�%�U�U$4�4U2�������S�$&�BV���'G2"��F&vWC�%6��V�FW""��WV��V�C�%&W6�7F�6R&�B"��FW67&�F���%7G&V�wF�V�2&V"FV�G2�B֖FF�R&6�F�6�'&V7B�7GW&R�B&VGV6R6��V�FW"����vV�V�B7��G&��R�W�6V��V�Bf�"FW6�v�&�W'2�"��7FW3���%7F�Bv�F�fVWB6��V�FW"�v�GF�'B����B&�BB&�w2�V�wF���g&��B�b��RB6�W7B�V�v�B"��$�VW6Ɩv�B&V�B����W"V�&�w2�BV��F�R&�B'B'�G&�f��r��W"V�&�w2&6�"��%7VVW�R��W"6��V�FW"&�FW2F�vWF�W"BF�RV�B�bF�R��fV�V�B"��%6��vǒ&WGW&�F�7F'F��r�6�F���v�F�6��G&�� ����6WG5&W3�#26WG2�R�#&W2"��GW&F���#CR�c6V6��G2W"6WB"��6��F�F���3�$�V�2v�F�6��V�FW"����vV�V�B���"�7GW&R��BWW"&6�vV��W72 ��������S�$FVB'Vr"��F&vWC�$��vW"&6��6�&R"��WV��t: "Bodyweight",
     description: "A fundamental core stability exercise that teaches proper spinal alignment and strengthens deep abdominal muscles without excessive loading.",
     steps: [
       "Lie on your back with arms extended straight up toward the ceiling",
@@ -2078,13 +1047,13 @@ const REHAB_EXERCISES = [
   {
     name: "Wall Slides",
     target: "Shoulder",
-    equipment: "Wall or Resistance Band",
+    equipment: "Wall or Resistance Band",
     description: "Teaches proper scapular mechanics and shoulder blade positioning while improving overhead mobility and shoulder stability.",
     steps: [
       "Stand with back against a wall, feet 6 inches away, knees slightly bent",
       "Press arms against wall with elbows bent at 90 degrees at shoulder height",
       "Slowly slide arms upward toward the ceiling, maintaining contact with the wall",
-      "Return to starting position, focusing on feeling your shoulder blades move"
+      "Return to starting position, focusing on feeling your shoulder blades move"
     ],
     setsReps: "3 sets x 12-15 reps",
     duration: "40-50 seconds per set",
@@ -2107,10 +1076,10 @@ const REHAB_EXERCISES = [
   },
   {
     name: "Cat-Cow Stretch",
-    target: "Spine/Lower Back",
+    target: "Spine/Lower Back",
     equipment: "Yoga Mat or Soft Surface",
     description: "A dynamic spinal mobility exercise that improves segmental movement, releases lower back tension, and warms up the entire spine.",
-    steps: [
+    steps: [
       "Start on hands and knees in a tabletop position with neutral spine",
       "Drop your belly and look upward, arching your back gently (Cow position)",
       "Then round your spine, tuck your chin, and pull your belly in (Cat position)",
@@ -2126,70 +1095,25 @@ const REHAB_EXERCISES = [
     equipment: "Bodyweight or Yoga Mat",
     description: "An advanced core stability exercise that teaches proper spinal alignment while strengthening the opposite arm and leg coordination.",
     steps: [
-      "Start in tabletop position with hands under shoulders and knees under hips",
+      "Start in tabletop position with hands under shoulders and knees under hips",
       "Extend your right arm straight forward while simultaneously straightening your left leg behind you",
-      "Keep your spine neutral and avoid rotating your torso or tilting your hips",
+      "Keep your spine neutral and avoid rotating your torso or tilting your hips",
       "Return to starting position and repeat on the opposite side in controlled alternation"
     ],
     setsReps: "3 sets x 10-12 reps per side",
-    duration: "50-60 seconds per set",
+    duration: "50-60 seconds per set",
     conditions: "Improves core stability, reduces lower back pain, and corrects movement imbalances"
   },
   {
     name: "90/90 Hip Stretch",
     target: "Hip",
     equipment: "Yoga Mat or Floor",
-    description: "A deep stretching position that opens the hip and improves rotational mobility, addressing hip tightness and internal/external rotation restrictions.",
-    steps: [
-      "Sit on the floor and position your front leg at 90 degrees in front of you, back leg at 90 degrees behind",
-      "Keep both shins perpendicular to your body with knees bent at 90 degrees",
-      "Fold your torso forward over your front leg, maintaining a neutral spine",
-      "Feel the stretch in your outer hip and hold, breathing deeply"
-    ],
-    setsReps: "Hold 2-3 sets x 45-90 seconds per side",
-    duration: "45-90 seconds per side",
-    conditions: "Essential for hip tightness, limited hip mobility, and hip flexor restrictions"
-  },
-  {
-    name: "Face Pull",
-    target: "Shoulder",
-    equipment: "Cable Machine with Rope Attachment",
-    description: "Strengthens rear deltoids and mid-back while improving shoulder blade retraction and external rotation, crucial for shoulder health.",
-    steps: [
-      "Set cable to face height with a rope attachment, stand facing the machine",
-      "Pull the rope toward your face while separating the rope ends, driving elbows back",
-      "Focus on pinching your shoulder blades together at peak contraction",
-      "Control the return to starting position while maintaining tension"
-    ],
-    setsReps: "3 sets x 15-20 reps",
-    duration: "50-60 seconds per set",
-    conditions: "Improves shoulder impingement, neck tension, and postural control"
-  },
-  {
-    name: "Terminal Knee Extension (TKE)",
-    target: "Knee",
-    equipment: "Resistance Band",
-    description: "Isolates the quad in full extension to strengthen the vastus medialis oblique, improving knee stability and reducing knee pain.",
-    steps: [
-      "Loop a resistance band around a sturdy object at knee height, then loop it around the back of your knee",
-      "Bend your knee slightly to create tension on the band",
-      "Straighten your leg against the band resistance, focusing on full knee extension",
-      "Control the return to the starting position"
-    ],
-    setsReps: "3 sets x 15-20 reps per leg",
-    duration: "50-60 seconds per leg",
-    conditions: "Helps with knee pain, patellar tracking issues, and quad weakness"
-  },
-  {
-    name: "Jefferson Curl",
-    target: "Lower Back/Hamstring",
-    equipment: "Bodyweight",
-    description: "A controlled, segmental stretching exercise that flexes the spine one vertebra at a time, improving hamstring flexibility and spinal mobility.",
-    steps: [
-      "Stand with feet hip-width apart and slowly round your upper back, dropping your chin to chest",
+    description: "@��������ɕэ�������ͥѥ���ѡ�Ё����́ѡ�������������ɽٕ́ɽхѥ������������䰁���ɕ�ͥ�������ѥ��ѹ��́������ѕɹ�����ѕɹ���ɽхѥ���ɕ��ɥ�ѥ��̸��(�����ѕ���l(�������M�Ё���ѡ������ȁ������ͥѥ�����ȁ�ɽ�Ё�����Ѐ�����ɕ�́����ɽ�Ё����԰�����������Ѐ������ɕ�́��������(�������-������Ѡ�͡��́���������ձ�ȁѼ���ȁ����ݥѠ�����́���Ё�Ѐ������ɕ�̈�(�������������ȁѽ�ͼ����݅ɐ��ٕȁ��ȁ�ɽ�Ё���������х������������Ʌ���������(������	����ѡ����ɕэ�������ȁ��ѕȁ���������������ɕ�ѡ����������(����t�(����͕��I���耉!����ȴ͕́�́���Դ���͕����́��ȁͥ����(������Ʌѥ��耈�Դ���͕����́��ȁͥ����(���������ѥ���耉�͕�ѥ�����ȁ����ѥ��ѹ��̰�����ѕ�������������䰁������������ȁɕ��ɥ�ѥ��̈(����(���(��������耉����Aձ���(����хɝ��耉M��ձ��Ȉ�(������ե�����耉
+�����5�������ݥѠ�I�����х�����Ј�(������͍ɥ�ѥ��耉M�ɕ��ѡ��́ɕ�ȁ���ѽ��́�������������ݡ�������ɽ٥���͡��1��ȁ������ɕ�Ʌ�ѥ���������ѕɹ���ɽхѥ������Ս������ȁ͡�ձ��ȁ����Ѡ���(�����ѕ���l(�������M�Ё������Ѽ�����������ЁݥѠ���ɽ�����х�����а��х����������ѡ�����������(�������Aձ��ѡ��ɽ���ѽ݅ɐ���ȁ�����ݡ����͕��Ʌѥ��ѡ��ɽ������̰��ɥ٥��������́������(����������́��������������ȁ͡�ձ��ȁ�����́ѽ��ѡ�ȁ�Ё���������Ʌ�ѥ����(�������
+���ɽ��ѡ��ɕ��ɸ�Ѽ��х�ѥ�����ͥѥ���ݡ��������х������ѕ�ͥ���(����t�(����͕��I���耈͕́�́���Դ� �ɕ�̈�(������Ʌѥ��耈������͕����́��ȁ͕Ј�(���������ѥ���耉%��ɽٕ́͡�ձ��ȁ����������а������ѕ�ͥ�������������Ʌ������ɽ��(����(���(��������耉Q�ɵ�����-�����ѕ�ͥ����Q-���(����хɝ��耉-�����(������ե�����耉I�ͥ������	�����(������͍ɥ�ѥ��耉%ͽ��ѕ́ѡ���Յ������ձ����ѕ�ͥ���Ѽ���ɕ��ѡ���ѡ��م���́�������́�����Ք�����ɽ٥���������х�����䁅���ɕ�Ս����������������(�����ѕ���l(�������1������ɕͥ�х����������ɽչ�������ɑ䁽�����BB��VR�V�v�B�F�V�����B&�V�BF�R&6��b��W"��VR"��$&V�B��W"��VR6Ɩv�FǒF�7&VFRFV�6�����F�R&�B"��%7G&�v�FV���W"�Vrv��7BF�R&�B&W6�7F�6R�f�7W6��r��gV����VRW�FV�6���"��$6��G&��F�R&WGW&�F�F�R7F'F��r�6�F��� ����6WG5&W3�#26WG2�R�#&W2W"�Vr"��GW&F���#S�c6V6��G2W"�Vr"��6��F�F���3�$�V�2v�F���VR���FV��"G&6���r�77VW2��BVBvV��W72 ��������S�$�VffW'6��7W&�"��F&vWC�$��vW"&6���7G&��r"��WV��V�C�$&�G�vV�v�B"��FW67&�F���$6��G&���VB�6Vv�V�F�7G&WF6���rW�W&6�6RF�Bf�W�W2F�R7��R��RfW'FV'&BF��R���&�f��r��7G&��rf�P��&�ƗG��B7�����&�ƗG��"��7FW3���%7F�Bv�F�fVWB���v�GF�'B�B6�ack, dropping your chin to chest",
       "Gradually articulate downward through each vertebra, rolling through your thoracic and lumbar spine",
       "Let gravity gently pull you forward as you reach toward your toes",
-      "Reverse the motion, stacking each vertebra back to neutral slowly and deliberately"
+      "Reverse the motion, stacking each vertebra back to neutral slowly and deliberately"
     ],
     setsReps: "2-3 sets x 5-8 full rolls",
     duration: "60-90 seconds per set",
@@ -2223,7 +1147,7 @@ const REHAB_EXERCISES = [
     ],
     setsReps: "3 sets x 12-15 reps per side",
     duration: "40-50 seconds per side",
-    conditions: "Critical for rotator cuff health, shoulder impingement prevention, and stability"
+    conditions: "Critical for rotator cuff health, shoulder impingement prevention, and stability"
   },
   {
     name: "Prone Cobra (Baby Cobra)",
@@ -2239,7 +1163,7 @@ const REHAB_EXERCISES = [
     setsReps: "3 sets x 10-12 reps",
     duration: "45-55 seconds per set",
     conditions: "Helps with lower back tightness, improves back strength, and opens hip flexors"
-  },
+  },
   {
     name: "Neck Flexor Stretch",
     target: "Neck",
@@ -2247,13 +1171,13 @@ const REHAB_EXERCISES = [
     description: "Stretches the anterior neck muscles and upper chest to relieve neck tension and improve forward head posture from excessive screen time.",
     steps: [
       "Sit upright or stand with good posture, chest up",
-      "Gently press your chin downand slightly backward toward your neck, creating a 'double chin'",
+      "Gently press your chin downward and slightly backward toward your neck, creating a 'double chin'",
       "Hold this retracted position and feel the stretch along the front and back of your neck",
       "Breathe deeply and maintain the position"
     ],
     setsReps: "Hold 2-3 sets x 30-45 seconds",
     duration: "30-45 seconds per set",
-    conditions: "Alleviates neck tension, improves posture, and reducfeduces text neck syndrome"
+    conditions: "Alleviates neck tension, improves posture, and reduces text neck syndrome"
   },
 ];
 
@@ -2305,10 +1229,10 @@ document.addEventListener("DOMContentLoaded", function() {
                   <h3>${ex.name}</h3>
                   <span class="target-badge">${ex.target}</span>
                 </div>
-                <div class="card-body">
+                <div class="card-body">
                   <div class="equipment-line">&#x2699;&#xFE0F; ${ex.equipment}</div>
                   <p class="description">${ex.description}</p>
-                  <div class="steps-title">How to Perform</div>
+                  <div class="steps-title">How to Perform</div>
                   <ul class="steps">
                     ${ex.steps.map((step, i) => `<li><span class="num">${i+1}</span><span>${step}</span></li>`).join('')}
                   </ul>
@@ -2317,22 +1241,7 @@ document.addEventListener("DOMContentLoaded", function() {
                       <div class="val">${ex.setsReps.split('x')[0].trim()}</div>
                       <div class="lbl">SETS/REPS</div>
                     </div>
-                    <div class="stat">
-                      <div class="val">${ex.duration}</div>
-                      <div class="lbl">DURATION</div>
-                    </div>
-                  </div>
-                  <div class="conditions">
-                    <strong>For:</strong> ${ex.conditions}
-                  </div>
-                </div>
-              </div>
-            `).join("")}
-          </div>
-        </div>
-      `;
-    });
-    
+   ]��\��H��]���]��\��H��[���^�\�][۟O�]���]��\��H����T�USӏ�]����]����]���]������􉍽���ѥ��̈�(�����������������������ɽ���������ɽ������ํ����ѥ����(������������������𽑥��(����������������𽑥��(��������������𽑥��(������������������������(����������𽑥��(��������𽑥��(��������(�������(�� 
     rehabGrid.innerHTML = html;
   }
 });
@@ -2345,7 +1254,7 @@ function toggleCategory(headerEl) {
   const isExpanded = exercisesDiv.style.display !== 'none';
   
   exercisesDiv.style.display = isExpanded ? 'none' : 'grid';
-  chevron.textContent = isExpanded ? '&#x25B6;' : '&#x25BC;';
+  chevron.innerHTML = isExpanded ? '&#x25B6;' : '&#x25BC;';
 }
 </script>
 </body>
