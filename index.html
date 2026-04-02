@@ -162,6 +162,31 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
   }
+  .sub-category-section { grid-column: 1 / -1; margin-bottom: 12px; }
+  .sub-category-header {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: background 0.2s;
+    margin-bottom: 6px;
+    user-select: none;
+  }
+  .sub-category-header:hover { background: #252d40; }
+  .sub-chevron { font-size: 0.9rem; color: var(--accent2); min-width: 16px; }
+  .sub-category-header h3 { font-size: 1rem; font-weight: 700; color: var(--accent); margin: 0; }
+  .sub-category-header p { color: var(--muted); font-size: 0.8rem; margin: 2px 0 0 0; }
+  .sub-category-exercises {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 4px 0 12px 0;
+  }
   .exercise-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -812,10 +837,11 @@
 </div>
 
 <script>
-const MUSCLES = {
-  chest: {
+const MUSCLES= {
+  chest: 
+  {
     name: "Chest (Pectoralis Major)",
-    tag: "UPPER BODY",
+     tag: "UPPER BODY",
     color: "#e63946",
     desc: "The pectoralis major is a large fan-shaped muscle covering the chest wall. It's responsible for horizontal adduction, flexion, and internal rotation of the shoulder. Well-developed pecs give the chest a broad, defined appearance.",
     wikiLink: "https://en.wikipedia.org/wiki/Pectoralis_major",
@@ -1166,64 +1192,138 @@ const MUSCLES = {
     desc: "The biceps brachii has a long head and short head, both responsible for elbow flexion and forearm supination. The long head creates the iconic bicep 'peak.' Training biceps at different angles ensures complete development.",
     wikiLink: "https://en.wikipedia.org/wiki/Biceps",
     wikiText: "Wikipedia: Biceps Brachii",
-    exercises: [
+    subCategories: [
       {
-        icon: "💪",
-        name: "Barbell Curl",
-        equipment: "Barbell",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "The classic bicep builder. Allows heavy loading and targets both heads of the biceps effectively.",
-        steps: [
-          "Hold bar with shoulder-width underhand grip, stand tall",
-          "Curl bar to shoulder level, keeping elbows tucked to sides",
-          "Squeeze hard at the top for 1 second",
-          "Lower slowly in 3 seconds"
-        ],
-        sets: "4", reps: "8–12", rest: "75s"
+        name: "Peak",
+        description: "Driven by the long head — the outer bicep that creates height when flexed. Target it with incline positions and narrow grips.",
+        exercises: [
+          {
+            icon: "📐",
+            name: "Incline Dumbbell Curl",
+            equipment: "Dumbbells + Incline Bench",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "The gold standard for long head development. The incline position places the arm behind the body, fully stretching and loading the long head.",
+            steps: [
+              "Set bench to 45–60°, sit back and let arms hang behind body",
+              "Curl dumbbells with a supinating twist, keeping shoulders pinned back",
+              "Do not let elbows swing forward — this removes long head tension",
+              "Lower all the way to full extension for maximum stretch"
+            ],
+            sets: "3", reps: "10–15", rest: "60s"
+          },
+          {
+            icon: "🎯",
+            name: "Narrow-Grip Barbell Curl",
+            equipment: "Barbell",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "A grip inside shoulder width forces the long head to carry more of the load, building that peaked, taller-looking bicep.",
+            steps: [
+              "Hold barbell with a grip 4–6 inches inside shoulder width",
+              "Keep elbows locked at sides throughout the movement",
+              "Curl bar to shoulder height, supinating at the top",
+              "Lower slowly over 3 seconds to maximize long head tension"
+            ],
+            sets: "4", reps: "8–12", rest: "75s"
+          },
+          {
+            icon: "🔌",
+            name: "High-Cable Curl",
+            equipment: "Cable Machine",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "With cables set at head height and arms angled back, the long head is maximally stretched under constant cable tension — unmatched for peak development.",
+            steps: [
+              "Set both cables to head height, grip handles and step forward",
+              "Raise arms to shoulder height, elbows back and high",
+              "Curl wrists toward your face while keeping elbows held high",
+              "Squeeze hard at peak and slowly return to full stretch"
+            ],
+            sets: "3", reps: "12–15", rest: "60s"
+          },
+          {
+            icon: "🦅",
+            name: "Spider Curl",
+            equipment: "Incline Bench + Barbell or Dumbbells",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "Lying face-down on an incline bench eliminates body swing and maintains peak long head tension at both the top and bottom of the movement.",
+            steps: [
+              "Lie face-down on an incline bench set to 45°, let arms hang down",
+              "Curl weight upward, keeping elbows pointed at the floor",
+              "Squeeze hard at the top — long head is under maximum tension here",
+              "Lower fully to a dead hang to maximize the stretch"
+            ],
+            sets: "3", reps: "12–15", rest: "60s"
+          }
+        ]
       },
       {
-        icon: "🔨",
-        name: "Hammer Curl",
-        equipment: "Dumbbells",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "Neutral grip hits the brachialis (underneath the bicep) and brachioradialis — pushing the bicep up to create more size.",
-        steps: [
-          "Hold dumbbells at sides with palms facing each other",
-          "Curl both dumbbells simultaneously or alternating",
-          "Keep thumbs pointing up throughout the movement",
-          "Lower slowly to full arm extension"
-        ],
-        sets: "3", reps: "10–12", rest: "60s"
-      },
-      {
-        icon: "📐",
-        name: "Incline Dumbbell Curl",
-        equipment: "Dumbbells + Incline Bench",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "The incline position stretches the long head at the bottom, increasing its range of motion and muscle activation.",
-        steps: [
-          "Sit on incline bench (60°), let arms hang naturally behind body",
-          "Curl dumbbells up with a supinating twist",
-          "Do not let elbows swing forward — keep them pinned back"
-        ],
-        sets: "3", reps: "10–15", rest: "60s"
-      },
-      {
-        icon: "🔌",
-        name: "Cable Curl",
-        equipment: "Cable Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "Cables maintain constant tension throughout the entire range of motion, unlike free weights where tension drops at the top.",
-        steps: [
-          "Attach straight or EZ bar to low cable pulley",
-          "Stand close to machine, curl handle up to chin level",
-          "Squeeze at top and slowly lower back to start"
-        ],
-        sets: "3", reps: "12–15", rest: "60s"
+        name: "Width",
+        description: "Overall bicep thickness comes from the short head and the brachialis underneath. Wide grips and forward-elbow positions target these areas.",
+        exercises: [
+          {
+            icon: "💪",
+            name: "Wide-Grip Barbell Curl",
+            equipment: "Barbell",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "A grip wider than shoulder width shifts emphasis to the short head — the inner, thicker part of the bicep responsible for overall width.",
+            steps: [
+              "Hold barbell with a grip 2–4 inches outside shoulder width",
+              "Keep elbows locked at sides and curl the bar to shoulder level",
+              "Squeeze both heads at the top with wrists neutral",
+              "Lower slowly to full extension for maximum stretch"
+            ],
+            sets: "4", reps: "8–12", rest: "75s"
+          },
+          {
+            icon: "🪑",
+            name: "Preacher Curl",
+            equipment: "EZ Bar + Preacher Bench",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "The preacher bench forces the elbow in front of the body, placing the short head at a mechanical advantage and fully isolating it from other muscles.",
+            steps: [
+              "Set up on preacher bench, arms draped over the pad at an angle",
+              "Curl EZ bar or dumbbells up, keeping the back of arms on the pad",
+              "Squeeze hard at the top — avoid locking out fully at the bottom",
+              "Lower slowly; feel the short head stretch on the way down"
+            ],
+            sets: "3", reps: "10–12", rest: "60s"
+          },
+          {
+            icon: "🔨",
+            name: "Hammer Curl",
+            equipment: "Dumbbells",
+            category: "Isolation",
+            difficulty: 1,
+            desc: "Neutral (hammer) grip targets the brachialis — a muscle beneath the bicep that pushes it up, adding significant overall arm width and thickness.",
+            steps: [
+              "Hold dumbbells at sides with palms facing each other (neutral grip)",
+              "Curl both dumbbells simultaneously keeping thumbs pointing up",
+              "Keep elbows locked at sides throughout the movement",
+              "Lower slowly to full extension — the brachialis loves full range"
+            ],
+            sets: "3", reps: "10–12", rest: "60s"
+          },
+          {
+            icon: "🎯",
+            name: "Concentration Curl",
+            equipment: "Dumbbell",
+            category: "Isolation",
+            difficulty: 1,
+            desc: "Bracing the elbow on the inner thigh removes all momentum and isolates the short head for a complete, controlled contraction and maximum width development.",
+            steps: [
+              "Sit on a bench, legs spread, elbow of working arm braced on inner thigh",
+              "Hang dumbbell down to full extension",
+              "Curl dumbbell to shoulder, twisting wrist outward at the top",
+              "Squeeze hard at the top and lower with full control"
+            ],
+            sets: "3", reps: "12–15 per arm", rest: "60s"
+          }
+        ]
       }
     ]
   },
@@ -1234,66 +1334,204 @@ const MUSCLES = {
     desc: "The triceps make up roughly two-thirds of your upper arm mass. They consist of three heads: long, lateral, and medial. The long head is the largest and only crosses the shoulder joint, so overhead exercises are key for full development.",
     wikiLink: "https://en.wikipedia.org/wiki/Triceps_brachii",
     wikiText: "Wikipedia: Triceps Brachii",
-    exercises: [
+    subCategories: [
       {
-        icon: "⬇️",
-        name: "Tricep Pushdown",
-        equipment: "Cable Machine",
-        category: "Isolation",
-        difficulty: 1,
-        desc: "The most popular tricep isolation exercise. Emphasizes the lateral and medial heads with constant cable tension.",
-        steps: [
-          "Attach rope or straight bar to high cable pulley",
-          "Stand close, elbows pinned to sides at 90°",
-          "Push handle down to full extension, separating rope at bottom",
-          "Slowly return to 90° — don't let elbows flare out"
-        ],
-        sets: "4", reps: "12–15", rest: "60s"
+        name: "Long Head",
+        description: "The largest tricep head — the only one that crosses the shoulder joint. Activated maximally in overhead positions where it reaches full stretch.",
+        exercises: [
+          {
+            icon: "🙆",
+            name: "Overhead Dumbbell Extension",
+            equipment: "Dumbbell",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "The overhead position fully stretches the long head, creating maximum mechanical tension and the strongest growth stimulus for overall tricep size.",
+            steps: [
+              "Hold one dumbbell with both hands overhead, arms fully extended",
+              "Bend elbows to lower weight behind head, keeping upper arms close to ears",
+              "Feel the deep stretch in the long head at the bottom position",
+              "Extend elbows fully back to start, squeezing at the top"
+            ],
+            sets: "3", reps: "12–15", rest: "60s"
+          },
+          {
+            icon: "💀",
+            name: "Skull Crusher (EZ Bar)",
+            equipment: "EZ Bar + Flat Bench",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "With upper arms perpendicular to the floor, skull crushers maximally stretch the long head under heavy load — a powerful combination for mass.",
+            steps: [
+              "Lie flat on bench, hold EZ bar with narrow overhand grip above chest",
+              "Keep upper arms perpendicular to the floor and completely stationary",
+              "Bend elbows to lower bar toward forehead or just behind the head",
+              "Extend elbows fully to press bar back to start"
+            ],
+            sets: "3", reps: "10–12", rest: "75s"
+          },
+          {
+            icon: "🔌",
+            name: "Cable Overhead Extension",
+            equipment: "Cable Machine (low pulley) + Rope",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "Facing away from a low cable pulley provides constant tension throughout the long head's stretched position — a key growth advantage over dumbbells.",
+            steps: [
+              "Attach rope to low pulley, face away from the machine",
+              "Bring rope overhead with elbows bent, feel the deep stretch",
+              "Extend arms fully overhead, squeezing at full lockout",
+              "Slowly lower back to deep stretch position under control"
+            ],
+            sets: "3", reps: "12–15", rest: "60s"
+          },
+          {
+            icon: "🤸",
+            name: "Single-Arm Overhead Extension",
+            equipment: "Dumbbell",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "Unilateral training allows greater range of motion per side and helps identify and correct left-right strength imbalances in the long head.",
+            steps: [
+              "Hold one dumbbell overhead with one arm, other hand lightly supports the elbow",
+              "Bend elbow to lower dumbbell behind head as far as comfortable",
+              "Extend arm fully overhead, squeezing the tricep hard at the top",
+              "Complete all reps before switching arms"
+            ],
+            sets: "3", reps: "12–15 per arm", rest: "60s"
+          }
+        ]
       },
       {
-        icon: "💀",
-        name: "Skull Crusher (Lying Tricep Extension)",
-        equipment: "Barbell or EZ Bar + Bench",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "Excellent for all three tricep heads with emphasis on the long head. Heavy loading possible.",
-        steps: [
-          "Lie on bench, hold bar with narrow overhand grip above chest",
-          "Keep upper arms vertical, bend elbows to lower bar to forehead",
-          "Extend elbows fully to press bar back up",
-          "Keep upper arms stationary throughout"
-        ],
-        sets: "3", reps: "10–12", rest: "75s"
+        name: "Lateral Head",
+        description: "Creates the iconic horseshoe shape visible on the outer arm. Most active when the elbow is pinned at the side and the arm is in a neutral or pronated position.",
+        exercises: [
+          {
+            icon: "⬇️",
+            name: "Rope Pushdown",
+            equipment: "Cable Machine + Rope",
+            category: "Isolation",
+            difficulty: 1,
+            desc: "Separating the rope at the bottom creates slight wrist supination that maximizes lateral head contraction. The go-to exercise for horseshoe definition.",
+            steps: [
+              "Attach rope to high cable pulley, stand close with elbows at sides",
+              "Push rope down to full extension, spreading rope ends apart at the bottom",
+              "Hold the contraction for 1 second at full extension",
+              "Slowly return to starting position without letting elbows flare"
+            ],
+            sets: "4", reps: "12–15", rest: "60s"
+          },
+          {
+            icon: "📏",
+            name: "Straight Bar Pushdown",
+            equipment: "Cable Machine",
+            category: "Isolation",
+            difficulty: 1,
+            desc: "The straight bar allows heavier loading than the rope, providing greater mechanical tension on the lateral head for strength and size gains.",
+            steps: [
+              "Attach straight bar to high cable pulley",
+              "Grip bar overhand, elbows pinned tightly to sides",
+              "Push bar down to full extension, keeping wrists straight",
+              "Slowly return to 90° without swinging or flaring elbows"
+            ],
+            sets: "3", reps: "10–15", rest: "60s"
+          },
+          {
+            icon: "🏋️",
+            name: "Dumbbell Kickback",
+            equipment: "Dumbbell",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "The kickback position places the elbow behind the body, creating peak tension on the lateral head at full extension — where it contracts hardest.",
+            steps: [
+              "Hinge forward 45° with upper arm parallel to floor, elbow behind body",
+              "Extend forearm back until arm is completely straight",
+              "Hold at the top — this is where the lateral head fires hardest",
+              "Lower slowly and repeat; keep upper arm completely locked in position"
+            ],
+            sets: "3", reps: "12–15 per arm", rest: "60s"
+          },
+          {
+            icon: "💺",
+            name: "Tricep Dips (Upright)",
+            equipment: "Parallel Bars",
+            category: "Compound",
+            difficulty: 2,
+            desc: "Keeping the torso upright during dips heavily targets the lateral head and medial head at lockout, making this a powerful compound builder.",
+            steps: [
+              "Grip parallel bars, start with arms straight and torso upright",
+              "Lower body by bending elbows, keeping torso as vertical as possible",
+              "Stop when upper arms reach parallel to floor",
+              "Press back up to full lockout, squeezing the lateral head hard"
+            ],
+            sets: "3", reps: "10–15", rest: "75s"
+          }
+        ]
       },
       {
-        icon: "🙆",
-        name: "Overhead Tricep Extension",
-        equipment: "Dumbbell or Cable",
-        category: "Isolation",
-        difficulty: 2,
-        desc: "The overhead position fully stretches the long head of the tricep, providing superior muscle activation and growth stimulus.",
-        steps: [
-          "Hold dumbbell with both hands overhead, arms extended",
-          "Bend elbows to lower weight behind head",
-          "Keep upper arms close to ears throughout",
-          "Extend elbows fully to return to start"
-        ],
-        sets: "3", reps: "12–15", rest: "60s"
-      },
-      {
-        icon: "💺",
-        name: "Tricep Dips",
-        equipment: "Parallel Bars or Bench",
-        category: "Compound",
-        difficulty: 2,
-        desc: "A bodyweight compound movement that works all three tricep heads along with chest and front delts. Can be loaded with weight belt.",
-        steps: [
-          "Grip parallel bars, start with arms straight",
-          "Lower body by bending elbows, keep torso upright (vertical = more tricep focus)",
-          "Stop when upper arms are parallel to floor",
-          "Press back up to full extension"
-        ],
-        sets: "3", reps: "10–15", rest: "75s"
+        name: "Medial Head",
+        description: "The deep stabilizing head that fires hardest in the final degrees of elbow extension. Supinated and reverse grips maximize its activation and lockout strength.",
+        exercises: [
+          {
+            icon: "🔄",
+            name: "Reverse-Grip Pushdown",
+            equipment: "Cable Machine",
+            category: "Isolation",
+            difficulty: 1,
+            desc: "Flipping to an underhand (supinated) grip shifts the dominant load onto the medial head — a commonly neglected region that builds dense elbow strength.",
+            steps: [
+              "Attach straight bar to high cable pulley",
+              "Grip bar underhand (palms facing up), elbows pinned at sides",
+              "Push bar down to full extension — focus on squeezing at lockout",
+              "Slowly return to starting position, maintaining the supinated grip"
+            ],
+            sets: "3", reps: "12–15", rest: "60s"
+          },
+          {
+            icon: "🏋️",
+            name: "Close-Grip Bench Press",
+            equipment: "Barbell + Bench",
+            category: "Compound",
+            difficulty: 2,
+            desc: "The lockout phase of the close-grip bench press is dominated by the medial head, and heavy loading makes it the strongest builder for this region.",
+            steps: [
+              "Lie on bench, grip bar at shoulder-width or slightly narrower",
+              "Lower bar to lower chest with elbows tucked at 45° from body",
+              "Press to full lockout — squeeze hard at the top for medial head activation",
+              "Control the descent; don't let elbows flare wide"
+            ],
+            sets: "4", reps: "6–10", rest: "90s"
+          },
+          {
+            icon: "💎",
+            name: "Diamond Push-Up",
+            equipment: "Bodyweight",
+            category: "Compound",
+            difficulty: 2,
+            desc: "Forming a diamond shape with both hands creates a narrow base that heavily loads the medial head through the full range of motion — no equipment needed.",
+            steps: [
+              "Form a diamond shape with index fingers and thumbs on the floor",
+              "Position hands under your chest, arms extended",
+              "Lower chest toward hands, keeping elbows close to body",
+              "Press back to full extension, focusing on the lockout squeeze"
+            ],
+            sets: "3", reps: "12–20", rest: "60s"
+          },
+          {
+            icon: "🔁",
+            name: "EZ Bar Tricep Extension (Lying)",
+            equipment: "EZ Bar + Bench",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "The angled EZ bar grips reduce wrist strain and create a semi-supinated angle that increases medial head involvement compared to a straight bar.",
+            steps: [
+              "Lie flat on bench, hold EZ bar at the inner (angled) grip positions",
+              "Start with bar above chest, arms extended",
+              "Lower bar toward forehead by bending only at the elbows",
+              "Extend elbows to full lockout, focusing on the deep medial contraction"
+            ],
+            sets: "3", reps: "10–12", rest: "75s"
+          }
+        ]
       }
     ]
   },
@@ -1945,7 +2183,7 @@ function selectMuscle(id) {
 
   // Render exercise cards
   const grid = document.getElementById("exercises-grid");
-  grid.innerHTML = data.exercises.map(ex => {
+  function renderExCard(ex) {
     const goals = getTrainingGoals(ex.category);
     return `
     <div class="exercise-card">
@@ -1989,7 +2227,25 @@ function selectMuscle(id) {
         </div>
       </div>
     </div>
-  `}).join("");
+  `;}
+  if (data.subCategories) {
+    grid.innerHTML = data.subCategories.map(sub => `
+      <div class="sub-category-section">
+        <div class="sub-category-header" onclick="toggleSubCategory(this)">
+          <div class="sub-chevron">&#x25BC;</div>
+          <div>
+            <h3>${sub.name}</h3>
+            <p>${sub.description}</p>
+          </div>
+        </div>
+        <div class="sub-category-exercises">
+          ${sub.exercises.map(ex => renderExCard(ex)).join('')}
+        </div>
+      </div>
+    `).join('');
+  } else {
+    grid.innerHTML = data.exercises.map(ex => renderExCard(ex)).join("");
+  }
 
   document.getElementById("ref-section").style.display = "block";
   document.getElementById("exercise-panel").scrollTo({ top: 0, behavior: "smooth" });
@@ -2148,7 +2404,7 @@ const REHAB_EXERCISES = [
     ],
     setsReps: "Hold 2-3 sets x 45-90 seconds per side",
     duration: "45-90 seconds per side",
-    conditions: "Essential for hip tightness, limited hip mobility, and hip flexor restrictions"
+    conditions: "Essential for kip tightness, limited hip mobility, and hip flexor restrictions"
   },
   {
     name: "Face Pull",
@@ -2338,6 +2594,15 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // Toggle category expansion
+function toggleSubCategory(headerEl) {
+  const section = headerEl.closest('.sub-category-section');
+  const exercisesDiv = section.querySelector('.sub-category-exercises');
+  const chevron = headerEl.querySelector('.sub-chevron');
+  const isExpanded = exercisesDiv.style.display !== 'none';
+  exercisesDiv.style.display = isExpanded ? 'none' : 'grid';
+  chevron.innerHTML = isExpanded ? '&#x25B6;' : '&#x25BC;';
+}
+
 function toggleCategory(headerEl) {
   const section = headerEl.closest('.rehab-category-section');
   const exercisesDiv = section.querySelector('.category-exercises');
