@@ -633,151 +633,279 @@
     </div>
 
     <div class="body-svg-wrap">
-      <!-- FRONT VIEW -->
-      <svg id="svg-front" viewBox="0 0 280 580" xmlns="http://www.w3.org/2000/svg" style="display:block">
-        <!-- Body silhouette background -->
-        <ellipse cx="140" cy="44" rx="28" ry="32" fill="#2a3045"/>
-        <!-- Neck -->
-        <rect x="128" y="73" width="24" height="22" rx="4" fill="#2a3045"/>
-        <!-- Torso background -->
-        <path d="M90,92 Q70,100 65,130 L60,280 Q80,295 140,298 Q200,295 220,280 L215,130 Q210,100 190,92 Z" fill="#1e2433"/>
 
-        <!-- Left Shoulder (front delt) -->
-        <ellipse class="muscle-region" id="f-shoulder-l" cx="80" cy="125" rx="22" ry="26" fill="#3a7ca5" onclick="selectMuscle('front_delts')" title="Front Delts"/>
-        <!-- Right Shoulder (front delt) -->
-        <ellipse class="muscle-region" id="f-shoulder-r" cx="200" cy="125" rx="22" ry="26" fill="#3a7ca5" onclick="selectMuscle('front_delts')" title="Front Delts"/>
-
-        <!-- Left Chest (pec) -->
-        <path class="muscle-region" id="f-chest-l" d="M95,108 Q108,104 138,106 L138,175 Q110,178 95,168 Z" fill="#e63946" onclick="selectMuscle('chest')"/>
-        <!-- Right Chest (pec) -->
-        <path class="muscle-region" id="f-chest-r" d="M185,108 Q172,104 142,106 L142,175 Q170,178 185,168 Z" fill="#e63946" onclick="selectMuscle('chest')"/>
-
-        <!-- Left Bicep -->
-        <path class="muscle-region" id="f-bicep-l" d="M60,122 Q52,130 52,175 Q52,195 65,205 Q75,208 84,205 L84,165 Q78,145 70,125 Z" fill="#2dc653" onclick="selectMuscle('biceps')"/>
-        <!-- Right Bicep -->
-        <path class="muscle-region" id="f-bicep-r" d="M220,122 Q228,130 228,175 Q228,195 215,205 Q205,208 196,205 L196,165 Q202,145 210,125 Z" fill="#2dc653" onclick="selectMuscle('biceps')"/>
-
-        <!-- Left Forearm front -->
-        <path class="muscle-region" id="f-forearm-l" d="M52,208 Q45,225 44,270 Q46,285 60,288 Q72,286 78,275 L78,208 Q68,205 52,208 Z" fill="#f4a261" onclick="selectMuscle('forearms')"/>
-        <!-- Right Forearm front -->
-        <path class="muscle-region" id="f-forearm-r" d="M228,208 Q235,225 236,270 Q234,285 220,288 Q208,286 202,275 L202,208 Q212,205 228,208 Z" fill="#f4a261" onclick="selectMuscle('forearms')"/>
-
-        <!-- Abs (6-pack effect) -->
-        <path class="muscle-region" id="f-abs" d="M118,178 Q140,182 162,178 L165,280 Q140,285 115,280 Z" fill="#9b5de5" onclick="selectMuscle('abs')"/>
-        <!-- Abs separators (visual) -->
-        <line x1="119" y1="210" x2="161" y2="210" stroke="#1e2433" stroke-width="2" pointer-events="none"/>
-        <line x1="118" y1="245" x2="162" y2="245" stroke="#1e2433" stroke-width="2" pointer-events="none"/>
-        <line x1="140" y1="178" x2="140" y2="280" stroke="#1e2433" stroke-width="2" pointer-events="none"/>
-
-        <!-- Left Oblique -->
-        <path class="muscle-region" id="f-oblique-l" d="M95,175 Q110,175 118,178 L115,278 Q100,285 88,278 L85,210 Z" fill="#f77f00" onclick="selectMuscle('obliques')"/>
-        <!-- Right Oblique -->
-        <path class="muscle-region" id="f-oblique-r" d="M185,175 Q170,175 162,178 L165,278 Q180,285 192,278 L195,210 Z" fill="#f77f00" onclick="selectMuscle('obliques')"/>
-
-        <!-- Hip area -->
-        <path d="M88,278 Q105,295 140,298 Q175,295 192,278 L192,310 Q175,322 140,325 Q105,322 88,310 Z" fill="#1e2433"/>
-
-        <!-- Left Quad -->
-        <path class="muscle-region" id="f-quad-l" d="M92,308 Q105,320 134,322 L130,470 Q108,475 94,466 Z" fill="#0077b6" onclick="selectMuscle('quads')"/>
-        <!-- Right Quad -->
-        <path class="muscle-region" id="f-quad-r" d="M188,308 Q175,320 146,322 L150,470 Q172,475 186,466 Z" fill="#0077b6" onclick="selectMuscle('quads')"/>
-
-        <!-- Quad separation line -->
-        <line x1="134" y1="322" x2="146" y2="322" stroke="#161a24" stroke-width="3" pointer-events="none"/>
-        <line x1="130" y1="470" x2="150" y2="470" stroke="#161a24" stroke-width="3" pointer-events="none"/>
-
-        <!-- Left Calf front -->
-        <path class="muscle-region" id="f-calf-l" d="M94,470 Q108,476 130,473 L126,565 Q108,572 94,563 Z" fill="#48cae4" onclick="selectMuscle('calves')"/>
-        <!-- Right Calf front -->
-        <path class="muscle-region" id="f-calf-r" d="M186,470 Q172,476 150,473 L154,565 Q172,572 186,563 Z" fill="#48cae4" onclick="selectMuscle('calves')"/>
-
-        <!-- Labels -->
-        <text class="muscle-label" x="80" y="118">DELTS</text>
-        <text class="muscle-label" x="113" y="143">CHEST</text>
-        <text class="muscle-label" x="167" y="143">CHEST</text>
-        <text class="muscle-label" x="63" y="165">BICEP</text>
-        <text class="muscle-label" x="217" y="165">BICEP</text>
-        <text class="muscle-label" x="60" y="250">FORE</text>
-        <text class="muscle-label" x="220" y="250">FORE</text>
-        <text class="muscle-label" x="140" y="232">ABS</text>
-        <text class="muscle-label" x="101" y="232">OBL</text>
-        <text class="muscle-label" x="179" y="232">OBL</text>
-        <text class="muscle-label" x="113" y="390">QUADS</text>
-        <text class="muscle-label" x="167" y="390">QUADS</text>
-        <text class="muscle-label" x="112" y="520">CALF</text>
-        <text class="muscle-label" x="168" y="520">CALF</text>
-        <text class="muscle-label" x="200" y="118">DELTS</text>
+      <!-- ===== SHARED GRADIENT DEFS (used by both SVGs) ===== -->
+      <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <radialGradient id="g-delt" cx="38%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#88ccff"/>
+            <stop offset="55%" stop-color="#2276cc"/>
+            <stop offset="100%" stop-color="#082a60"/>
+          </radialGradient>
+          <radialGradient id="g-chest" cx="35%" cy="28%" r="65%">
+            <stop offset="0%" stop-color="#ffb56a"/>
+            <stop offset="55%" stop-color="#d96020"/>
+            <stop offset="100%" stop-color="#6a2200"/>
+          </radialGradient>
+          <radialGradient id="g-bicep" cx="42%" cy="32%" r="60%">
+            <stop offset="0%" stop-color="#80ff90"/>
+            <stop offset="55%" stop-color="#18aa45"/>
+            <stop offset="100%" stop-color="#005520"/>
+          </radialGradient>
+          <radialGradient id="g-forearm" cx="42%" cy="35%" r="60%">
+            <stop offset="0%" stop-color="#ffdd80"/>
+            <stop offset="55%" stop-color="#cc8810"/>
+            <stop offset="100%" stop-color="#664400"/>
+          </radialGradient>
+          <radialGradient id="g-abs" cx="50%" cy="38%" r="65%">
+            <stop offset="0%" stop-color="#7098ee"/>
+            <stop offset="55%" stop-color="#1440b0"/>
+            <stop offset="100%" stop-color="#040e40"/>
+          </radialGradient>
+          <radialGradient id="g-oblique" cx="48%" cy="38%" r="60%">
+            <stop offset="0%" stop-color="#ffcc66"/>
+            <stop offset="55%" stop-color="#cc7000"/>
+            <stop offset="100%" stop-color="#603200"/>
+          </radialGradient>
+          <radialGradient id="g-quad" cx="50%" cy="36%" r="62%">
+            <stop offset="0%" stop-color="#55e0ff"/>
+            <stop offset="55%" stop-color="#0088bb"/>
+            <stop offset="100%" stop-color="#003050"/>
+          </radialGradient>
+          <radialGradient id="g-calf" cx="50%" cy="33%" r="60%">
+            <stop offset="0%" stop-color="#ff99cc"/>
+            <stop offset="55%" stop-color="#dd1880"/>
+            <stop offset="100%" stop-color="#660030"/>
+          </radialGradient>
+          <radialGradient id="g-traps" cx="50%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#ff7777"/>
+            <stop offset="55%" stop-color="#cc1515"/>
+            <stop offset="100%" stop-color="#600000"/>
+          </radialGradient>
+          <radialGradient id="g-lat" cx="45%" cy="36%" r="65%">
+            <stop offset="0%" stop-color="#cc88ff"/>
+            <stop offset="55%" stop-color="#7722cc"/>
+            <stop offset="100%" stop-color="#2a0060"/>
+          </radialGradient>
+          <radialGradient id="g-lowerback" cx="50%" cy="38%" r="60%">
+            <stop offset="0%" stop-color="#ffaa66"/>
+            <stop offset="55%" stop-color="#cc5510"/>
+            <stop offset="100%" stop-color="#602200"/>
+          </radialGradient>
+          <radialGradient id="g-glute" cx="40%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#ffbb66"/>
+            <stop offset="55%" stop-color="#dd7010"/>
+            <stop offset="100%" stop-color="#6a2800"/>
+          </radialGradient>
+          <radialGradient id="g-ham" cx="50%" cy="36%" r="62%">
+            <stop offset="0%" stop-color="#4488ee"/>
+            <stop offset="55%" stop-color="#0040aa"/>
+            <stop offset="100%" stop-color="#001550"/>
+          </radialGradient>
+          <radialGradient id="g-tricep" cx="54%" cy="33%" r="62%">
+            <stop offset="0%" stop-color="#80ff90"/>
+            <stop offset="55%" stop-color="#18aa45"/>
+            <stop offset="100%" stop-color="#005520"/>
+          </radialGradient>
+          <radialGradient id="g-rhom" cx="50%" cy="36%" r="60%">
+            <stop offset="0%" stop-color="#ffaa44"/>
+            <stop offset="55%" stop-color="#cc6600"/>
+            <stop offset="100%" stop-color="#603000"/>
+          </radialGradient>
+          <radialGradient id="g-serratus" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#ccff77"/>
+            <stop offset="55%" stop-color="#77cc00"/>
+            <stop offset="100%" stop-color="#306000"/>
+          </radialGradient>
+        </defs>
       </svg>
 
-      <!-- BACK VIEW -->
-      <svg id="svg-back" viewBox="0 0 280 580" xmlns="http://www.w3.org/2000/svg" style="display:none">
-        <!-- Body silhouette background -->
-        <ellipse cx="140" cy="44" rx="28" ry="32" fill="#2a3045"/>
-        <rect x="128" y="73" width="24" height="22" rx="4" fill="#2a3045"/>
-        <path d="M90,92 Q70,100 65,130 L60,280 Q80,295 140,298 Q200,295 220,280 L215,130 Q210,100 190,92 Z" fill="#1e2433"/>
+      <!-- ===== FRONT VIEW ===== -->
+      <svg id="svg-front" viewBox="0 0 280 590" xmlns="http://www.w3.org/2000/svg" style="display:block">
 
-        <!-- Trapezius -->
-        <path class="muscle-region" id="b-traps" d="M110,80 Q140,70 170,80 L185,110 Q160,120 140,118 Q120,120 95,110 Z" fill="#e63946" onclick="selectMuscle('traps')"/>
+        <!-- Body background (wider V-taper silhouette) -->
+        <ellipse cx="140" cy="40" rx="27" ry="30" fill="#2a3348"/>
+        <path d="M130,68 Q130,60 140,58 Q150,60 150,68 L152,90 Q148,96 140,97 Q132,96 128,90 Z" fill="#232840"/>
+        <path d="M88,90 Q68,98 54,126 L50,286 Q72,307 140,312 Q208,307 230,286 L226,126 Q212,98 192,90 Q175,86 140,85 Q105,86 88,90 Z" fill="#161c2c"/>
 
-        <!-- Left Rear Delt -->
-        <ellipse class="muscle-region" id="b-shoulder-l" cx="80" cy="128" rx="22" ry="24" fill="#3a7ca5" onclick="selectMuscle('rear_delts')" title="Rear Delts"/>
-        <!-- Right Rear Delt -->
-        <ellipse class="muscle-region" id="b-shoulder-r" cx="200" cy="128" rx="22" ry="24" fill="#3a7ca5" onclick="selectMuscle('rear_delts')" title="Rear Delts"/>
+        <!-- TRAPS (visible from front at sides of neck) -->
+        <path class="muscle-region" id="f-trap-l" d="M130,68 Q118,73 98,88 Q88,96 88,110 Q100,116 116,114 Q128,106 132,88 Q132,77 130,68 Z" fill="url(#g-traps)" onclick="selectMuscle('traps')"/>
+        <path class="muscle-region" id="f-trap-r" d="M150,68 Q162,73 182,88 Q192,96 192,110 Q180,116 164,114 Q152,106 148,88 Q148,77 150,68 Z" fill="url(#g-traps)" onclick="selectMuscle('traps')"/>
 
-        <!-- Left Lat -->
-        <path class="muscle-region" id="b-lat-l" d="M90,118 Q76,135 72,175 Q70,210 85,240 L118,248 L115,118 Z" fill="#9b5de5" onclick="selectMuscle('back')"/>
-        <!-- Right Lat -->
-        <path class="muscle-region" id="b-lat-r" d="M190,118 Q204,135 208,175 Q210,210 195,240 L162,248 L165,118 Z" fill="#9b5de5" onclick="selectMuscle('back')"/>
+        <!-- ANTERIOR DELTOIDS (large, round) -->
+        <path class="muscle-region" id="f-shoulder-l" d="M88,92 Q70,98 56,116 Q48,130 48,154 Q48,174 60,186 Q70,196 84,194 Q98,192 108,178 Q116,162 114,140 Q112,118 102,104 Q96,96 88,92 Z" fill="url(#g-delt)" onclick="selectMuscle('front_delts')"/>
+        <path class="muscle-region" id="f-shoulder-r" d="M192,92 Q210,98 224,116 Q232,130 232,154 Q232,174 220,186 Q210,196 196,194 Q182,192 172,178 Q164,162 166,140 Q168,118 178,104 Q184,96 192,92 Z" fill="url(#g-delt)" onclick="selectMuscle('front_delts')"/>
 
-        <!-- Rhomboids / Mid back -->
-        <path class="muscle-region" id="b-rhomboids" d="M115,118 L165,118 L162,195 L118,195 Z" fill="#f77f00" onclick="selectMuscle('back')"/>
+        <!-- PECTORALS (prominent, with groove) -->
+        <path class="muscle-region" id="f-chest-l" d="M88,102 Q96,94 134,93 Q139,96 140,106 L138,184 Q118,192 100,184 Q84,174 82,152 Q80,126 88,102 Z" fill="url(#g-chest)" onclick="selectMuscle('chest')"/>
+        <path class="muscle-region" id="f-chest-r" d="M192,102 Q184,94 146,93 Q141,96 140,106 L142,184 Q162,192 180,184 Q196,174 198,152 Q200,126 192,102 Z" fill="url(#g-chest)" onclick="selectMuscle('chest')"/>
+        <!-- Sternal groove -->
+        <path d="M139,95 L140,184" stroke="#0a1020" stroke-width="3" fill="none" pointer-events="none"/>
+        <!-- Pec underline (infra-mammary fold) -->
+        <path d="M100,184 Q120,194 140,192 Q160,194 180,184" stroke="#0a1020" stroke-width="2" fill="none" pointer-events="none"/>
+        <!-- Delt/pec groove -->
+        <path d="M90,104 Q80,124 78,156" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+        <path d="M190,104 Q200,124 202,156" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
 
-        <!-- Lower back (erectors) -->
-        <path class="muscle-region" id="b-lowerback" d="M118,195 L162,195 L165,278 Q140,285 115,278 Z" fill="#f4a261" onclick="selectMuscle('back')"/>
+        <!-- SERRATUS ANTERIOR (finger-like, side of ribs) -->
+        <path id="f-serratus-l" d="M86,168 Q94,166 102,173 L98,196 Q92,198 86,192 Q82,184 86,168 Z" fill="url(#g-serratus)" opacity="0.72" pointer-events="none"/>
+        <path id="f-serratus-r" d="M194,168 Q186,166 178,173 L182,196 Q188,198 194,192 Q198,184 194,168 Z" fill="url(#g-serratus)" opacity="0.72" pointer-events="none"/>
 
-        <!-- Left Tricep -->
-        <path class="muscle-region" id="b-tricep-l" d="M60,118 Q52,135 50,180 Q52,205 65,210 Q76,208 84,205 L84,168 Q78,140 72,122 Z" fill="#2dc653" onclick="selectMuscle('triceps')"/>
-        <!-- Right Tricep -->
-        <path class="muscle-region" id="b-tricep-r" d="M220,118 Q228,135 230,180 Q228,205 215,210 Q204,208 196,205 L196,168 Q202,140 208,122 Z" fill="#2dc653" onclick="selectMuscle('triceps')"/>
+        <!-- BICEPS (peaked, both heads suggested) -->
+        <path class="muscle-region" id="f-bicep-l" d="M50,158 Q42,170 40,200 Q38,224 46,248 Q54,264 70,270 Q84,275 96,266 Q108,256 110,232 Q112,210 106,184 L104,178 Q94,186 82,192 Q68,194 58,186 Q52,177 50,158 Z" fill="url(#g-bicep)" onclick="selectMuscle('biceps')"/>
+        <!-- Bicep peak line -->
+        <path d="M72,194 Q78,210 78,236" stroke="#0a1020" stroke-width="1.5" fill="none" pointer-events="none"/>
+        <path class="muscle-region" id="f-bicep-r" d="M230,158 Q238,170 240,200 Q242,224 234,248 Q226,264 210,270 Q196,275 184,266 Q172,256 170,232 Q168,210 174,184 L176,178 Q186,186 198,192 Q212,194 222,186 Q228,177 230,158 Z" fill="url(#g-bicep)" onclick="selectMuscle('biceps')"/>
+        <path d="M208,194 Q202,210 202,236" stroke="#0a1020" stroke-width="1.5" fill="none" pointer-events="none"/>
 
-        <!-- Left Forearm back -->
-        <path class="muscle-region" id="b-forearm-l" d="M50,213 Q44,235 43,272 Q46,286 60,288 Q72,286 78,274 L78,210 Q66,208 50,213 Z" fill="#f4a261" onclick="selectMuscle('forearms')"/>
-        <!-- Right Forearm back -->
-        <path class="muscle-region" id="b-forearm-r" d="M230,213 Q236,235 237,272 Q234,286 220,288 Q208,286 202,274 L202,210 Q214,208 230,213 Z" fill="#f4a261" onclick="selectMuscle('forearms')"/>
+        <!-- FOREARMS -->
+        <path class="muscle-region" id="f-forearm-l" d="M40,252 Q32,272 30,302 Q30,318 46,326 Q60,333 74,329 Q88,323 92,306 L94,266 Q84,270 70,270 Q54,268 40,252 Z" fill="url(#g-forearm)" onclick="selectMuscle('forearms')"/>
+        <path class="muscle-region" id="f-forearm-r" d="M240,252 Q248,272 250,302 Q250,318 234,326 Q220,333 206,329 Q192,323 188,306 L186,266 Q196,270 210,270 Q226,268 240,252 Z" fill="url(#g-forearm)" onclick="selectMuscle('forearms')"/>
 
-        <!-- Hip area -->
-        <path d="M88,278 Q105,295 140,298 Q175,295 192,278 L192,310 Q175,322 140,325 Q105,322 88,310 Z" fill="#1e2433"/>
+        <!-- ABS (6-pack grid) -->
+        <path class="muscle-region" id="f-abs" d="M114,186 Q140,192 166,186 L168,292 Q140,300 112,292 Z" fill="url(#g-abs)" onclick="selectMuscle('abs')"/>
+        <!-- Center linea alba -->
+        <line x1="140" y1="186" x2="140" y2="292" stroke="#060c1a" stroke-width="3.5" pointer-events="none"/>
+        <!-- 3 horizontal tendinous inscriptions -->
+        <path d="M115,219 Q140,225 165,219" stroke="#060c1a" stroke-width="2.5" fill="none" pointer-events="none"/>
+        <path d="M114,253 Q140,259 166,253" stroke="#060c1a" stroke-width="2.5" fill="none" pointer-events="none"/>
+        <!-- Linea semilunaris -->
+        <path d="M118,186 Q116,239 113,292" stroke="#060c1a" stroke-width="1.8" fill="none" pointer-events="none"/>
+        <path d="M162,186 Q164,239 167,292" stroke="#060c1a" stroke-width="1.8" fill="none" pointer-events="none"/>
 
-        <!-- Glutes -->
-        <path class="muscle-region" id="b-glutes-l" d="M90,305 Q106,318 138,322 L134,380 Q110,385 92,372 Z" fill="#e63946" onclick="selectMuscle('glutes')"/>
-        <path class="muscle-region" id="b-glutes-r" d="M190,305 Q174,318 142,322 L146,380 Q170,385 188,372 Z" fill="#e63946" onclick="selectMuscle('glutes')"/>
+        <!-- OBLIQUES -->
+        <path class="muscle-region" id="f-oblique-l" d="M90,182 Q104,180 114,186 L112,292 Q98,302 84,290 L82,244 Q82,210 90,182 Z" fill="url(#g-oblique)" onclick="selectMuscle('obliques')"/>
+        <path class="muscle-region" id="f-oblique-r" d="M190,182 Q176,180 166,186 L168,292 Q182,302 196,290 L198,244 Q198,210 190,182 Z" fill="url(#g-oblique)" onclick="selectMuscle('obliques')"/>
 
-        <!-- Left Hamstring -->
-        <path class="muscle-region" id="b-ham-l" d="M92,375 Q110,385 134,382 L130,470 Q108,476 94,466 Z" fill="#0077b6" onclick="selectMuscle('hamstrings')"/>
-        <!-- Right Hamstring -->
-        <path class="muscle-region" id="b-ham-r" d="M188,375 Q170,385 146,382 L150,470 Q172,476 186,466 Z" fill="#0077b6" onclick="selectMuscle('hamstrings')"/>
+        <!-- HIP area -->
+        <path d="M84,290 Q106,310 140,315 Q174,310 196,290 L198,323 Q176,342 140,346 Q104,342 82,323 Z" fill="#12192a"/>
 
-        <!-- Left Calf back -->
-        <path class="muscle-region" id="b-calf-l" d="M94,470 Q108,477 130,474 L126,565 Q108,572 94,563 Z" fill="#48cae4" onclick="selectMuscle('calves')"/>
-        <!-- Right Calf back -->
-        <path class="muscle-region" id="b-calf-r" d="M186,470 Q172,477 150,474 L154,565 Q172,572 186,563 Z" fill="#48cae4" onclick="selectMuscle('calves')"/>
+        <!-- QUADS — 3 visible heads each side -->
+        <!-- Left Vastus Lateralis (outer) -->
+        <path class="muscle-region" id="f-quad-vl-l" d="M84,322 Q88,332 102,342 L98,448 Q82,456 72,446 Q66,420 68,380 Q70,344 84,322 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')"/>
+        <!-- Left Rectus Femoris (center, slightly lighter) -->
+        <path class="muscle-region" id="f-quad-rf-l" d="M102,340 Q118,346 136,346 L130,468 Q114,476 100,468 Q96,452 96,440 L102,340 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')" opacity="0.82"/>
+        <!-- Left Vastus Medialis (teardrop near knee) -->
+        <path class="muscle-region" id="f-quad-vm-l" d="M96,442 Q112,436 130,444 Q132,460 128,470 Q116,478 104,472 Q96,464 96,442 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')"/>
+        <!-- Separation line between VL and RF left -->
+        <path d="M102,342 Q100,395 98,448" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
 
-        <!-- Labels -->
-        <text class="muscle-label" x="140" y="96">TRAPS</text>
-        <text class="muscle-label" x="80" y="122">DELTS</text>
-        <text class="muscle-label" x="200" y="122">DELTS</text>
-        <text class="muscle-label" x="93" y="180">LATS</text>
-        <text class="muscle-label" x="187" y="180">LATS</text>
-        <text class="muscle-label" x="140" y="158">RHOMB</text>
-        <text class="muscle-label" x="140" y="240">LOW BACK</text>
-        <text class="muscle-label" x="63" y="165">TRI</text>
-        <text class="muscle-label" x="217" y="165">TRI</text>
-        <text class="muscle-label" x="113" y="347">GLUTES</text>
-        <text class="muscle-label" x="167" y="347">GLUTES</text>
-        <text class="muscle-label" x="112" y="425">HAMS</text>
-        <text class="muscle-label" x="168" y="425">HAMS</text>
-        <text class="muscle-label" x="112" y="520">CALF</text>
-        <text class="muscle-label" x="168" y="520">CALF</text>
+        <!-- Right Vastus Lateralis (outer) -->
+        <path class="muscle-region" id="f-quad-vl-r" d="M196,322 Q192,332 178,342 L182,448 Q198,456 208,446 Q214,420 212,380 Q210,344 196,322 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')"/>
+        <!-- Right Rectus Femoris (center) -->
+        <path class="muscle-region" id="f-quad-rf-r" d="M178,340 Q162,346 144,346 L150,468 Q166,476 180,468 Q184,452 184,440 L178,340 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')" opacity="0.82"/>
+        <!-- Right Vastus Medialis (teardrop) -->
+        <path class="muscle-region" id="f-quad-vm-r" d="M184,442 Q168,436 150,444 Q148,460 152,470 Q164,478 176,472 Q184,464 184,442 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')"/>
+        <!-- Separation line between VL and RF right -->
+        <path d="M178,342 Q180,395 182,448" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+        <!-- Mid-quad gap -->
+        <line x1="136" y1="346" x2="144" y2="346" stroke="#0a1020" stroke-width="3" pointer-events="none"/>
+
+        <!-- CALVES (gastrocnemius, diamond shape, two heads) -->
+        <path class="muscle-region" id="f-calf-l" d="M70,472 Q84,480 128,478 L124,548 Q110,568 96,564 Q82,558 74,542 Q66,518 66,494 Q66,480 70,472 Z" fill="url(#g-calf)" onclick="selectMuscle('calves')"/>
+        <path d="M102,478 Q104,514 102,548" stroke="#0a1020" stroke-width="2" fill="none" pointer-events="none"/>
+        <path class="muscle-region" id="f-calf-r" d="M210,472 Q196,480 152,478 L156,548 Q170,568 184,564 Q198,558 206,542 Q214,518 214,494 Q214,480 210,472 Z" fill="url(#g-calf)" onclick="selectMuscle('calves')"/>
+        <path d="M178,478 Q176,514 178,548" stroke="#0a1020" stroke-width="2" fill="none" pointer-events="none"/>
+
+        <!-- LABELS -->
+        <text class="muscle-label" x="140" y="86">TRAPS</text>
+        <text class="muscle-label" x="65" y="152">DELTS</text>
+        <text class="muscle-label" x="215" y="152">DELTS</text>
+        <text class="muscle-label" x="104" y="148">CHEST</text>
+        <text class="muscle-label" x="176" y="148">CHEST</text>
+        <text class="muscle-label" x="58" y="215">BICEP</text>
+        <text class="muscle-label" x="222" y="215">BICEP</text>
+        <text class="muscle-label" x="42" y="292">FORE</text>
+        <text class="muscle-label" x="238" y="292">FORE</text>
+        <text class="muscle-label" x="140" y="246">ABS</text>
+        <text class="muscle-label" x="96" y="244">OBL</text>
+        <text class="muscle-label" x="184" y="244">OBL</text>
+        <text class="muscle-label" x="82" y="390">QUAD</text>
+        <text class="muscle-label" x="198" y="390">QUAD</text>
+        <text class="muscle-label" x="90" y="518">CALF</text>
+        <text class="muscle-label" x="190" y="518">CALF</text>
+      </svg>
+
+      <!-- ===== BACK VIEW ===== -->
+      <svg id="svg-back" viewBox="0 0 280 590" xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+        <!-- Body background -->
+        <ellipse cx="140" cy="40" rx="27" ry="30" fill="#2a3348"/>
+        <path d="M130,68 Q130,60 140,58 Q150,60 150,68 L152,90 Q148,96 140,97 Q132,96 128,90 Z" fill="#232840"/>
+        <path d="M88,90 Q68,98 54,126 L50,286 Q72,307 140,312 Q208,307 230,286 L226,126 Q212,98 192,90 Q175,86 140,85 Q105,86 88,90 Z" fill="#161c2c"/>
+
+        <!-- TRAPEZIUS (large diamond) -->
+        <path class="muscle-region" id="b-traps" d="M114,72 Q140,62 166,72 L186,112 Q168,128 140,124 Q112,128 94,112 Z" fill="url(#g-traps)" onclick="selectMuscle('traps')"/>
+
+        <!-- REAR DELTOIDS -->
+        <path class="muscle-region" id="b-shoulder-l" d="M88,92 Q70,98 56,116 Q48,130 48,154 Q48,172 58,184 Q68,192 82,190 Q96,188 106,174 Q114,158 112,136 Q110,116 100,104 Q94,96 88,92 Z" fill="url(#g-delt)" onclick="selectMuscle('rear_delts')"/>
+        <path class="muscle-region" id="b-shoulder-r" d="M192,92 Q210,98 224,116 Q232,130 232,154 Q232,172 222,184 Q212,192 198,190 Q184,188 174,174 Q166,158 168,136 Q170,116 180,104 Q186,96 192,92 Z" fill="url(#g-delt)" onclick="selectMuscle('rear_delts')"/>
+
+        <!-- LATS (large V-shape) -->
+        <path class="muscle-region" id="b-lat-l" d="M88,112 Q72,132 66,174 Q62,214 72,252 Q80,270 98,276 L120,264 L116,120 Z" fill="url(#g-lat)" onclick="selectMuscle('back')"/>
+        <path class="muscle-region" id="b-lat-r" d="M192,112 Q208,132 214,174 Q218,214 208,252 Q200,270 182,276 L160,264 L164,120 Z" fill="url(#g-lat)" onclick="selectMuscle('back')"/>
+
+        <!-- RHOMBOIDS / MID BACK -->
+        <path class="muscle-region" id="b-rhomboids" d="M116,120 L164,120 L166,204 Q140,210 114,204 Z" fill="url(#g-rhom)" onclick="selectMuscle('back')"/>
+        <!-- Rhomboid center line -->
+        <line x1="140" y1="120" x2="140" y2="204" stroke="#0a1020" stroke-width="2.5" pointer-events="none"/>
+
+        <!-- LOWER BACK / ERECTOR SPINAE -->
+        <path class="muscle-region" id="b-lowerback" d="M114,204 Q140,210 166,204 L168,288 Q140,296 112,288 Z" fill="url(#g-lowerback)" onclick="selectMuscle('back')"/>
+        <!-- Erector split -->
+        <line x1="140" y1="204" x2="140" y2="288" stroke="#0a1020" stroke-width="2.5" pointer-events="none"/>
+
+        <!-- TRICEPS (horseshoe shape, very prominent from back) -->
+        <path class="muscle-region" id="b-tricep-l" d="M50,152 Q42,166 40,198 Q38,222 46,244 Q54,260 70,266 Q84,271 96,262 Q108,252 112,228 Q116,206 110,180 Q106,162 96,148 Q92,190 90,194 Q80,192 70,184 Q58,173 50,152 Z" fill="url(#g-tricep)" onclick="selectMuscle('triceps')"/>
+        <!-- Tricep head separation -->
+        <path d="M76,186 Q82,208 82,240" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+        <path class="muscle-region" id="b-tricep-r" d="M230,152 Q238,166 240,198 Q242,222 234,244 Q226,260 210,266 Q196,271 184,262 Q172,252 168,228 Q164,206 170,180 Q174,162 184,148 Q188,190 190,194 Q200,192 210,184 Q222,173 230,152 Z" fill="url(#g-tricep)" onclick="selectMuscle('triceps')"/>
+        <path d="M204,186 Q198,208 198,240" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+
+        <!-- FOREARMS (back view) -->
+        <path class="muscle-region" id="b-forearm-l" d="M40,248 Q32,268 30,300 Q30,316 46,324 Q60,330 74,326 Q88,320 92,302 L94,264 Q84,270 70,268 Q54,265 40,248 Z" fill="url(#g-forearm)" onclick="selectMuscle('forearms')"/>
+        <path class="muscle-region" id="b-forearm-r" d="M240,248 Q248,268 250,300 Q250,316 234,324 Q220,330 206,326 Q192,320 188,302 L186,264 Q196,270 210,268 Q226,265 240,248 Z" fill="url(#g-forearm)" onclick="selectMuscle('forearms')"/>
+
+        <!-- HIP area (back) -->
+        <path d="M84,290 Q106,310 140,315 Q174,310 196,290 L198,323 Q176,342 140,346 Q104,342 82,323 Z" fill="#12192a"/>
+
+        <!-- GLUTES (large, very round) -->
+        <path class="muscle-region" id="b-glutes-l" d="M84,322 Q90,316 116,312 Q138,314 140,328 L136,392 Q118,406 102,400 Q86,392 80,374 Q76,352 84,322 Z" fill="url(#g-glute)" onclick="selectMuscle('glutes')"/>
+        <path class="muscle-region" id="b-glutes-r" d="M196,322 Q190,316 164,312 Q142,314 140,328 L144,392 Q162,406 178,400 Q194,392 200,374 Q204,352 196,322 Z" fill="url(#g-glute)" onclick="selectMuscle('glutes')"/>
+        <!-- Glute crease -->
+        <path d="M140,328 L140,392" stroke="#0a1020" stroke-width="2.5" fill="none" pointer-events="none"/>
+
+        <!-- HAMSTRINGS -->
+        <path class="muscle-region" id="b-ham-l" d="M80,392 Q100,404 136,394 L130,472 Q112,480 98,472 Q84,462 78,444 Q74,418 80,392 Z" fill="url(#g-ham)" onclick="selectMuscle('hamstrings')"/>
+        <!-- Ham bicep femoris / semitendinosis separation -->
+        <path d="M110,396 Q108,434 106,472" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+        <path class="muscle-region" id="b-ham-r" d="M200,392 Q180,404 144,394 L150,472 Q168,480 182,472 Q196,462 202,444 Q206,418 200,392 Z" fill="url(#g-ham)" onclick="selectMuscle('hamstrings')"/>
+        <path d="M170,396 Q172,434 174,472" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+
+        <!-- CALVES (back view, diamond shape) -->
+        <path class="muscle-region" id="b-calf-l" d="M78,472 Q92,480 130,478 L126,548 Q112,568 96,564 Q82,558 74,542 Q66,518 66,494 Q66,480 78,472 Z" fill="url(#g-calf)" onclick="selectMuscle('calves')"/>
+        <path d="M104,478 Q106,514 104,548" stroke="#0a1020" stroke-width="2" fill="none" pointer-events="none"/>
+        <path class="muscle-region" id="b-calf-r" d="M202,472 Q188,480 150,478 L154,548 Q168,568 184,564 Q198,558 206,542 Q214,518 214,494 Q214,480 202,472 Z" fill="url(#g-calf)" onclick="selectMuscle('calves')"/>
+        <path d="M176,478 Q174,514 176,548" stroke="#0a1020" stroke-width="2" fill="none" pointer-events="none"/>
+
+        <!-- LABELS -->
+        <text class="muscle-label" x="140" y="92">TRAPS</text>
+        <text class="muscle-label" x="65" y="150">DELTS</text>
+        <text class="muscle-label" x="215" y="150">DELTS</text>
+        <text class="muscle-label" x="84" y="185">LATS</text>
+        <text class="muscle-label" x="196" y="185">LATS</text>
+        <text class="muscle-label" x="140" y="164">RHOMB</text>
+        <text class="muscle-label" x="140" y="250">ERECTORS</text>
+        <text class="muscle-label" x="56" y="210">TRI</text>
+        <text class="muscle-label" x="224" y="210">TRI</text>
+        <text class="muscle-label" x="42" y="290">FORE</text>
+        <text class="muscle-label" x="238" y="290">FORE</text>
+        <text class="muscle-label" x="107" y="360">GLUTES</text>
+        <text class="muscle-label" x="173" y="360">GLUTES</text>
+        <text class="muscle-label" x="98" y="435">HAMS</text>
+        <text class="muscle-label" x="182" y="435">HAMS</text>
+        <text class="muscle-label" x="90" y="518">CALF</text>
+        <text class="muscle-label" x="190" y="518">CALF</text>
       </svg>
     </div>
 
@@ -837,11 +965,10 @@
 </div>
 
 <script>
-const MUSCLES= {
-  chest: 
-  {
+const MUSCLES = {
+  chest: {
     name: "Chest (Pectoralis Major)",
-     tag: "UPPER BODY",
+    tag: "UPPER BODY",
     color: "#e63946",
     desc: "The pectoralis major is a large fan-shaped muscle covering the chest wall. It's responsible for horizontal adduction, flexion, and internal rotation of the shoulder. Well-developed pecs give the chest a broad, defined appearance.",
     wikiLink: "https://en.wikipedia.org/wiki/Pectoralis_major",
@@ -2404,7 +2531,7 @@ const REHAB_EXERCISES = [
     ],
     setsReps: "Hold 2-3 sets x 45-90 seconds per side",
     duration: "45-90 seconds per side",
-    conditions: "Essential for kip tightness, limited hip mobility, and hip flexor restrictions"
+    conditions: "Essential for hip tightness, limited hip mobility, and hip flexor restrictions"
   },
   {
     name: "Face Pull",
