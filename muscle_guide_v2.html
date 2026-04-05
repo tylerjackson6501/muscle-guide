@@ -1,0 +1,2746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muscle Group Exercise Guide</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0d0f14;
+    --card: #161a24;
+    --card2: #1e2433;
+    --accent: #e63946;
+    --accent2: #ff6b6b;
+    --text: #f0f2f5;
+    --muted: #8b93a8;
+    --border: #2a3045;
+    --highlight: rgba(230,57,70,0.18);
+    --glow: 0 0 18px rgba(230,57,70,0.4);
+  }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+  header {
+    background: linear-gradient(135deg, #0d0f14 0%, #161a24 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  header .logo { font-size: 28px; }
+  header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
+  header h1 span { color: var(--accent); }
+  header p { color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
+
+  .main { display: flex; min-height: calc(100vh - 70px); }
+
+  /* LEFT PANEL - body diagram */
+  .body-panel {
+    width: 340px;
+    min-width: 300px;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  .view-toggle {
+    display: flex;
+    background: var(--card2);
+    border-radius: 10px;
+    padding: 4px;
+    gap: 4px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .view-toggle button {
+    padding: 8px 22px;
+    border: none;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .view-toggle button.active {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: var(--glow);
+  }
+  .body-svg-wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .body-svg-wrap svg {
+    max-width: 260px;
+    filter: drop-shadow(0 4px 24px rgba(0,0,0,0.5));
+  }
+  .muscle-region {
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0.92;
+    stroke: rgba(0,0,0,0.5);
+    stroke-width: 1.2;
+  }
+  .muscle-region:hover { opacity: 1; filter: brightness(1.15); stroke-width: 1.8; }
+  .muscle-region.active { opacity: 1; filter: brightness(1.2) drop-shadow(0 0 6px rgba(230,57,70,0.6)); stroke: rgba(255,255,255,0.7); stroke-width: 2; }
+  .muscle-label {
+    font-size: 9px;
+    fill: #fff;
+    font-weight: 700;
+    text-anchor: middle;
+    pointer-events: none;
+    text-shadow: 0 1px 3px #000;
+  }
+
+  /* RIGHT PANEL - exercises */
+  .exercise-panel {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+  }
+  .welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    text-align: center;
+    gap: 16px;
+  }
+  .welcome-screen .icon { font-size: 64px; }
+  .welcome-screen h2 { font-size: 1.6rem; font-weight: 700; }
+  .welcome-screen p { color: var(--muted); max-width: 360px; line-height: 1.6; }
+  .muscle-header {
+    display: none;
+    margin-bottom: 28px;
+  }
+  .muscle-header.visible { display: block; }
+  .muscle-header .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .muscle-header h2 { font-size: 2rem; font-weight: 800; }
+  .muscle-header .desc { color: var(--muted); margin-top: 8px; line-height: 1.6; max-width: 600px; font-size: 0.95rem; }
+  .muscle-header .anatomy-img {
+    margin-top: 16px;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .muscle-header .anatomy-img a { color: var(--accent2); text-decoration: none; }
+  .muscle-header .anatomy-img a:hover { text-decoration: underline; }
+
+  .exercises-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .sub-category-section { grid-column: 1 / -1; margin-bottom: 12px; }
+  .sub-category-header {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: background 0.2s;
+    margin-bottom: 6px;
+    user-select: none;
+  }
+  .sub-category-header:hover { background: #252d40; }
+  .sub-chevron { font-size: 0.9rem; color: var(--accent2); min-width: 16px; }
+  .sub-category-header h3 { font-size: 1rem; font-weight: 700; color: var(--accent); margin: 0; }
+  .sub-category-header p { color: var(--muted); font-size: 0.8rem; margin: 2px 0 0 0; }
+  .sub-category-exercises {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 4px 0 12px 0;
+  }
+  .exercise-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.25s;
+  }
+  .exercise-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(230,57,70,0.2);
+  }
+  .exercise-card .card-img {
+    height: 160px;
+    background: var(--card2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .exercise-card .card-img .big-icon { font-size: 52px; }
+  .exercise-card .card-img .category-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(230,57,70,0.85);
+    color: #fff;
+    padding: 3px 9px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+  .exercise-card .card-img .difficulty {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    gap: 3px;
+  }
+  .exercise-card .card-img .difficulty span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .exercise-card .card-img .difficulty span.filled { background: var(--accent); }
+  .card-body { padding: 18px; }
+  .card-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+  .card-body .equipment {
+    color: var(--accent2);
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .card-body p { color: var(--muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 12px; }
+  .card-body .steps { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .card-body .steps li {
+    display: flex;
+    gap: 10px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .card-body .steps li .num {
+    min-width: 20px;
+    height: 20px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .card-body .sets-reps {
+    margin-top: 14px;
+    background: var(--card2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid var(--border);
+  }
+  .sets-reps .stat { text-align: center; }
+  .sets-reps .stat .val { font-size: 1.1rem; font-weight: 800; color: var(--accent); }
+  .sets-reps .stat .lbl { font-size: 0.7rem; color: var(--muted); }
+
+  .training-goals {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .training-goals-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 14px;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+  }
+  .training-goal-box {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 11px;
+  }
+  .training-goal-box .goal-title {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .training-goal-box.strength .goal-title { color: #ff6b6b; }
+  .training-goal-box.hypertrophy .goal-title { color: #4cc9f0; }
+  .training-goal-box .goal-line {
+    font-size: 0.74rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+  .training-goal-box .goal-line strong { color: var(--text); font-weight: 600; }
+  .training-goal-box .goal-tip {
+    margin-top: 6px;
+    font-size: 0.7rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .muscle-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+  .muscle-list-item {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+  }
+  .muscle-list-item:hover { background: var(--highlight); border-color: var(--accent); color: #fff; }
+  .muscle-list-item.active { background: var(--highlight); border-color: var(--accent); color: #fff; }
+  .muscle-list-item .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .ref-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .ref-section h4 { color: var(--text); margin-bottom: 8px; font-size: 0.9rem; }
+  .ref-section a { color: var(--accent2); text-decoration: none; }
+  .ref-section a:hover { text-decoration: underline; }
+
+  /* TAB NAVIGATION */
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--card);
+    padding: 0;
+    margin: 0;
+  }
+  .tab-nav .tab-button {
+    padding: 14px 24px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+  }
+  .tab-nav .tab-button:hover {
+    color: var(--text);
+    background: rgba(255,255,255,0.05);
+  }
+  .tab-nav .tab-button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .tab-nav .tab-button.rehab-tab.active {
+    color: #00b4d8;
+    border-bottom-color: #00b4d8;
+  }
+
+  /* TAB CONTENT */
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+
+  /* REHAB INTRO */
+  .rehab-intro {
+    background: linear-gradient(135deg, rgba(0,180,216,0.1) 0%, rgba(0,180,216,0.05) 100%);
+    border: 1px solid rgba(0,180,216,0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 28px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .rehab-intro h3 {
+    color: #00b4d8;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+  /* REHAB EXERCISE CARDS */
+  .rehab-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.25s;
+  }
+  .rehab-card:hover {
+    border-color: #00b4d8;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,180,216,0.2);
+  }
+  .rehab-card .card-header {
+    background: linear-gradient(135deg, #00b4d8 0%, #00a8cc 100%);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .rehab-card .card-header h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .rehab-card .target-badge {
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .rehab-card .card-body {
+    padding: 18px;
+  }
+  .rehab-card .equipment-line {
+    color: #00b4d8;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .rehab-card .description {
+    color: var(--text);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .rehab-card .steps-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .rehab-card .steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .rehab-card .steps li {
+    display: flex;
+    gap: 10px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .rehab-card .steps li .num {
+    min-width: 20px;
+    height: 20px;
+    background: #00b4d8;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+  .rehab-card .sets-reps-info {
+    background: var(--card2);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .rehab-card .sets-reps-info .stat {
+    text-align: center;
+  }
+  .rehab-card .sets-reps-info .stat .val {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #00b4d8;
+  }
+  .rehab-card .sets-reps-info .stat .lbl {
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .rehab-card .conditions {
+    background: rgba(0,180,216,0.1);
+    border: 1px solid rgba(0,180,216,0.2);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .rehab-card .conditions strong {
+    color: #00b4d8;
+  }
+
+  /* REHAB CATEGORY SECTIONS */
+  .rehab-category-section {
+    margin-bottom: 32px;
+  }
+  .category-header {
+    background: linear-gradient(135deg, #1a2332 0%, #1e2844 100%);
+    border: 1px solid rgba(0,180,216,0.3);
+    border-radius: 12px;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+  .category-header:hover {
+    background: linear-gradient(135deg, #1f2939 0%, #24314d 100%);
+    border-color: rgba(0,180,216,0.5);
+  }
+  .category-header-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .category-header .chevron {
+    color: var(--category-color, #00b4d8);
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    min-width: 20px;
+  }
+  .category-header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--category-color, #00b4d8);
+    margin: 0;
+  }
+  .category-description {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin: 0;
+    padding-left: 34px;
+    line-height: 1.5;
+  }
+  .category-exercises {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 18px;
+    transition: all 0.3s ease;
+  }
+
+
+  @media (max-width: 768px) {
+    .main { flex-direction: column; }
+    .body-panel { width: 100%; height: auto; position: relative; }
+    .exercise-panel { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">💪</div>
+  <div>
+    <h1>MUSCLE <span>MAP</span></h1>
+    <p>Click a muscle group on the body to explore exercises</p>
+  </div>
+</header>
+
+<div class="main">
+  <!-- LEFT: Body diagram -->
+  <div class="body-panel">
+    <div class="view-toggle">
+      <button class="active" onclick="setView('front')">Front</button>
+      <button onclick="setView('back')">Back</button>
+    </div>
+
+    <div class="body-svg-wrap">
+
+      <!-- ===== SHARED PATTERN DEFS (flat + muscle-fiber hatching) ===== -->
+      <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <!-- Deltoids: orange, fiber direction ~-25° (radiate from shoulder) -->
+          <pattern id="g-delt" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-25)">
+            <rect width="5" height="5" fill="#e07820"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#a85010" stroke-width="1.3"/>
+          </pattern>
+          <!-- Chest/Pecs: red-orange, fiber fan ~20° from sternum -->
+          <pattern id="g-chest" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(20)">
+            <rect width="5" height="5" fill="#d94e1a"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#a33010" stroke-width="1.3"/>
+          </pattern>
+          <!-- Biceps: green, vertical fibers -->
+          <pattern id="g-bicep" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(0)">
+            <rect width="5" height="5" fill="#18aa40"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#0d8830" stroke-width="1.3"/>
+          </pattern>
+          <!-- Forearms: gold/amber, slight diagonal -->
+          <pattern id="g-forearm" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-20)">
+            <rect width="5" height="5" fill="#b88820"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#906610" stroke-width="1.3"/>
+          </pattern>
+          <!-- Abs: blue, vertical fibers -->
+          <pattern id="g-abs" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(0)">
+            <rect width="5" height="5" fill="#1e50cc"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#1030a0" stroke-width="1.3"/>
+          </pattern>
+          <!-- Obliques: amber, 45° diagonal fibers -->
+          <pattern id="g-oblique" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)">
+            <rect width="5" height="5" fill="#d98000"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#b06000" stroke-width="1.3"/>
+          </pattern>
+          <!-- Quads: cyan-blue, vertical fibers -->
+          <pattern id="g-quad" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(0)">
+            <rect width="5" height="5" fill="#0090c8"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#006a99" stroke-width="1.3"/>
+          </pattern>
+          <!-- Calves: magenta/pink, vertical fibers -->
+          <pattern id="g-calf" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(0)">
+            <rect width="5" height="5" fill="#c41080"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#980060" stroke-width="1.3"/>
+          </pattern>
+          <!-- Trapezius: red, diagonal fiber from neck to shoulder ~-35° -->
+          <pattern id="g-traps" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-35)">
+            <rect width="5" height="5" fill="#cc2020"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#991010" stroke-width="1.3"/>
+          </pattern>
+          <!-- Lats: purple, strong diagonal -45° (lat pulldown direction) -->
+          <pattern id="g-lat" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-45)">
+            <rect width="5" height="5" fill="#8030cc"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#6020aa" stroke-width="1.3"/>
+          </pattern>
+          <!-- Lower back / erector spinae: brown-orange, vertical fibers -->
+          <pattern id="g-lowerback" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(0)">
+            <rect width="5" height="5" fill="#b85020"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#903010" stroke-width="1.3"/>
+          </pattern>
+          <!-- Glutes: orange, horizontal fibers -->
+          <pattern id="g-glute" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(90)">
+            <rect width="5" height="5" fill="#d87020"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#b05000" stroke-width="1.3"/>
+          </pattern>
+          <!-- Hamstrings: dark blue, vertical fibers -->
+          <pattern id="g-ham" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(0)">
+            <rect width="5" height="5" fill="#2040bb"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#102099" stroke-width="1.3"/>
+          </pattern>
+          <!-- Triceps: green, slight diagonal ~-15° -->
+          <pattern id="g-tricep" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(-15)">
+            <rect width="5" height="5" fill="#18aa40"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#0d8830" stroke-width="1.3"/>
+          </pattern>
+          <!-- Rhomboids: orange-brown, 35° diagonal across mid-back -->
+          <pattern id="g-rhom" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(35)">
+            <rect width="5" height="5" fill="#cc6020"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#a04000" stroke-width="1.3"/>
+          </pattern>
+          <!-- Serratus anterior: yellow-green, 45° diagonal finger fibers -->
+          <pattern id="g-serratus" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)">
+            <rect width="5" height="5" fill="#80c020"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#609800" stroke-width="1.3"/>
+          </pattern>
+        </defs>
+      </svg>
+
+      <!-- ===== FRONT VIEW ===== -->
+      <svg id="svg-front" viewBox="0 0 280 590" xmlns="http://www.w3.org/2000/svg" style="display:block">
+
+        <!-- Body background (wider V-taper silhouette) -->
+        <ellipse cx="140" cy="40" rx="27" ry="30" fill="#2a3348"/>
+        <path d="M130,68 Q130,60 140,58 Q150,60 150,68 L152,90 Q148,96 140,97 Q132,96 128,90 Z" fill="#232840"/>
+        <path d="M88,90 Q68,98 54,126 L50,286 Q72,307 140,312 Q208,307 230,286 L226,126 Q212,98 192,90 Q175,86 140,85 Q105,86 88,90 Z" fill="#161c2c"/>
+
+        <!-- TRAPS (visible from front at sides of neck) -->
+        <path class="muscle-region" id="f-trap-l" d="M130,68 Q118,73 98,88 Q88,96 88,110 Q100,116 116,114 Q128,106 132,88 Q132,77 130,68 Z" fill="url(#g-traps)" onclick="selectMuscle('traps')"/>
+        <path class="muscle-region" id="f-trap-r" d="M150,68 Q162,73 182,88 Q192,96 192,110 Q180,116 164,114 Q152,106 148,88 Q148,77 150,68 Z" fill="url(#g-traps)" onclick="selectMuscle('traps')"/>
+
+        <!-- ANTERIOR DELTOIDS (large, round) -->
+        <path class="muscle-region" id="f-shoulder-l" d="M88,92 Q70,98 56,116 Q48,130 48,154 Q48,174 60,186 Q70,196 84,194 Q98,192 108,178 Q116,162 114,140 Q112,118 102,104 Q96,96 88,92 Z" fill="url(#g-delt)" onclick="selectMuscle('front_delts')"/>
+        <path class="muscle-region" id="f-shoulder-r" d="M192,92 Q210,98 224,116 Q232,130 232,154 Q232,174 220,186 Q210,196 196,194 Q182,192 172,178 Q164,162 166,140 Q168,118 178,104 Q184,96 192,92 Z" fill="url(#g-delt)" onclick="selectMuscle('front_delts')"/>
+
+        <!-- PECTORALS (prominent, with groove) -->
+        <path class="muscle-region" id="f-chest-l" d="M88,102 Q96,94 134,93 Q139,96 140,106 L138,184 Q118,192 100,184 Q84,174 82,152 Q80,126 88,102 Z" fill="url(#g-chest)" onclick="selectMuscle('chest')"/>
+        <path class="muscle-region" id="f-chest-r" d="M192,102 Q184,94 146,93 Q141,96 140,106 L142,184 Q162,192 180,184 Q196,174 198,152 Q200,126 192,102 Z" fill="url(#g-chest)" onclick="selectMuscle('chest')"/>
+        <!-- Sternal groove -->
+        <path d="M139,95 L140,184" stroke="#0a1020" stroke-width="3" fill="none" pointer-events="none"/>
+        <!-- Pec underline (infra-mammary fold) -->
+        <path d="M100,184 Q120,194 140,192 Q160,194 180,184" stroke="#0a1020" stroke-width="2" fill="none" pointer-events="none"/>
+        <!-- Delt/pec groove -->
+        <path d="M90,104 Q80,124 78,156" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+        <path d="M190,104 Q200,124 202,156" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+
+        <!-- SERRATUS ANTERIOR (finger-like, side of ribs) -->
+        <path id="f-serratus-l" d="M86,168 Q94,166 102,173 L98,196 Q92,198 86,192 Q82,184 86,168 Z" fill="url(#g-serratus)" opacity="0.72" pointer-events="none"/>
+        <path id="f-serratus-r" d="M194,168 Q186,166 178,173 L182,196 Q188,198 194,192 Q198,184 194,168 Z" fill="url(#g-serratus)" opacity="0.72" pointer-events="none"/>
+
+        <!-- BICEPS (peaked, both heads suggested) -->
+        <path class="muscle-region" id="f-bicep-l" d="M50,158 Q42,170 40,200 Q38,224 46,248 Q54,264 70,270 Q84,275 96,266 Q108,256 110,232 Q112,210 106,184 L104,178 Q94,186 82,192 Q68,194 58,186 Q52,177 50,158 Z" fill="url(#g-bicep)" onclick="selectMuscle('biceps')"/>
+        <!-- Bicep peak line -->
+        <path d="M72,194 Q78,210 78,236" stroke="#0a1020" stroke-width="1.5" fill="none" pointer-events="none"/>
+        <path class="muscle-region" id="f-bicep-r" d="M230,158 Q238,170 240,200 Q242,224 234,248 Q226,264 210,270 Q196,275 184,266 Q172,256 170,232 Q168,210 174,184 L176,178 Q186,186 198,192 Q212,194 222,186 Q228,177 230,158 Z" fill="url(#g-bicep)" onclick="selectMuscle('biceps')"/>
+        <path d="M208,194 Q202,210 202,236" stroke="#0a1020" stroke-width="1.5" fill="none" pointer-events="none"/>
+
+        <!-- FOREARMS -->
+        <path class="muscle-region" id="f-forearm-l" d="M40,252 Q32,272 30,302 Q30,318 46,326 Q60,333 74,329 Q88,323 92,306 L94,266 Q84,270 70,270 Q54,268 40,252 Z" fill="url(#g-forearm)" onclick="selectMuscle('forearms')"/>
+        <path class="muscle-region" id="f-forearm-r" d="M240,252 Q248,272 250,302 Q250,318 234,326 Q220,333 206,329 Q192,323 188,306 L186,266 Q196,270 210,270 Q226,268 240,252 Z" fill="url(#g-forearm)" onclick="selectMuscle('forearms')"/>
+
+        <!-- ABS (6-pack grid) -->
+        <path class="muscle-region" id="f-abs" d="M114,186 Q140,192 166,186 L168,292 Q140,300 112,292 Z" fill="url(#g-abs)" onclick="selectMuscle('abs')"/>
+        <!-- Center linea alba -->
+        <line x1="140" y1="186" x2="140" y2="292" stroke="#060c1a" stroke-width="3.5" pointer-events="none"/>
+        <!-- 3 horizontal tendinous inscriptions -->
+        <path d="M115,219 Q140,225 165,219" stroke="#060c1a" stroke-width="2.5" fill="none" pointer-events="none"/>
+        <path d="M114,253 Q140,259 166,253" stroke="#060c1a" stroke-width="2.5" fill="none" pointer-events="none"/>
+        <!-- Linea semilunaris -->
+        <path d="M118,186 Q116,239 113,292" stroke="#060c1a" stroke-width="1.8" fill="none" pointer-events="none"/>
+        <path d="M162,186 Q164,239 167,292" stroke="#060c1a" stroke-width="1.8" fill="none" pointer-events="none"/>
+
+        <!-- OBLIQUES -->
+        <path class="muscle-region" id="f-oblique-l" d="M90,182 Q104,180 114,186 L112,292 Q98,302 84,290 L82,244 Q82,210 90,182 Z" fill="url(#g-oblique)" onclick="selectMuscle('obliques')"/>
+        <path class="muscle-region" id="f-oblique-r" d="M190,182 Q176,180 166,186 L168,292 Q182,302 196,290 L198,244 Q198,210 190,182 Z" fill="url(#g-oblique)" onclick="selectMuscle('obliques')"/>
+
+        <!-- HIP area -->
+        <path d="M84,290 Q106,310 140,315 Q174,310 196,290 L198,323 Q176,342 140,346 Q104,342 82,323 Z" fill="#12192a"/>
+
+        <!-- QUADS — 3 visible heads each side -->
+        <!-- Left Vastus Lateralis (outer) -->
+        <path class="muscle-region" id="f-quad-vl-l" d="M84,322 Q88,332 102,342 L98,448 Q82,456 72,446 Q66,420 68,380 Q70,344 84,322 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')"/>
+        <!-- Left Rectus Femoris (center, slightly lighter) -->
+        <path class="muscle-region" id="f-quad-rf-l" d="M102,340 Q118,346 136,346 L130,468 Q114,476 100,468 Q96,452 96,440 L102,340 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')" opacity="0.82"/>
+        <!-- Left Vastus Medialis (teardrop near knee) -->
+        <path class="muscle-region" id="f-quad-vm-l" d="M96,442 Q112,436 130,444 Q132,460 128,470 Q116,478 104,472 Q96,464 96,442 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')"/>
+        <!-- Separation line between VL and RF left -->
+        <path d="M102,342 Q100,395 98,448" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+
+        <!-- Right Vastus Lateralis (outer) -->
+        <path class="muscle-region" id="f-quad-vl-r" d="M196,322 Q192,332 178,342 L182,448 Q198,456 208,446 Q214,420 212,380 Q210,344 196,322 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')"/>
+        <!-- Right Rectus Femoris (center) -->
+        <path class="muscle-region" id="f-quad-rf-r" d="M178,340 Q162,346 144,346 L150,468 Q166,476 180,468 Q184,452 184,440 L178,340 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')" opacity="0.82"/>
+        <!-- Right Vastus Medialis (teardrop) -->
+        <path class="muscle-region" id="f-quad-vm-r" d="M184,442 Q168,436 150,444 Q148,460 152,470 Q164,478 176,472 Q184,464 184,442 Z" fill="url(#g-quad)" onclick="selectMuscle('quads')"/>
+        <!-- Separation line between VL and RF right -->
+        <path d="M178,342 Q180,395 182,448" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+        <!-- Mid-quad gap -->
+        <line x1="136" y1="346" x2="144" y2="346" stroke="#0a1020" stroke-width="3" pointer-events="none"/>
+
+        <!-- CALVES (gastrocnemius, diamond shape, two heads) -->
+        <path class="muscle-region" id="f-calf-l" d="M70,472 Q84,480 128,478 L124,548 Q110,568 96,564 Q82,558 74,542 Q66,518 66,494 Q66,480 70,472 Z" fill="url(#g-calf)" onclick="selectMuscle('calves')"/>
+        <path d="M102,478 Q104,514 102,548" stroke="#0a1020" stroke-width="2" fill="none" pointer-events="none"/>
+        <path class="muscle-region" id="f-calf-r" d="M210,472 Q196,480 152,478 L156,548 Q170,568 184,564 Q198,558 206,542 Q214,518 214,494 Q214,480 210,472 Z" fill="url(#g-calf)" onclick="selectMuscle('calves')"/>
+        <path d="M178,478 Q176,514 178,548" stroke="#0a1020" stroke-width="2" fill="none" pointer-events="none"/>
+
+        <!-- LABELS -->
+        <text class="muscle-label" x="140" y="86">TRAPS</text>
+        <text class="muscle-label" x="65" y="152">DELTS</text>
+        <text class="muscle-label" x="215" y="152">DELTS</text>
+        <text class="muscle-label" x="104" y="148">CHEST</text>
+        <text class="muscle-label" x="176" y="148">CHEST</text>
+        <text class="muscle-label" x="58" y="215">BICEP</text>
+        <text class="muscle-label" x="222" y="215">BICEP</text>
+        <text class="muscle-label" x="42" y="292">FORE</text>
+        <text class="muscle-label" x="238" y="292">FORE</text>
+        <text class="muscle-label" x="140" y="246">ABS</text>
+        <text class="muscle-label" x="96" y="244">OBL</text>
+        <text class="muscle-label" x="184" y="244">OBL</text>
+        <text class="muscle-label" x="82" y="390">QUAD</text>
+        <text class="muscle-label" x="198" y="390">QUAD</text>
+        <text class="muscle-label" x="90" y="518">CALF</text>
+        <text class="muscle-label" x="190" y="518">CALF</text>
+      </svg>
+
+      <!-- ===== BACK VIEW ===== -->
+      <svg id="svg-back" viewBox="0 0 280 590" xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+        <!-- Body background -->
+        <ellipse cx="140" cy="40" rx="27" ry="30" fill="#2a3348"/>
+        <path d="M130,68 Q130,60 140,58 Q150,60 150,68 L152,90 Q148,96 140,97 Q132,96 128,90 Z" fill="#232840"/>
+        <path d="M88,90 Q68,98 54,126 L50,286 Q72,307 140,312 Q208,307 230,286 L226,126 Q212,98 192,90 Q175,86 140,85 Q105,86 88,90 Z" fill="#161c2c"/>
+
+        <!-- TRAPEZIUS (large diamond) -->
+        <path class="muscle-region" id="b-traps" d="M114,72 Q140,62 166,72 L186,112 Q168,128 140,124 Q112,128 94,112 Z" fill="url(#g-traps)" onclick="selectMuscle('traps')"/>
+
+        <!-- REAR DELTOIDS -->
+        <path class="muscle-region" id="b-shoulder-l" d="M88,92 Q70,98 56,116 Q48,130 48,154 Q48,172 58,184 Q68,192 82,190 Q96,188 106,174 Q114,158 112,136 Q110,116 100,104 Q94,96 88,92 Z" fill="url(#g-delt)" onclick="selectMuscle('rear_delts')"/>
+        <path class="muscle-region" id="b-shoulder-r" d="M192,92 Q210,98 224,116 Q232,130 232,154 Q232,172 222,184 Q212,192 198,190 Q184,188 174,174 Q166,158 168,136 Q170,116 180,104 Q186,96 192,92 Z" fill="url(#g-delt)" onclick="selectMuscle('rear_delts')"/>
+
+        <!-- LATS (large V-shape) -->
+        <path class="muscle-region" id="b-lat-l" d="M88,112 Q72,132 66,174 Q62,214 72,252 Q80,270 98,276 L120,264 L116,120 Z" fill="url(#g-lat)" onclick="selectMuscle('back')"/>
+        <path class="muscle-region" id="b-lat-r" d="M192,112 Q208,132 214,174 Q218,214 208,252 Q200,270 182,276 L160,264 L164,120 Z" fill="url(#g-lat)" onclick="selectMuscle('back')"/>
+
+        <!-- RHOMBOIDS / MID BACK -->
+        <path class="muscle-region" id="b-rhomboids" d="M116,120 L164,120 L166,204 Q140,210 114,204 Z" fill="url(#g-rhom)" onclick="selectMuscle('back')"/>
+        <!-- Rhomboid center line -->
+        <line x1="140" y1="120" x2="140" y2="204" stroke="#0a1020" stroke-width="2.5" pointer-events="none"/>
+
+        <!-- LOWER BACK / ERECTOR SPINAE -->
+        <path class="muscle-region" id="b-lowerback" d="M114,204 Q140,210 166,204 L168,288 Q140,296 112,288 Z" fill="url(#g-lowerback)" onclick="selectMuscle('back')"/>
+        <!-- Erector split -->
+        <line x1="140" y1="204" x2="140" y2="288" stroke="#0a1020" stroke-width="2.5" pointer-events="none"/>
+
+        <!-- TRICEPS (horseshoe shape, very prominent from back) -->
+        <path class="muscle-region" id="b-tricep-l" d="M50,152 Q42,166 40,198 Q38,222 46,244 Q54,260 70,266 Q84,271 96,262 Q108,252 112,228 Q116,206 110,180 Q106,162 96,148 Q92,190 90,194 Q80,192 70,184 Q58,173 50,152 Z" fill="url(#g-tricep)" onclick="selectMuscle('triceps')"/>
+        <!-- Tricep head separation -->
+        <path d="M76,186 Q82,208 82,240" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+        <path class="muscle-region" id="b-tricep-r" d="M230,152 Q238,166 240,198 Q242,222 234,244 Q226,260 210,266 Q196,271 184,262 Q172,252 168,228 Q164,206 170,180 Q174,162 184,148 Q188,190 190,194 Q200,192 210,184 Q222,173 230,152 Z" fill="url(#g-tricep)" onclick="selectMuscle('triceps')"/>
+        <path d="M204,186 Q198,208 198,240" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+
+        <!-- FOREARMS (back view) -->
+        <path class="muscle-region" id="b-forearm-l" d="M40,248 Q32,268 30,300 Q30,316 46,324 Q60,330 74,326 Q88,320 92,302 L94,264 Q84,270 70,268 Q54,265 40,248 Z" fill="url(#g-forearm)" onclick="selectMuscle('forearms')"/>
+        <path class="muscle-region" id="b-forearm-r" d="M240,248 Q248,268 250,300 Q250,316 234,324 Q220,330 206,326 Q192,320 188,302 L186,264 Q196,270 210,268 Q226,265 240,248 Z" fill="url(#g-forearm)" onclick="selectMuscle('forearms')"/>
+
+        <!-- HIP area (back) -->
+        <path d="M84,290 Q106,310 140,315 Q174,310 196,290 L198,323 Q176,342 140,346 Q104,342 82,323 Z" fill="#12192a"/>
+
+        <!-- GLUTES (large, very round) -->
+        <path class="muscle-region" id="b-glutes-l" d="M84,322 Q90,316 116,312 Q138,314 140,328 L136,392 Q118,406 102,400 Q86,392 80,374 Q76,352 84,322 Z" fill="url(#g-glute)" onclick="selectMuscle('glutes')"/>
+        <path class="muscle-region" id="b-glutes-r" d="M196,322 Q190,316 164,312 Q142,314 140,328 L144,392 Q162,406 178,400 Q194,392 200,374 Q204,352 196,322 Z" fill="url(#g-glute)" onclick="selectMuscle('glutes')"/>
+        <!-- Glute crease -->
+        <path d="M140,328 L140,392" stroke="#0a1020" stroke-width="2.5" fill="none" pointer-events="none"/>
+
+        <!-- HAMSTRINGS -->
+        <path class="muscle-region" id="b-ham-l" d="M80,392 Q100,404 136,394 L130,472 Q112,480 98,472 Q84,462 78,444 Q74,418 80,392 Z" fill="url(#g-ham)" onclick="selectMuscle('hamstrings')"/>
+        <!-- Ham bicep femoris / semitendinosis separation -->
+        <path d="M110,396 Q108,434 106,472" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+        <path class="muscle-region" id="b-ham-r" d="M200,392 Q180,404 144,394 L150,472 Q168,480 182,472 Q196,462 202,444 Q206,418 200,392 Z" fill="url(#g-ham)" onclick="selectMuscle('hamstrings')"/>
+        <path d="M170,396 Q172,434 174,472" stroke="#0a1020" stroke-width="1.8" fill="none" pointer-events="none"/>
+
+        <!-- CALVES (back view, diamond shape) -->
+        <path class="muscle-region" id="b-calf-l" d="M78,472 Q92,480 130,478 L126,548 Q112,568 96,564 Q82,558 74,542 Q66,518 66,494 Q66,480 78,472 Z" fill="url(#g-calf)" onclick="selectMuscle('calves')"/>
+        <path d="M104,478 Q106,514 104,548" stroke="#0a1020" stroke-width="2" fill="none" pointer-events="none"/>
+        <path class="muscle-region" id="b-calf-r" d="M202,472 Q188,480 150,478 L154,548 Q168,568 184,564 Q198,558 206,542 Q214,518 214,494 Q214,480 202,472 Z" fill="url(#g-calf)" onclick="selectMuscle('calves')"/>
+        <path d="M176,478 Q174,514 176,548" stroke="#0a1020" stroke-width="2" fill="none" pointer-events="none"/>
+
+        <!-- LABELS -->
+        <text class="muscle-label" x="140" y="92">TRAPS</text>
+        <text class="muscle-label" x="65" y="150">DELTS</text>
+        <text class="muscle-label" x="215" y="150">DELTS</text>
+        <text class="muscle-label" x="84" y="185">LATS</text>
+        <text class="muscle-label" x="196" y="185">LATS</text>
+        <text class="muscle-label" x="140" y="164">RHOMB</text>
+        <text class="muscle-label" x="140" y="250">ERECTORS</text>
+        <text class="muscle-label" x="56" y="210">TRI</text>
+        <text class="muscle-label" x="224" y="210">TRI</text>
+        <text class="muscle-label" x="42" y="290">FORE</text>
+        <text class="muscle-label" x="238" y="290">FORE</text>
+        <text class="muscle-label" x="107" y="360">GLUTES</text>
+        <text class="muscle-label" x="173" y="360">GLUTES</text>
+        <text class="muscle-label" x="98" y="435">HAMS</text>
+        <text class="muscle-label" x="182" y="435">HAMS</text>
+        <text class="muscle-label" x="90" y="518">CALF</text>
+        <text class="muscle-label" x="190" y="518">CALF</text>
+      </svg>
+    </div>
+
+    <!-- Muscle quick-select list -->
+    <div class="muscle-list" id="muscle-list"></div>
+  </div>
+
+  <!-- RIGHT: Exercise detail panel -->
+  <div class="exercise-panel" id="exercise-panel">
+    <!-- TAB NAVIGATION -->
+    <div class="tab-nav">
+      <button class="tab-button active" onclick="switchTab('exercises')">Exercises</button>
+      <button class="tab-button rehab-tab" onclick="switchTab('rehab')">Rehab</button>
+    </div>
+
+    <!-- EXERCISES TAB -->
+    <div id="exercises-tab" class="tab-content active">
+      <div class="welcome-screen" id="welcome-screen">
+      <div class="icon">🏋️</div>
+      <h2>Select a Muscle Group</h2>
+      <p>Click any highlighted muscle on the body diagram, or choose from the list to see targeted exercises and how to perform them.</p>
+    </div>
+
+    <div class="muscle-header" id="muscle-header">
+      <div class="tag" id="detail-tag"></div>
+      <h2 id="detail-name"></h2>
+      <p class="desc" id="detail-desc"></p>
+      <div class="anatomy-img">
+        📚 Learn more: <a id="detail-link" href="#" target="_blank" rel="noopener"></a>
+      </div>
+    </div>
+
+    <div class="exercises-grid" id="exercises-grid"></div>
+
+    <div class="ref-section" id="ref-section" style="display:none">
+      <h4>📖 Sources & Further Reading</h4>
+      <p>Exercise data sourced from:
+        <a href="https://exrx.net" target="_blank" rel="noopener">ExRx.net</a>,
+        <a href="https://www.acefitness.org" target="_blank" rel="noopener">ACE Fitness</a>,
+        <a href="https://www.bodybuilding.com/exercises" target="_blank" rel="noopener">Bodybuilding.com Exercise Guide</a>,
+        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5534144/" target="_blank" rel="noopener">NSCA Strength & Conditioning</a>.
+        Anatomy diagrams: <a href="https://en.wikipedia.org/wiki/Human_body" target="_blank" rel="noopener">Wikipedia — Human Body</a>.
+        Always consult a qualified trainer before starting a new program.
+      </p>
+    </div>
+    </div>
+
+    <!-- REHAB TAB -->
+    <div id="rehab-tab" class="tab-content">
+      <div class="rehab-intro">
+        <h3>Injury Prevention & Recovery</h3>
+        <p>This rehab section features therapeutic exercises designed for pain management and joint health. These movements target common problem areas like shoulder impingement, knee pain, lower back tightness, and neck tension. Each exercise emphasizes proper form, mobility, and controlled movement to address the root causes of discomfort. Always consult a healthcare provider before starting any rehab program.</p>
+      </div>
+      <div class="exercises-grid" id="rehab-grid"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const MUSCLES = {
+  chest: {
+    name: "Chest (Pectoralis Major)",
+    tag: "UPPER BODY",
+    color: "#e63946",
+    desc: "The pectoralis major is a large fan-shaped muscle covering the chest wall. It's responsible for horizontal adduction, flexion, and internal rotation of the shoulder. Well-developed pecs give the chest a broad, defined appearance.",
+    wikiLink: "https://en.wikipedia.org/wiki/Pectoralis_major",
+    wikiText: "Wikipedia: Pectoralis Major",
+    exercises: [
+      {
+        icon: "🏋️",
+        name: "Barbell Bench Press",
+        equipment: "Barbell + Bench",
+        category: "Compound",
+        difficulty: 3,
+        desc: "The king of chest exercises. Targets the entire pectoralis major with heavy load potential.",
+        steps: [
+          "Lie flat on bench, grip bar slightly wider than shoulder-width",
+          "Unrack bar, lower it with control to mid-chest",
+          "Press explosively back to start, keeping feet flat and arch neutral"
+        ],
+        sets: "4", reps: "6–10", rest: "90s"
+      },
+      {
+        icon: "🤸",
+        name: "Push-Up",
+        equipment: "Bodyweight",
+        category: "Compound",
+        difficulty: 1,
+        desc: "The foundational chest movement. Scalable for any fitness level and hits chest, triceps, and front delts.",
+        steps: [
+          "Start in plank with hands slightly wider than shoulders",
+          "Lower chest to near floor, keeping elbows at 45° from body",
+          "Push back to start with full arm extension"
+        ],
+        sets: "3", reps: "12–20", rest: "60s"
+      },
+      {
+        icon: "📐",
+        name: "Incline Dumbbell Press",
+        equipment: "Dumbbells + Incline Bench",
+        category: "Compound",
+        difficulty: 2,
+        desc: "Emphasizes the upper chest (clavicular head) which is often underdeveloped. The incline angle shifts focus upward.",
+        steps: [
+          "Set bench to 30–45°, hold dumbbells at shoulder height",
+          "Press up and slightly inward so dumbbells nearly touch at top",
+          "Lower slowly with a slight stretch at the bottom"
+        ],
+        sets: "3", reps: "10–12", rest: "75s"
+      },
+      {
+        icon: "🔄",
+        name: "Cable Chest Fly",
+        equipment: "Cable Machine",
+        category: "Isolation",
+        difficulty: 2,
+        desc: "Constant cable tension throughout the movement provides excellent chest stretch and contraction, great for definition.",
+        steps: [
+          "Set cables to shoulder height, stand centered between them",
+          "Step forward, arms slightly bent and extended out to sides",
+          "Bring hands together in front of chest in an arc motion",
+          "Slowly reverse to feel the stretch"
+        ],
+        sets: "3", reps: "12–15", rest: "60s"
+      }
+    ]
+  },
+  back: {
+    name: "Back (Lats, Traps & Rhomboids)",
+    tag: "UPPER BODY",
+    color: "#9b5de5",
+    desc: "The back is composed of several major muscles: the latissimus dorsi (lats) create the V-taper, the trapezius controls shoulder blade movement, and the rhomboids pull the scapulae together. A strong back improves posture and protects the spine.",
+    wikiLink: "https://en.wikipedia.org/wiki/Latissimus_dorsi_muscle",
+    wikiText: "Wikipedia: Latissimus Dorsi",
+    exercises: [
+      {
+        icon: "🔼",
+        name: "Pull-Up / Lat Pulldown",
+        equipment: "Pull-up Bar / Cable Machine",
+        category: "Compound",
+        difficulty: 3,
+        desc: "The best upper back builder. Pull-ups use bodyweight; lat pulldowns allow weight adjustment for beginners.",
+        steps: [
+          "Grip bar slightly wider than shoulder-width, palms forward",
+          "Pull elbows down and back, leading with the chest",
+          "Squeeze lats at bottom when chin clears bar",
+          "Lower slowly to full extension"
+        ],
+        sets: "4", reps: "6–12", rest: "90s"
+      },
+      {
+        icon: "⬇️",
+        name: "Bent-Over Barbell Row",
+        equipment: "Barbell",
+        category: "Compound",
+        difficulty: 3,
+        desc: "Hits lats, rhomboids, and rear delts simultaneously. One of the best mass-builders for the back.",
+        steps: [
+          "Hinge at hips until torso is ~45°, grip bar shoulder-width",
+          "Pull bar to lower sternum, driving elbows back",
+          "Squeeze shoulder blades together at top",
+          "Lower bar with control"
+        ],
+        sets: "4", reps: "8–10", rest: "90s"
+      },
+      {
+        icon: "🪑",
+        name: "Seated Cable Row",
+        equipment: "Cable Machine",
+        category: "Compound",
+        difficulty: 2,
+        desc: "Excellent for mid-back thickness. The cable provides constant tension throughout the pulling motion.",
+        steps: [
+          "Sit tall, feet on foot plate, grip handle with straight arms",
+          "Pull handle to lower abs, driving elbows behind body",
+          "Hold squeeze for 1 second, then slowly extend arms"
+        ],
+        sets: "3", reps: "10–12", rest: "75s"
+      },
+      {
+        icon: "💀",
+        name: "Deadlift",
+        equipment: "Barbell",
+        category: "Compound",
+        difficulty: 4,
+        desc: "The ultimate full-posterior chain exercise. Works lats, traps, erectors, glutes, and hamstrings together.",
+        steps: [
+          "Feet hip-width, bar over mid-foot, grip just outside shins",
+          "Brace core, chest up, hinge and drive through the floor",
+          "Extend hips and knees simultaneously to stand",
+          "Lower with a controlled hip hinge"
+        ],
+        sets: "3", reps: "5–8", rest: "2–3min"
+      }
+    ]
+  },
+  front_delts: {
+    name: "Front Delts (Anterior Deltoid)",
+    tag: "UPPER BODY",
+    color: "#3a7ca5",
+    desc: "The anterior deltoid is the front portion of the shoulder. It drives shoulder flexion (raising arm forward) and assists in pressing movements. Heavy compound pressing is the best way to overload the front delts for size and strength.",
+    wikiLink: "https://en.wikipedia.org/wiki/Deltoid_muscle",
+    wikiText: "Wikipedia: Deltoid Muscle",
+    exercises: [
+      {
+        icon: "🏋️",
+        name: "Overhead Press (OHP)",
+        equipment: "Barbell or Dumbbells",
+        category: "Compound",
+        difficulty: 3,
+        desc: "The king of shoulder exercises. Works the entire deltoid, especially the anterior head, plus triceps and upper traps.",
+        steps: [
+          "Hold bar at shoulder height, grip just outside shoulders",
+          "Brace core and press bar straight overhead",
+          "Lock out arms at top without leaning back excessively",
+          "Lower to shoulder level with full control"
+        ],
+        sets: "4", reps: "6–10", rest: "90s"
+      },
+      {
+        icon: "⬆️",
+        name: "Dumbbell Front Raise",
+        equipment: "Dumbbells",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "Directly isolates the anterior deltoid through shoulder flexion. Best performed with a slow eccentric to maximise stretch.",
+        steps: [
+          "Hold dumbbells in front of thighs, palms facing down",
+          "Raise arms forward and up to shoulder height",
+          "Keep a slight bend in the elbows throughout",
+          "Lower slowly over 3 seconds — do not swing"
+        ],
+        sets: "3", reps: "12–15", rest: "60s"
+      },
+      {
+        icon: "🔗",
+        name: "Cable Front Raise",
+        equipment: "Cable Machine",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "Like dumbbell front raises but with constant cable tension — the front delt stays loaded through the full range of motion.",
+        steps: [
+          "Attach a straight bar or single handle at the low pulley",
+          "Face away from the machine and raise the handle forward and up",
+          "Control the descent — do not let the cable snap back",
+          "Keep your torso still; no body English"
+        ],
+        sets: "3", reps: "12–15", rest: "60s"
+      },
+      {
+        icon: "💪",
+        name: "Arnold Press",
+        equipment: "Dumbbells",
+        category: "Compound",
+        difficulty: 2,
+        desc: "Invented by Arnold Schwarzenegger — the rotating motion hits all three delt heads with extra front-delt recruitment at the bottom of each rep.",
+        steps: [
+          "Hold dumbbells at chin height, palms facing you",
+          "Press up while rotating palms to face forward",
+          "Fully extend overhead, then reverse the rotation on the way down",
+          "Full range of motion is key — don't cut the rotation short"
+        ],
+        sets: "3", reps: "10–12", rest: "75s"
+      }
+    ]
+  },
+  side_delts: {
+    name: "Side Delts (Lateral Deltoid)",
+    tag: "UPPER BODY",
+    color: "#3a7ca5",
+    desc: "The lateral (medial) deltoid creates shoulder width and the coveted 'capped' look. It is primarily responsible for arm abduction (raising arms to the sides). High-rep isolation work with constant tension is most effective for this head.",
+    wikiLink: "https://en.wikipedia.org/wiki/Deltoid_muscle",
+    wikiText: "Wikipedia: Deltoid Muscle",
+    exercises: [
+      {
+        icon: "↔️",
+        name: "Lateral Raise",
+        equipment: "Dumbbells",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "The single best exercise for building shoulder width. Lead with your elbows and use a controlled tempo to keep tension on the lateral head.",
+        steps: [
+          "Hold dumbbells at sides, slight bend in elbows",
+          "Raise arms out to sides until parallel to floor",
+          "Lead with your elbows, not your wrists",
+          "Lower slowly — 3 seconds on the way down"
+        ],
+        sets: "4", reps: "12–15", rest: "60s"
+      },
+      {
+        icon: "🔗",
+        name: "Cable Lateral Raise",
+        equipment: "Cable Machine",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "Provides constant tension across the full range of motion — superior to dumbbells at the bottom of the rep where dumbbells go slack.",
+        steps: [
+          "Set cable at lowest position, stand side-on to the machine",
+          "Cross the cable in front of your body and raise your arm out to the side",
+          "Raise until arm is parallel to floor, then lower with control",
+          "Squeeze at the top — pause for 1 second"
+        ],
+        sets: "3", reps: "15–20", rest: "60s"
+      },
+      {
+        icon: "🏋️",
+        name: "Upright Row (Wide Grip)",
+        equipment: "Barbell or Dumbbells",
+        category: "Compound",
+        difficulty: 2,
+        desc: "A compound pull that strongly recruits the lateral deltoid when performed with a wide grip. Avoid narrow grips that impinge the shoulder.",
+        steps: [
+          "Hold bar with a grip slightly wider than shoulder width",
+          "Pull bar straight up along your body to chin height",
+          "Lead with your elbows — they should rise higher than your hands",
+          "Lower slowly back to starting position"
+        ],
+        sets: "3", reps: "10–12", rest: "75s"
+      },
+      {
+        icon: "⚙️",
+        name: "Machine Lateral Raise",
+        equipment: "Machine",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "Machines provide a fixed arc of motion, making it easier to overload the side delts safely and with consistent form under fatigue.",
+        steps: [
+          "Adjust the seat so the arm pad aligns with your shoulder joint",
+          "Press your arms outward against the pads to shoulder height",
+          "Pause at the top, then lower under full control",
+          "Keep tension — do not let the weight stack touch between reps"
+        ],
+        sets: "3", reps: "12–15", rest: "60s"
+      }
+    ]
+  },
+  rear_delts: {
+    name: "Rear Delts (Posterior Deltoid)",
+    tag: "UPPER BODY",
+    color: "#3a7ca5",
+    desc: "The posterior deltoid is the most neglected head of the shoulder. It handles shoulder extension, horizontal abduction, and external rotation. Strong rear delts improve posture, protect the shoulder joint, and balance pushing strength.",
+    wikiLink: "https://en.wikipedia.org/wiki/Deltoid_muscle",
+    wikiText: "Wikipedia: Deltoid Muscle",
+    exercises: [
+      {
+        icon: "🔗",
+        name: "Face Pull",
+        equipment: "Cable Machine + Rope",
+        category: "Isolation",
+        difficulty: 2,
+        desc: "The best all-round rear delt exercise. Also trains the rotator cuff and external rotators — do these every session for shoulder health.",
+        steps: [
+          "Set cable at face height, grip rope with both hands",
+          "Pull rope to face, separating hands as you pull",
+          "Externally rotate so hands end up beside your ears",
+          "Hold for 1 second, then slowly return"
+        ],
+        sets: "4", reps: "15–20", rest: "60s"
+      },
+      {
+        icon: "💪",
+        name: "Bent-Over Lateral Raise",
+        equipment: "Dumbbells",
+        category: "Isolation",
+        difficulty: 2,
+        desc: "Directly targets the posterior deltoid. Bending over places the rear delt as the primary mover rather than the traps or side delts.",
+        steps: [
+          "Hinge at hips until torso is nearly parallel to floor",
+          "Let dumbbells hang directly below your shoulders",
+          "Raise arms out to sides until parallel to floor",
+          "Squeeze the rear delts hard at the top"
+        ],
+        sets: "3", reps: "12–15", rest: "60s"
+      },
+      {
+        icon: "⚙️",
+        name: "Reverse Pec Deck",
+        equipment: "Machine",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "Machine version of the rear delt fly — allows strict isolation with no lower back involvement. Great for high-rep hypertrophy work.",
+        steps: [
+          "Sit facing the pad, adjust so arms are at shoulder height",
+          "Grip handles with palms facing each other",
+          "Pull handles back and outward in a wide arc",
+          "Squeeze rear delts at full extension — pause, then control back"
+        ],
+        sets: "3", reps: "12–15", rest: "60s"
+      },
+      {
+        icon: "🔗",
+        name: "Wide-Grip Cable Row",
+        equipment: "Cable Machine",
+        category: "Compound",
+        difficulty: 2,
+        desc: "A wide, high cable row hits the rear delt as a primary mover rather than the lats. Elbows should flare out, not stay tucked.",
+        steps: [
+          "Set cable at chest or face height, use a wide rope or bar",
+          "Pull elbows back and out — flare them wide, not tucked in",
+          "Squeeze rear delts and upper back at end range",
+          "Extend arms with control — full stretch on each rep"
+        ],
+        sets: "3", reps: "10–12", rest: "75s"
+      }
+    ]
+  },
+  biceps: {
+    name: "Biceps (Biceps Brachii)",
+    tag: "UPPER BODY",
+    color: "#2dc653",
+    desc: "The biceps brachii has a long head and short head, both responsible for elbow flexion and forearm supination. The long head creates the iconic bicep 'peak.' Training biceps at different angles ensures complete development.",
+    wikiLink: "https://en.wikipedia.org/wiki/Biceps",
+    wikiText: "Wikipedia: Biceps Brachii",
+    subCategories: [
+      {
+        name: "Peak",
+        description: "Driven by the long head — the outer bicep that creates height when flexed. Target it with incline positions and narrow grips.",
+        exercises: [
+          {
+            icon: "📐",
+            name: "Incline Dumbbell Curl",
+            equipment: "Dumbbells + Incline Bench",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "The gold standard for long head development. The incline position places the arm behind the body, fully stretching and loading the long head.",
+            steps: [
+              "Set bench to 45–60°, sit back and let arms hang behind body",
+              "Curl dumbbells with a supinating twist, keeping shoulders pinned back",
+              "Do not let elbows swing forward — this removes long head tension",
+              "Lower all the way to full extension for maximum stretch"
+            ],
+            sets: "3", reps: "10–15", rest: "60s"
+          },
+          {
+            icon: "🎯",
+            name: "Narrow-Grip Barbell Curl",
+            equipment: "Barbell",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "A grip inside shoulder width forces the long head to carry more of the load, building that peaked, taller-looking bicep.",
+            steps: [
+              "Hold barbell with a grip 4–6 inches inside shoulder width",
+              "Keep elbows locked at sides throughout the movement",
+              "Curl bar to shoulder height, supinating at the top",
+              "Lower slowly over 3 seconds to maximize long head tension"
+            ],
+            sets: "4", reps: "8–12", rest: "75s"
+          },
+          {
+            icon: "🔌",
+            name: "High-Cable Curl",
+            equipment: "Cable Machine",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "With cables set at head height and arms angled back, the long head is maximally stretched under constant cable tension — unmatched for peak development.",
+            steps: [
+              "Set both cables to head height, grip handles and step forward",
+              "Raise arms to shoulder height, elbows back and high",
+              "Curl wrists toward your face while keeping elbows held high",
+              "Squeeze hard at peak and slowly return to full stretch"
+            ],
+            sets: "3", reps: "12–15", rest: "60s"
+          },
+          {
+            icon: "🦅",
+            name: "Spider Curl",
+            equipment: "Incline Bench + Barbell or Dumbbells",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "Lying face-down on an incline bench eliminates body swing and maintains peak long head tension at both the top and bottom of the movement.",
+            steps: [
+              "Lie face-down on an incline bench set to 45°, let arms hang down",
+              "Curl weight upward, keeping elbows pointed at the floor",
+              "Squeeze hard at the top — long head is under maximum tension here",
+              "Lower fully to a dead hang to maximize the stretch"
+            ],
+            sets: "3", reps: "12–15", rest: "60s"
+          }
+        ]
+      },
+      {
+        name: "Width",
+        description: "Overall bicep thickness comes from the short head and the brachialis underneath. Wide grips and forward-elbow positions target these areas.",
+        exercises: [
+          {
+            icon: "💪",
+            name: "Wide-Grip Barbell Curl",
+            equipment: "Barbell",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "A grip wider than shoulder width shifts emphasis to the short head — the inner, thicker part of the bicep responsible for overall width.",
+            steps: [
+              "Hold barbell with a grip 2–4 inches outside shoulder width",
+              "Keep elbows locked at sides and curl the bar to shoulder level",
+              "Squeeze both heads at the top with wrists neutral",
+              "Lower slowly to full extension for maximum stretch"
+            ],
+            sets: "4", reps: "8–12", rest: "75s"
+          },
+          {
+            icon: "🪑",
+            name: "Preacher Curl",
+            equipment: "EZ Bar + Preacher Bench",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "The preacher bench forces the elbow in front of the body, placing the short head at a mechanical advantage and fully isolating it from other muscles.",
+            steps: [
+              "Set up on preacher bench, arms draped over the pad at an angle",
+              "Curl EZ bar or dumbbells up, keeping the back of arms on the pad",
+              "Squeeze hard at the top — avoid locking out fully at the bottom",
+              "Lower slowly; feel the short head stretch on the way down"
+            ],
+            sets: "3", reps: "10–12", rest: "60s"
+          },
+          {
+            icon: "🔨",
+            name: "Hammer Curl",
+            equipment: "Dumbbells",
+            category: "Isolation",
+            difficulty: 1,
+            desc: "Neutral (hammer) grip targets the brachialis — a muscle beneath the bicep that pushes it up, adding significant overall arm width and thickness.",
+            steps: [
+              "Hold dumbbells at sides with palms facing each other (neutral grip)",
+              "Curl both dumbbells simultaneously keeping thumbs pointing up",
+              "Keep elbows locked at sides throughout the movement",
+              "Lower slowly to full extension — the brachialis loves full range"
+            ],
+            sets: "3", reps: "10–12", rest: "60s"
+          },
+          {
+            icon: "🎯",
+            name: "Concentration Curl",
+            equipment: "Dumbbell",
+            category: "Isolation",
+            difficulty: 1,
+            desc: "Bracing the elbow on the inner thigh removes all momentum and isolates the short head for a complete, controlled contraction and maximum width development.",
+            steps: [
+              "Sit on a bench, legs spread, elbow of working arm braced on inner thigh",
+              "Hang dumbbell down to full extension",
+              "Curl dumbbell to shoulder, twisting wrist outward at the top",
+              "Squeeze hard at the top and lower with full control"
+            ],
+            sets: "3", reps: "12–15 per arm", rest: "60s"
+          }
+        ]
+      }
+    ]
+  },
+  triceps: {
+    name: "Triceps (Triceps Brachii)",
+    tag: "UPPER BODY",
+    color: "#2dc653",
+    desc: "The triceps make up roughly two-thirds of your upper arm mass. They consist of three heads: long, lateral, and medial. The long head is the largest and only crosses the shoulder joint, so overhead exercises are key for full development.",
+    wikiLink: "https://en.wikipedia.org/wiki/Triceps_brachii",
+    wikiText: "Wikipedia: Triceps Brachii",
+    subCategories: [
+      {
+        name: "Long Head",
+        description: "The largest tricep head — the only one that crosses the shoulder joint. Activated maximally in overhead positions where it reaches full stretch.",
+        exercises: [
+          {
+            icon: "🙆",
+            name: "Overhead Dumbbell Extension",
+            equipment: "Dumbbell",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "The overhead position fully stretches the long head, creating maximum mechanical tension and the strongest growth stimulus for overall tricep size.",
+            steps: [
+              "Hold one dumbbell with both hands overhead, arms fully extended",
+              "Bend elbows to lower weight behind head, keeping upper arms close to ears",
+              "Feel the deep stretch in the long head at the bottom position",
+              "Extend elbows fully back to start, squeezing at the top"
+            ],
+            sets: "3", reps: "12–15", rest: "60s"
+          },
+          {
+            icon: "💀",
+            name: "Skull Crusher (EZ Bar)",
+            equipment: "EZ Bar + Flat Bench",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "With upper arms perpendicular to the floor, skull crushers maximally stretch the long head under heavy load — a powerful combination for mass.",
+            steps: [
+              "Lie flat on bench, hold EZ bar with narrow overhand grip above chest",
+              "Keep upper arms perpendicular to the floor and completely stationary",
+              "Bend elbows to lower bar toward forehead or just behind the head",
+              "Extend elbows fully to press bar back to start"
+            ],
+            sets: "3", reps: "10–12", rest: "75s"
+          },
+          {
+            icon: "🔌",
+            name: "Cable Overhead Extension",
+            equipment: "Cable Machine (low pulley) + Rope",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "Facing away from a low cable pulley provides constant tension throughout the long head's stretched position — a key growth advantage over dumbbells.",
+            steps: [
+              "Attach rope to low pulley, face away from the machine",
+              "Bring rope overhead with elbows bent, feel the deep stretch",
+              "Extend arms fully overhead, squeezing at full lockout",
+              "Slowly lower back to deep stretch position under control"
+            ],
+            sets: "3", reps: "12–15", rest: "60s"
+          },
+          {
+            icon: "🤸",
+            name: "Single-Arm Overhead Extension",
+            equipment: "Dumbbell",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "Unilateral training allows greater range of motion per side and helps identify and correct left-right strength imbalances in the long head.",
+            steps: [
+              "Hold one dumbbell overhead with one arm, other hand lightly supports the elbow",
+              "Bend elbow to lower dumbbell behind head as far as comfortable",
+              "Extend arm fully overhead, squeezing the tricep hard at the top",
+              "Complete all reps before switching arms"
+            ],
+            sets: "3", reps: "12–15 per arm", rest: "60s"
+          }
+        ]
+      },
+      {
+        name: "Lateral Head",
+        description: "Creates the iconic horseshoe shape visible on the outer arm. Most active when the elbow is pinned at the side and the arm is in a neutral or pronated position.",
+        exercises: [
+          {
+            icon: "⬇️",
+            name: "Rope Pushdown",
+            equipment: "Cable Machine + Rope",
+            category: "Isolation",
+            difficulty: 1,
+            desc: "Separating the rope at the bottom creates slight wrist supination that maximizes lateral head contraction. The go-to exercise for horseshoe definition.",
+            steps: [
+              "Attach rope to high cable pulley, stand close with elbows at sides",
+              "Push rope down to full extension, spreading rope ends apart at the bottom",
+              "Hold the contraction for 1 second at full extension",
+              "Slowly return to starting position without letting elbows flare"
+            ],
+            sets: "4", reps: "12–15", rest: "60s"
+          },
+          {
+            icon: "📏",
+            name: "Straight Bar Pushdown",
+            equipment: "Cable Machine",
+            category: "Isolation",
+            difficulty: 1,
+            desc: "The straight bar allows heavier loading than the rope, providing greater mechanical tension on the lateral head for strength and size gains.",
+            steps: [
+              "Attach straight bar to high cable pulley",
+              "Grip bar overhand, elbows pinned tightly to sides",
+              "Push bar down to full extension, keeping wrists straight",
+              "Slowly return to 90° without swinging or flaring elbows"
+            ],
+            sets: "3", reps: "10–15", rest: "60s"
+          },
+          {
+            icon: "🏋️",
+            name: "Dumbbell Kickback",
+            equipment: "Dumbbell",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "The kickback position places the elbow behind the body, creating peak tension on the lateral head at full extension — where it contracts hardest.",
+            steps: [
+              "Hinge forward 45° with upper arm parallel to floor, elbow behind body",
+              "Extend forearm back until arm is completely straight",
+              "Hold at the top — this is where the lateral head fires hardest",
+              "Lower slowly and repeat; keep upper arm completely locked in position"
+            ],
+            sets: "3", reps: "12–15 per arm", rest: "60s"
+          },
+          {
+            icon: "💺",
+            name: "Tricep Dips (Upright)",
+            equipment: "Parallel Bars",
+            category: "Compound",
+            difficulty: 2,
+            desc: "Keeping the torso upright during dips heavily targets the lateral head and medial head at lockout, making this a powerful compound builder.",
+            steps: [
+              "Grip parallel bars, start with arms straight and torso upright",
+              "Lower body by bending elbows, keeping torso as vertical as possible",
+              "Stop when upper arms reach parallel to floor",
+              "Press back up to full lockout, squeezing the lateral head hard"
+            ],
+            sets: "3", reps: "10–15", rest: "75s"
+          }
+        ]
+      },
+      {
+        name: "Medial Head",
+        description: "The deep stabilizing head that fires hardest in the final degrees of elbow extension. Supinated and reverse grips maximize its activation and lockout strength.",
+        exercises: [
+          {
+            icon: "🔄",
+            name: "Reverse-Grip Pushdown",
+            equipment: "Cable Machine",
+            category: "Isolation",
+            difficulty: 1,
+            desc: "Flipping to an underhand (supinated) grip shifts the dominant load onto the medial head — a commonly neglected region that builds dense elbow strength.",
+            steps: [
+              "Attach straight bar to high cable pulley",
+              "Grip bar underhand (palms facing up), elbows pinned at sides",
+              "Push bar down to full extension — focus on squeezeng at lockout",
+              "Slowly return to starting position, maintairing the supinated grip"
+            ],
+            sets: "3", reps: "12–15", rest: "60s"
+          },
+          {
+            icon: "🏋️",
+            name: "Close-Grip Bench Press",
+            equipment: "Barbell + Bench",
+            category: "Compound",
+            difficulty: 2,
+            desc: "The lockout phase of the close-grip bench press is dominated by the medial head, and heavy loading makes it the strongest builder for this region.",
+            steps: [
+              "Lie on bench, grip bar at shoulder-width or slightly narrower",
+              "Lower bar to lower chest with elbows tucked at 45° from body",
+              "Press to full lockout — squeeze hard at the top for medial head activation",
+              "Control the descent; don't let elbows flare wide"
+            ],
+            sets: "4", reps: "6–10", rest: "90s"
+          },
+          {
+            icon: "💎",
+            name: "Diamond Push-Up",
+            equipment: "Bodyweight",
+            category: "Compound",
+            difficulty: 2,
+            desc: "Forming a diamond shape with both hands creates a narrow base that heavily loads the medial head through the full range of motion — no equipment needed.",
+            steps: [
+              "Form a diamond shape with index fingers and thumbs on the floor",
+              "Position hands under your chest, arms extended",
+              "Lower chest toward hands, keeping elbows close to body",
+              "Press back to full extension, focusing on the lockout squeeze"
+            ],
+            sets: "3", reps: "12–20", rest: "60s"
+          },
+          {
+            icon: "🔁",
+            name: "EZ Bar Tricep Extension (Lying)",
+            equipment: "EZ Bar + Bench",
+            category: "Isolation",
+            difficulty: 2,
+            desc: "The angled EZ bar grips reduce wrist strain and create a semi-supinated angle that increases medial head involvement compared to a straight bar.",
+            steps: [
+              "Lie flat on bench, hold EZ bar at the inner (angled) grip positions",
+              "Start with bar above chest, arms extended",
+              "Lower bar toward forehead by bending only at the elbows",
+              "Extend elbows to full lockout, focusing on the deep medial contraction"
+            ],
+            sets: "3", reps: "10–12", rest: "75s"
+          }
+        ]
+      }
+    ]
+  },
+  abs: {
+    name: "Abs (Rectus Abdominis)",
+    tag: "CORE",
+    color: "#9b5de5",
+    desc: "The rectus abdominis runs vertically down the front of the abdomen and creates the 'six-pack' appearance when body fat is low. It works as a trunk flexor. Training abs builds core stability and helps prevent lower back injury.",
+    wikiLink: "https://en.wikipedia.org/wiki/Rectus_abdominis_muscle",
+    wikiText: "Wikipedia: Rectus Abdominis",
+    exercises: [
+      {
+        icon: "🏃",
+        name: "Plank",
+        equipment: "Bodyweight",
+        category: "Isometric",
+        difficulty: 1,
+        desc: "The ultimate core stability exercise. Works the entire core as a unit — abs, obliques, lower back, and hip flexors.",
+        steps: [
+          "Place forearms on floor, elbows under shoulders",
+          "Extend legs behind you, toes on floor",
+          "Keep body in a straight line from head to heels",
+          "Hold without letting hips sag or rise"
+        ],
+        sets: "3", reps: "30–60s", rest: "60s"
+      },
+      {
+        icon: "🔄",
+        name: "Cable Crunch",
+        equipment: "Cable Machine + Rope",
+        category: "Isolation",
+        difficulty: 2,
+        desc: "Allows progressive overloading of the abs — something crunches alone can't provide. Consistently ranked as a top abs exercise by EMG studies.",
+        steps: [
+          "Kneel below high cable pulley, hold rope behind head",
+          "Flex spine to crunch elbows toward knees",
+          "Focus on rounding the lumbar spine — don't just pull with arms",
+          "Slowly extend back up without letting weight stack touch"
+        ],
+        sets: "4", reps: "12–15", rest: "60s"
+      },
+      {
+        icon: "🦵",
+        name: "Hanging Leg Raise",
+        equipment: "Pull-up Bar",
+        category: "Compound",
+        difficulty: 3,
+        desc: "Targets the lower portion of the rectus abdominis and the hip flexors. One of the hardest and most effective ab exercises.",
+        steps: [
+          "Hang from pull-up bar with arms extended",
+          "Keeping legs straight (or bent for easier version), raise to hip or chest height",
+          "Avoid swinging — control the movement",
+          "Lower slowly to full hang"
+        ],
+        sets: "3", reps: "10–15", rest: "75s"
+      },
+      {
+        icon: "🌀",
+        name: "Ab Wheel Rollout",
+        equipment: "Ab Wheel",
+        category: "Compound",
+        difficulty: 3,
+        desc: "Combines anti-extension core strength with rectus abdominis activation. Studies show it produces very high muscle activation.",
+        steps: [
+          "Kneel on floor holding ab wheel with both hands",
+          "Slowly roll forward as far as possible without arching lower back",
+          "Use core to pull yourself back to start position",
+          "Start with partial reps if needed"
+        ],
+        sets: "3", reps: "8–12", rest: "75s"
+      }
+    ]
+  },
+  obliques: {
+    name: "Obliques",
+    tag: "CORE",
+    color: "#f77f00",
+    desc: "The obliques (internal and external) run diagonally across the sides of the abdomen. They're responsible for trunk rotation and lateral flexion. Strong obliques create the athletic 'V-taper' at the waist and protect the spine.",
+    wikiLink: "https://en.wikipedia.org/wiki/Abdominal_external_oblique_muscle",
+    wikiText: "Wikipedia: External Oblique",
+    exercises: [
+      {
+        icon: "🔀",
+        name: "Russian Twist",
+        equipment: "Bodyweight or Weight Plate",
+        category: "Isolation",
+        difficulty: 2,
+        desc: "A rotational movement that directly targets both internal and external obliques through repeated twisting.",
+        steps: [
+          "Sit with knees bent, lean back until core is engaged (45°)",
+          "Hold weight or clasp hands, rotate torso side to side",
+          "Touch weight to floor on each side",
+          "Keep feet off floor for extra challenge"
+        ],
+        sets: "3", reps: "20 total", rest: "60s"
+      },
+      {
+        icon: "⬅️",
+        name: "Side Plank",
+        equipment: "Bodyweight",
+        category: "Isometric",
+        difficulty: 2,
+        desc: "Targets the lateral core — external oblique, internal oblique, and quadratus lumborum. Great for spinal stability.",
+        steps: [
+          "Lie on side, stack feet and prop up on forearm",
+          "Lift hips to create straight line from head to feet",
+          "Hold without letting hips sag",
+          "Perform on both sides equally"
+        ],
+        sets: "3", reps: "30–45s each", rest: "60s"
+      },
+      {
+        icon: "🔌",
+        name: "Cable Woodchop",
+        equipment: "Cable Machine",
+        category: "Compound",
+        difficulty: 2,
+        desc: "Trains the obliques through rotation with resistance. One of the most functional core exercises mimicking real-world movements.",
+        steps: [
+          "Set cable high, stand sideways to machine",
+          "Grip handle with both hands, arms extended",
+          "Rotate and pull cable diagonally down and across body",
+          "Keep arms straight and use core, not arms, to rotate"
+        ],
+        sets: "3", reps: "12 each side", rest: "60s"
+      },
+      {
+        icon: "↕️",
+        name: "Pallof Press",
+        equipment: "Cable Machine",
+        category: "Isometric",
+        difficulty: 2,
+        desc: "An anti-rotation core exercise that resists rotational force from the cable, creating strong oblique and core stability.",
+        steps: [
+          "Set cable at chest height, stand perpendicular to machine",
+          "Hold handle at chest with both hands",
+          "Press handle straight out and hold for 2 seconds",
+          "Bring back to chest — resist rotating toward cable"
+        ],
+        sets: "3", reps: "12–15 each side", rest: "60s"
+      }
+    ]
+  },
+  quads: {
+    name: "Quadriceps",
+    tag: "LOWER BODY",
+    color: "#0077b6",
+    desc: "The quadriceps are four muscles on the front of the thigh (rectus femoris, vastus lateralis, vastus medialis, vastus intermedius). They're the primary knee extensors and are critical for almost all lower body movement. The quads are the largest muscle group in the body.",
+    wikiLink: "https://en.wikipedia.org/wiki/Quadriceps_femoris_muscle",
+    wikiText: "Wikipedia: Quadriceps Femoris",
+    exercises: [
+      {
+        icon: "🏋️",
+        name: "Barbell Back Squat",
+        equipment: "Barbell + Squat Rack",
+        category: "Compound",
+        difficulty: 4,
+        desc: "The undisputed king of leg exercises. Targets quads, glutes, hamstrings, and core simultaneously with maximum loading potential.",
+        steps: [
+          "Bar rests on upper traps, feet shoulder-width, toes slightly out",
+          "Descend by pushing knees out and hips back simultaneously",
+          "Aim for thighs parallel or below at the bottom",
+          "Drive through heels to stand, squeezing glutes at top"
+        ],
+        sets: "4", reps: "5–8", rest: "2–3min"
+      },
+      {
+        icon: "🦵",
+        name: "Leg Press",
+        equipment: "Leg Press Machine",
+        category: "Compound",
+        difficulty: 2,
+        desc: "Allows heavy loading with lower back stability. Foot placement determines emphasis: high and wide = more glutes/hams, low = more quads.",
+        steps: [
+          "Sit in machine, feet shoulder-width on platform",
+          "Unlock safety, lower weight until 90° knee bend",
+          "Press through heels to full extension (don't lock knees)",
+          "Control the descent — don't let weight crash down"
+        ],
+        sets: "4", reps: "10–12", rest: "90s"
+      },
+      {
+        icon: "🚶",
+        name: "Walking Lunge",
+        equipment: "Dumbbells or Barbell",
+        category: "Compound",
+        difficulty: 2,
+        desc: "Develops quad strength and size with a balance component. Each leg works independently, addressing imbalances.",
+        steps: [
+          "Stand tall, step forward with right leg into deep lunge",
+          "Lower back knee toward floor — hover 1 inch above",
+          "Push off front foot and bring back leg forward to step into next lunge",
+          "Keep torso upright throughout"
+        ],
+        sets: "3", reps: "12 each leg", rest: "75s"
+      },
+      {
+        icon: "🔄",
+        name: "Leg Extension",
+        equipment: "Leg Extension Machine",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "The only true quad isolation exercise. Excellent for developing the teardrop (VMO) and overall quad definition.",
+        steps: [
+          "Sit in machine, back of knees at seat edge, pad on shins",
+          "Extend knees fully, squeezing quads hard at the top",
+          "Hold peak contraction for 1 second",
+          "Lower slowly — 3 count — to starting position"
+        ],
+        sets: "3", reps: "12–15", rest: "60s"
+      }
+    ]
+  },
+  hamstrings: {
+    name: "Hamstrings",
+    tag: "LOWER BODY",
+    color: "#0077b6",
+    desc: "The hamstrings are three muscles on the back of the thigh (biceps femoris, semimembranosus, semitendinosus). They perform knee flexion and hip extension. Underdeveloped hamstrings are a common cause of knee and lower back injury.",
+    wikiLink: "https://en.wikipedia.org/wiki/Hamstring",
+    wikiText: "Wikipedia: Hamstring",
+    exercises: [
+      {
+        icon: "🏋️",
+        name: "Romanian Deadlift (RDL)",
+        equipment: "Barbell or Dumbbells",
+        category: "Compound",
+        difficulty: 3,
+        desc: "The best hamstring mass-builder. The hip hinge pattern provides a full hamstring stretch under load at the bottom of each rep.",
+        steps: [
+          "Hold bar at hip level, feet hip-width, slight knee bend",
+          "Push hips back while lowering bar along legs",
+          "Feel a deep stretch in hamstrings (bar reaches mid-shin level)",
+          "Drive hips forward to return — squeeze glutes at top"
+        ],
+        sets: "4", reps: "8–10", rest: "90s"
+      },
+      {
+        icon: "🦵",
+        name: "Lying Leg Curl",
+        equipment: "Leg Curl Machine",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "The primary hamstring isolation exercise. Targets knee flexion function of the hamstrings with constant machine tension.",
+        steps: [
+          "Lie face-down, pad behind ankles, hips flat on bench",
+          "Curl feet toward glutes as far as possible",
+          "Squeeze hamstrings hard at peak contraction",
+          "Lower slowly with a 3-second eccentric"
+        ],
+        sets: "4", reps: "10–12", rest: "75s"
+      },
+      {
+        icon: "🔄",
+        name: "Nordic Hamstring Curl",
+        equipment: "Anchor (bench/partner)",
+        category: "Compound",
+        difficulty: 4,
+        desc: "Research-backed as one of the most effective hamstring exercises. Trains the eccentric phase which is when most hamstring tears occur.",
+        steps: [
+          "Kneel with feet anchored behind you",
+          "Lower your body forward as slowly as possible",
+          "Use hands to catch yourself at bottom",
+          "Use momentum to get back to start"
+        ],
+        sets: "3", reps: "5–8", rest: "90s"
+      },
+      {
+        icon: "🌅",
+        name: "Good Morning",
+        equipment: "Barbell",
+        category: "Compound",
+        difficulty: 3,
+        desc: "An underrated hamstring and lower back exercise. The name comes from the resemblance to bowing good morning. Builds hip hinge strength.",
+        steps: [
+          "Bar on upper traps like a squat, feet shoulder-width",
+          "Soft bend in knees, push hips back while lowering torso",
+          "Stop when torso is near parallel to floor — feel hamstring tension",
+          "Drive hips forward to stand back up"
+        ],
+        sets: "3", reps: "10–12", rest: "90s"
+      }
+    ]
+  },
+  glutes: {
+    name: "Glutes (Gluteus Maximus)",
+    tag: "LOWER BODY",
+    color: "#e63946",
+    desc: "The gluteus maximus is the largest muscle in the human body. It's responsible for hip extension, external rotation, and leg abduction. Strong glutes are essential for athletic performance, aesthetics, and protecting the knees and lower back.",
+    wikiLink: "https://en.wikipedia.org/wiki/Gluteus_maximus",
+    wikiText: "Wikipedia: Gluteus Maximus",
+    exercises: [
+      {
+        icon: "🏋️",
+        name: "Hip Thrust",
+        equipment: "Barbell + Bench",
+        category: "Compound",
+        difficulty: 2,
+        desc: "Consistently rated #1 for glute EMG activation in research. Places the glutes in their strongest position for maximal loading.",
+        steps: [
+          "Sit with upper back against bench, bar across hips",
+          "Feet shoulder-width, knees bent at 90°",
+          "Drive hips up explosively until body is flat",
+          "Squeeze glutes at top for 2 seconds, lower slowly"
+        ],
+        sets: "4", reps: "10–15", rest: "90s"
+      },
+      {
+        icon: "🧗",
+        name: "Bulgarian Split Squat",
+        equipment: "Dumbbells + Bench",
+        category: "Compound",
+        difficulty: 3,
+        desc: "Places the glutes in a deep stretch at the bottom. One of the most effective single-leg glute exercises with high research support.",
+        steps: [
+          "Rear foot elevated on bench, front foot forward",
+          "Lower back knee toward floor — go deep",
+          "Press through front heel to stand",
+          "Keep torso upright and core braced"
+        ],
+        sets: "3", reps: "10–12 each", rest: "90s"
+      },
+      {
+        icon: "🔌",
+        name: "Cable Kickback",
+        equipment: "Cable Machine",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "Directly isolates the glute by extending the hip against cable resistance. Great for the finishing burn.",
+        steps: [
+          "Attach ankle strap to low cable, face the machine",
+          "Kick working leg straight back and up",
+          "Squeeze glute hard at peak — don't arch back",
+          "Slowly return leg forward"
+        ],
+        sets: "3", reps: "15–20 each", rest: "60s"
+      },
+      {
+        icon: "🦁",
+        name: "Sumo Deadlift",
+        equipment: "Barbell",
+        category: "Compound",
+        difficulty: 3,
+        desc: "The wide stance of sumo shifts emphasis from hamstrings to glutes compared to conventional deadlift. Excellent glute and inner thigh builder.",
+        steps: [
+          "Wide stance (2x shoulder width), toes pointed 45° out",
+          "Grip bar inside legs, keep chest tall",
+          "Drive knees out and press floor away to stand",
+          "Squeeze glutes fully at the top"
+        ],
+        sets: "3", reps: "6–10", rest: "2min"
+      }
+    ]
+  },
+  calves: {
+    name: "Calves (Gastrocnemius & Soleus)",
+    tag: "LOWER BODY",
+    color: "#48cae4",
+    desc: "The calf complex includes the gastrocnemius (two-headed, visible muscle that creates the calf shape) and the soleus (deeper, works when knee is bent). Both perform plantarflexion (pointing the foot). Calves require high volume and full range of motion.",
+    wikiLink: "https://en.wikipedia.org/wiki/Gastrocnemius_muscle",
+    wikiText: "Wikipedia: Gastrocnemius",
+    exercises: [
+      {
+        icon: "🦶",
+        name: "Standing Calf Raise",
+        equipment: "Machine or Smith Machine",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "The primary gastrocnemius builder. Straight-leg position fully activates the two-headed gastrocnemius.",
+        steps: [
+          "Balls of feet on edge of platform, heels hanging off",
+          "Lower heels as far as possible for a full stretch",
+          "Rise up on tiptoes as high as possible",
+          "Hold peak contraction 1 second — don't bounce"
+        ],
+        sets: "4", reps: "15–20", rest: "60s"
+      },
+      {
+        icon: "🪑",
+        name: "Seated Calf Raise",
+        equipment: "Seated Calf Raise Machine",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "The bent-knee position bypasses the gastrocnemius to isolate the soleus — the deeper, larger muscle that adds calf thickness.",
+        steps: [
+          "Sit with pads on lower thighs, balls of feet on platform",
+          "Lower heels to full stretch",
+          "Press up to maximum height on toes",
+          "Pause and squeeze at top"
+        ],
+        sets: "4", reps: "15–20", rest: "60s"
+      },
+      {
+        icon: "🏃",
+        name: "Single-Leg Calf Raise",
+        equipment: "Bodyweight or Dumbbell",
+        category: "Isolation",
+        difficulty: 2,
+        desc: "Working one leg at a time doubles the load on each calf and corrects imbalances. Hold a dumbbell for added resistance.",
+        steps: [
+          "Balance on one foot on edge of step, other foot behind",
+          "Hold wall or dumbbell for balance",
+          "Full range of motion — deep stretch to full extension",
+          "Complete all reps on one side, then switch"
+        ],
+        sets: "3", reps: "15–20 each", rest: "60s"
+      },
+      {
+        icon: "⬇️",
+        name: "Leg Press Calf Raise",
+        equipment: "Leg Press Machine",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "Allows very heavy loading of the calves safely. Particularly useful for those with balance issues on standing calf raises.",
+        steps: [
+          "Sit in leg press, place balls of feet at bottom edge of plate",
+          "Keep legs nearly straight (small bend in knees)",
+          "Push platform away by extending ankles fully",
+          "Slowly return to deep stretch position"
+        ],
+        sets: "3", reps: "20–25", rest: "60s"
+      }
+    ]
+  },
+  traps: {
+    name: "Trapezius",
+    tag: "UPPER BODY",
+    color: "#e63946",
+    desc: "The trapezius is a large diamond-shaped muscle covering the upper back and neck. It has upper (elevation), middle (retraction), and lower (depression) fibers. Well-developed traps give that powerful 'bull neck' and thick upper back appearance.",
+    wikiLink: "https://en.wikipedia.org/wiki/Trapezius_muscle",
+    wikiText: "Wikipedia: Trapezius",
+    exercises: [
+      {
+        icon: "⬆️",
+        name: "Barbell Shrug",
+        equipment: "Barbell",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "The classic upper trap builder. Allows the heaviest loading of any trap exercise for maximum size and strength gains.",
+        steps: [
+          "Hold barbell in front at hip level with overhand grip",
+          "Shrug shoulders straight up toward ears as high as possible",
+          "Hold at the top for 1–2 seconds",
+          "Lower slowly — don't roll shoulders forward"
+        ],
+        sets: "4", reps: "12–15", rest: "75s"
+      },
+      {
+        icon: "🏋️",
+        name: "Rack Pull",
+        equipment: "Barbell + Power Rack",
+        category: "Compound",
+        difficulty: 3,
+        desc: "A partial deadlift that places heavy stress on traps and upper back through the isometric hold and lockout phase.",
+        steps: [
+          "Set bar in rack at knee height",
+          "Deadlift bar from rack to full hip extension",
+          "Squeeze traps and upper back at lockout",
+          "Lower bar back to rack with control"
+        ],
+        sets: "3", reps: "5–8", rest: "2min"
+      },
+      {
+        icon: "🔄",
+        name: "Face Pull",
+        equipment: "Cable Machine + Rope",
+        category: "Isolation",
+        difficulty: 2,
+        desc: "Works the middle and upper traps alongside the rear delts. Critical for shoulder health and posture correction.",
+        steps: [
+          "Set cable at face height, grip rope attachment",
+          "Pull rope to face, separating rope ends beside ears",
+          "Focus on squeezing the middle back and traps",
+          "Slowly extend arms back to start"
+        ],
+        sets: "3", reps: "15–20", rest: "60s"
+      },
+      {
+        icon: "🏋️",
+        name: "Farmer's Carry",
+        equipment: "Dumbbells or Trap Bar",
+        category: "Compound",
+        difficulty: 2,
+        desc: "Walking with heavy weights engages the traps isometrically to stabilize the shoulder and neck. Also builds grip strength and core.",
+        steps: [
+          "Hold heavy dumbbells at sides, stand tall",
+          "Walk a set distance with controlled, even steps",
+          "Keep shoulders back and down — don't let them elevate",
+          "Focus on keeping good posture throughout"
+        ],
+        sets: "3", reps: "40m each", rest: "90s"
+      }
+    ]
+  },
+  forearms: {
+    name: "Forearms",
+    tag: "UPPER BODY",
+    color: "#f4a261",
+    desc: "The forearms contain over 20 muscles controlling wrist and finger movement. Key muscles include the flexors (palm side) and extensors (back side). Strong forearms improve grip strength across all pulling exercises and add to a complete arm appearance.",
+    wikiLink: "https://en.wikipedia.org/wiki/Forearm",
+    wikiText: "Wikipedia: Forearm Muscles",
+    exercises: [
+      {
+        icon: "🤲",
+        name: "Wrist Curl",
+        equipment: "Barbell or Dumbbell",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "Directly targets the forearm flexors (the underside of the forearm). Simple, effective, and easy to overload progressively.",
+        steps: [
+          "Sit, forearms on thighs, wrists hanging off knees",
+          "Hold barbell with underhand grip",
+          "Curl wrists up as high as possible",
+          "Lower slowly to full extension and open hands slightly"
+        ],
+        sets: "3", reps: "15–20", rest: "60s"
+      },
+      {
+        icon: "🤸",
+        name: "Reverse Wrist Curl",
+        equipment: "Barbell or Dumbbell",
+        category: "Isolation",
+        difficulty: 1,
+        desc: "Targets forearm extensors (top side). Often neglected but important for balanced forearm development and wrist health.",
+        steps: [
+          "Forearms on thighs, overhand grip, wrists hanging off",
+          "Extend wrists upward as high as possible",
+          "Hold for 1 second, then lower slowly",
+          "Use lighter weight than wrist curls"
+        ],
+        sets: "3", reps: "15–20", rest: "60s"
+      },
+      {
+        icon: "💪",
+        name: "Hammer Curl",
+        equipment: "Dumbbells",
+        category: "Compound",
+        difficulty: 1,
+        desc: "The neutral grip works the brachioradialis — the large forearm muscle that runs up the outside of the arm — more than supinated curls.",
+        steps: [
+          "Dumbbells at sides, palms facing each other",
+          "Curl both arms up keeping thumbs pointed up",
+          "Full range of motion — squeeze at top",
+          "Lower slowly with control"
+        ],
+        sets: "3", reps: "10–12", rest: "60s"
+      },
+      {
+        icon: "🖐️",
+        name: "Dead Hang / Grip Work",
+        equipment: "Pull-up Bar",
+        category: "Isometric",
+        difficulty: 2,
+        desc: "Hanging from a bar builds crushing grip strength and hits all forearm muscles isometrically. Also decompresses the spine.",
+        steps: [
+          "Grip pull-up bar with both hands, hang freely",
+          "Try to 'bend' the bar with your grip — squeeze as hard as possible",
+          "Hold until grip fails",
+          "Rest and repeat"
+        ],
+        sets: "3", reps: "30–60s", rest: "90s"
+      }
+    ]
+  }
+};
+
+const MUSCLE_LIST_CONFIG = [
+  { id: "chest", label: "Chest", color: "#e63946", view: "front" },
+  { id: "back", label: "Back (Lats & Rhomboids)", color: "#9b5de5", view: "back" },
+  { id: "traps", label: "Trapezius", color: "#e63946", view: "back" },
+  { id: "front_delts", label: "Front Delts (Anterior)", color: "#3a7ca5", view: "front" },
+  { id: "side_delts",  label: "Side Delts (Lateral)",  color: "#3a7ca5", view: "front" },
+  { id: "rear_delts",  label: "Rear Delts (Posterior)", color: "#3a7ca5", view: "back"  },
+  { id: "biceps", label: "Biceps", color: "#2dc653", view: "front" },
+  { id: "triceps", label: "Triceps", color: "#2dc653", view: "back" },
+  { id: "forearms", label: "Forearms", color: "#f4a261", view: "front" },
+  { id: "abs", label: "Abs", color: "#9b5de5", view: "front" },
+  { id: "obliques", label: "Obliques", color: "#f77f00", view: "front" },
+  { id: "quads", label: "Quadriceps", color: "#0077b6", view: "front" },
+  { id: "hamstrings", label: "Hamstrings", color: "#0077b6", view: "back" },
+  { id: "glutes", label: "Glutes", color: "#e63946", view: "back" },
+  { id: "calves", label: "Calves", color: "#48cae4", view: "front" }
+];
+
+let currentView = "front";
+let currentMuscle = null;
+
+function setView(view) {
+  currentView = view;
+  document.getElementById("svg-front").style.display = view === "front" ? "block" : "none";
+  document.getElementById("svg-back").style.display = view === "back" ? "block" : "none";
+  document.querySelectorAll(".view-toggle button").forEach((btn, i) => {
+    btn.classList.toggle("active", (i === 0 && view === "front") || (i === 1 && view === "back"));
+  });
+}
+
+function selectMuscle(id) {
+  currentMuscle = id;
+  const data = MUSCLES[id];
+  if (!data) return;
+
+  // Update SVG active states
+  document.querySelectorAll(".muscle-region").forEach(el => el.classList.remove("active"));
+
+  // Find config and set view
+  const config = MUSCLE_LIST_CONFIG.find(m => m.id === id);
+  if (config) {
+    setView(config.view);
+    document.querySelectorAll(".muscle-list-item").forEach(el => {
+      el.classList.toggle("active", el.dataset.id === id);
+    });
+  }
+
+  // Show details
+  document.getElementById("welcome-screen").style.display = "none";
+  const header = document.getElementById("muscle-header");
+  header.classList.add("visible");
+  document.getElementById("detail-tag").textContent = data.tag;
+  document.getElementById("detail-name").textContent = data.name;
+  document.getElementById("detail-desc").textContent = data.desc;
+  document.getElementById("detail-link").href = data.wikiLink;
+  document.getElementById("detail-link").textContent = data.wikiText;
+
+  // Training goal guidance by category
+  function getTrainingGoals(cat) {
+    if (cat === "Compound") {
+      return {
+        strength: {
+          sets: "4–6", reps: "1–5", load: "85–95% 1RM", rest: "3–5 min",
+          tip: "Max effort, full recovery between sets. Log your weights and aim to add load each session."
+        },
+        hypertrophy: {
+          sets: "3–4", reps: "6–12", load: "65–80% 1RM", rest: "60–90s",
+          tip: "Moderate load with controlled eccentric. Keep tension on the muscle and avoid locking out at top."
+        }
+      };
+    } else {
+      return {
+        strength: {
+          sets: "3–4", reps: "6–10", load: "75–85% effort", rest: "90–120s",
+          tip: "Heavier than usual for an isolation move. Use full ROM and pause at peak contraction."
+        },
+        hypertrophy: {
+          sets: "3–4", reps: "12–20", load: "55–70% effort", rest: "45–75s",
+          tip: "High reps, slow 3-sec eccentric, strong mind-muscle connection. The burn is the goal."
+        }
+      };
+    }
+  }
+
+  // Render exercise cards
+  const grid = document.getElementById("exercises-grid");
+  function renderExCard(ex) {
+    const goals = getTrainingGoals(ex.category);
+    return `
+    <div class="exercise-card">
+      <div class="card-img" style="background: linear-gradient(135deg, #1e2433 0%, #0d1220 100%);">
+        <div class="big-icon">${ex.icon}</div>
+        <div class="category-badge">${ex.category}</div>
+        <div class="difficulty">
+          ${[1,2,3,4].map(i => `<span class="${i <= ex.difficulty ? 'filled' : ''}"></span>`).join('')}
+        </div>
+      </div>
+      <div class="card-body">
+        <h3>${ex.name}</h3>
+        <div class="equipment">&#9881;&#65039; ${ex.equipment}</div>
+        <p>${ex.desc}</p>
+        <ul class="steps">
+          ${ex.steps.map((s, i) => `<li><span class="num">${i+1}</span><span>${s}</span></li>`).join('')}
+        </ul>
+        <div class="sets-reps">
+          <div class="stat"><div class="val">${ex.sets}</div><div class="lbl">SETS</div></div>
+          <div class="stat"><div class="val">${ex.reps}</div><div class="lbl">REPS</div></div>
+          <div class="stat"><div class="val">${ex.rest}</div><div class="lbl">REST</div></div>
+        </div>
+        <div class="training-goals-title">Training Goal</div>
+        <div class="training-goals">
+          <div class="training-goal-box strength">
+            <div class="goal-title">&#128170; Strength</div>
+            <div class="goal-line"><strong>Sets:</strong> ${goals.strength.sets}</div>
+            <div class="goal-line"><strong>Reps:</strong> ${goals.strength.reps}</div>
+            <div class="goal-line"><strong>Load:</strong> ${goals.strength.load}</div>
+            <div class="goal-line"><strong>Rest:</strong> ${goals.strength.rest}</div>
+            <div class="goal-tip">${goals.strength.tip}</div>
+          </div>
+          <div class="training-goal-box hypertrophy">
+            <div class="goal-title">&#128293; Hypertrophy</div>
+            <div class="goal-line"><strong>Sets:</strong> ${goals.hypertrophy.sets}</div>
+            <div class="goal-line"><strong>Reps:</strong> ${goals.hypertrophy.reps}</div>
+            <div class="goal-line"><strong>Load:</strong> ${goals.hypertrophy.load}</div>
+            <div class="goal-line"><strong>Rest:</strong> ${goals.hypertrophy.rest}</div>
+            <div class="goal-tip">${goals.hypertrophy.tip}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;}
+  if (data.subCategories) {
+    grid.innerHTML = data.subCategories.map(sub => `
+      <div class="sub-category-section">
+        <div class="sub-category-header" onclick="toggleSubCategory(this)">
+          <div class="sub-chevron">&#x25BC;</div>
+          <div>
+            <h3>${sub.name}</h3>
+            <p>${sub.description}</p>
+          </div>
+        </div>
+        <div class="sub-category-exercises">
+          ${sub.exercises.map(ex => renderExCard(ex)).join('')}
+        </div>
+      </div>
+    `).join('');
+  } else {
+    grid.innerHTML = data.exercises.map(ex => renderExCard(ex)).join("");
+  }
+
+  document.getElementById("ref-section").style.display = "block";
+  document.getElementById("exercise-panel").scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// Build muscle list
+const listEl = document.getElementById("muscle-list");
+MUSCLE_LIST_CONFIG.forEach(m => {
+  const el = document.createElement("div");
+  el.className = "muscle-list-item";
+  el.dataset.id = m.id;
+  el.innerHTML = `<span class="dot" style="background:${m.color}"></span>${m.label}`;
+  el.onclick = () => selectMuscle(m.id);
+  listEl.appendChild(el);
+});
+
+// TAB SWITCHING
+function switchTab(tabName) {
+  // Hide all tabs
+  document.querySelectorAll(".tab-content").forEach(tab => {
+    tab.classList.remove("active");
+  });
+  document.querySelectorAll(".tab-button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  // Show selected tab
+  document.getElementById(tabName + "-tab").classList.add("active");
+  event.target.classList.add("active");
+
+  // Reset exercise panel if switching away from exercises
+  if (tabName === "rehab") {
+    document.getElementById("welcome-screen").style.display = "none";
+    document.getElementById("muscle-header").classList.remove("visible");
+    document.getElementById("ref-section").style.display = "none";
+  }
+}
+
+// REHAB EXERCISES DATA
+const REHAB_EXERCISES = [
+  {
+    name: "Band Pull-Aparts",
+    target: "Shoulder",
+    equipment: "Resistance Band",
+    description: "Strengthens rear delts and middle back to correct posture and reduce shoulder impingement syndrome. Excellent for desk workers.",
+    steps: [
+      "Stand with feet shoulder-width apart, hold band at arm's length in front of you at chest height",
+      "Keep a slight bend in your elbows and pull the band apart by driving your elbows back",
+      "Squeeze your shoulder blades together at the end of the movement",
+      "Slowly return to starting position with control"
+    ],
+    setsReps: "3 sets x 15-20 reps",
+    duration: "45-60 seconds per set",
+    conditions: "Helps with shoulder impingement, poor posture, and upper back weakness"
+  },
+  {
+    name: "Dead Bug",
+    target: "Lower Back/Core",
+    equipment: "Bodyweight",
+    description: "A fundamental core stability exercise that teaches proper spinal alignment and strengthens deep abdominal muscles without excessive loading.",
+    steps: [
+      "Lie on your back with arms extended straight up toward the ceiling",
+      "Bend hips and knees to 90 degrees so shins are parallel to the floor",
+      "Slowly lower your right arm overhead while straightening your left leg, hovering just above the floor",
+      "Return to center and repeat on the opposite side in a controlled alternating pattern"
+    ],
+    setsReps: "3 sets x 10-12 reps per side",
+    duration: "40-50 seconds per set",
+    conditions: "Excellent for lower back pain, core stability, and learning neutral spine"
+  },
+  {
+    name: "Clamshells",
+    target: "Hip/Glute",
+    equipment: "Bodyweight or Light Resistance Band",
+    description: "Targets the gluteus medius to strengthen the hip abductors, correcting hip imbalances and reducing knee pain from weak hip stability.",
+    steps: [
+      "Lie on your side with knees bent at 90 degrees and hips stacked",
+      "Keep your feet together and slowly raise your top knee as high as possible",
+      "Feel the stretch and activation in your outer hip and glute",
+      "Lower knee back down with control and repeat for all reps before switching sides"
+    ],
+    setsReps: "3 sets x 15-20 reps per side",
+    duration: "50-60 seconds per side",
+    conditions: "Helps with hip pain, knee pain from weak hip stability, and gluteal weakness"
+  },
+  {
+    name: "Wall Slides",
+    target: "Shoulder",
+    equipment: "Wall or Resistance Band",
+    description: "Teaches proper scapular mechanics and shoulder blade positioning while improving overhead mobility and shoulder stability.",
+    steps: [
+      "Stand with back against a wall, feet 6 inches away, knees slightly bent",
+      "Press arms against wall with elbows bent at 90 degrees at shoulder height",
+      "Slowly slide arms upward toward the ceiling, maintaining contact with the wall",
+      "Return to starting position, focusing on feeling your shoulder blades move"
+    ],
+    setsReps: "3 sets x 12-15 reps",
+    duration: "40-50 seconds per set",
+    conditions: "Ideal for shoulder impingement, limited overhead mobility, and postural correction"
+  },
+  {
+    name: "Hip Flexor Stretch (Kneeling)",
+    target: "Hip Flexor",
+    equipment: "Bodyweight or Yoga Mat",
+    description: "Targets tight hip flexors that become shortened from prolonged sitting, restoring proper hip mobility and reducing lower back strain.",
+    steps: [
+      "Kneel on one knee with the other leg in front, foot flat on the ground in a half-kneeling position",
+      "Lean your hips forward while keeping your torso upright and core engaged",
+      "You should feel a deep stretch in the hip flexor and front of the rear leg",
+      "Hold the stretch and breathe deeply for the duration"
+    ],
+    setsReps: "Hold 2-3 sets x 30-60 seconds per side",
+    duration: "30-60 seconds per side",
+    conditions: "Essential for hip flexor tightness, lower back pain, and posture improvement"
+  },
+  {
+    name: "Cat-Cow Stretch",
+    target: "Spine/Lower Back",
+    equipment: "Yoga Mat or Soft Surface",
+    description: "A dynamic spinal mobility exercise that improves segmental movement, releases lower back tension, and warms up the entire spine.",
+    steps: [
+      "Start on hands and knees in a tabletop position with neutral spine",
+      "Drop your belly and look upward, arching your back gently (Cow position)",
+      "Then round your spine, tuck your chin, and pull your belly in (Cat position)",
+      "Move between these positions fluidly in a rhythmic, controlled manner"
+    ],
+    setsReps: "2-3 sets x 10-12 full cycles",
+    duration: "40-50 seconds per set",
+    conditions: "Great for lower back stiffness, spinal mobility, and warm-up before training"
+  },
+  {
+    name: "Bird Dog",
+    target: "Lower Back/Core",
+    equipment: "Bodyweight or Yoga Mat",
+    description: "An advanced core stability exercise that teaches proper spinal alignment while strengthening the opposite arm and leg coordination.",
+    steps: [
+      "Start in tabletop position with hands under shoulders and knees under hips",
+      "Extend your right arm straight forward while simultaneously straightening your left leg behind you",
+      "Keep your spine neutral and avoid rotating your torso or tilting your hips",
+      "Return to starting position and repeat on the opposite side in controlled alternation"
+    ],
+    setsReps: "3 sets x 10-12 reps per side",
+    duration: "50-60 seconds per set",
+    conditions: "Improves core stability, reduces lower back pain, and corrects movement imbalances"
+  },
+  {
+    name: "90/90 Hip Stretch",
+    target: "Hip",
+    equipment: "Yoga Mat or Floor",
+    description: "A deep stretching position that opens the hip and improves rotational mobility, addressing hip tightness and internal/external rotation restrictions.",
+    steps: [
+      "Sit on the floor and position your front leg at 90 degrees in front of you, back leg at 90 degrees behind",
+      "Keep both shins perpendicular to your body with knees bent at 90 degrees",
+      "Fold your torso forward over your front leg, maintaining a neutral spine",
+      "Feel the stretch in your outer hip and hold, breathing deeply"
+    ],
+    setsReps: "Hold 2-3 sets x 45-90 seconds per side",
+    duration: "45-90 seconds per side",
+    conditions: "Essential for hip tightness, limited hip mobility, and hip flexor restrictions"
+  },
+  {
+    name: "Face Pull",
+    target: "Shoulder",
+    equipment: "Cable Machine with Rope Attachment",
+    description: "Strengthens rear deltoids and mid-back while improving shoulder blade retraction and external rotation, crucial for shoulder health.",
+    steps: [
+      "Set cable to face height with a rope attachment, stand facing the machine",
+      "Pull the rope toward your face while separating the rope ends, driving elbows back",
+      "Focus on pinching your shoulder blades together at peak contraction",
+      "Control the return to starting position while maintaining tension"
+    ],
+    setsReps: "3 sets x 15-20 reps",
+    duration: "50-60 seconds per set",
+    conditions: "Improves shoulder impingement, neck tension, and postural control"
+  },
+  {
+    name: "Terminal Knee Extension (TKE)",
+    target: "Knee",
+    equipment: "Resistance Band",
+    description: "Isolates the quad in full extension to strengthen the vastus medialis oblique, improving knee stability and reducing knee pain.",
+    steps: [
+      "Loop a resistance band around a sturdy object at knee height, then loop it around the back of your knee",
+      "Bend your knee slightly to create tension on the band",
+      "Straighten your leg against the band resistance, focusing on full knee extension",
+      "Control the return to the starting position"
+    ],
+    setsReps: "3 sets x 15-20 reps per leg",
+    duration: "50-60 seconds per leg",
+    conditions: "Helps with knee pain, patellar tracking issues, and quad weakness"
+  },
+  {
+    name: "Jefferson Curl",
+    target: "Lower Back/Hamstring",
+    equipment: "Bodyweight",
+    description: "A controlled, segmental stretching exercise that flexes the spine one vertebra at a time, improving hamstring flexibility and spinal mobility.",
+    steps: [
+      "Stand with feet hip-width apart and slowly round your upper back, dropping your chin to chest",
+      "Gradually articulate downward through each vertebra, rolling through your thoracic and lumbar spine",
+      "Let gravity gently pull you forward as you reach toward your toes",
+      "Reverse the motion, stacking each vertebra back to neutral slowly and deliberately"
+    ],
+    setsReps: "2-3 sets x 5-8 full rolls",
+    duration: "60-90 seconds per set",
+    conditions: "Great for lower back tightness, hamstring flexibility, and spinal mobility"
+  },
+  {
+    name: "Thoracic Rotation",
+    target: "Upper Back/Spine",
+    equipment: "Bodyweight or Yoga Mat",
+    description: "Improves thoracic spine rotational mobility and reduces upper back stiffness, essential for shoulder health and proper movement patterns.",
+    steps: [
+      "Get into tabletop position with hands under shoulders and knees under hips",
+      "Place your right hand behind your head with your elbow bent",
+      "Rotate your torso to open your right elbow up toward the ceiling while keeping your hips stable",
+      "Feel the rotation in your mid-back and return to center, repeat for all reps, then switch sides"
+    ],
+    setsReps: "3 sets x 10-12 reps per side",
+    duration: "50-60 seconds per set",
+    conditions: "Improves thoracic mobility, reduces upper back tension, and corrects postural issues"
+  },
+  {
+    name: "Side-Lying External Rotation",
+    target: "Shoulder",
+    equipment: "Light Dumbbell or Resistance Band",
+    description: "Strengthens the infraspinatus and teres minor (rotator cuff muscles) to stabilize the shoulder joint and prevent impingement.",
+    steps: [
+      "Lie on your side with the lower arm underneath, top arm bent at 90 degrees with forearm down",
+      "Keeping your elbow against your ribs, rotate your forearm upward against resistance",
+      "Feel the activation in your rear shoulder and upper back",
+      "Control the return to starting position"
+    ],
+    setsReps: "3 sets x 12-15 reps per side",
+    duration: "40-50 seconds per side",
+    conditions: "Critical for rotator cuff health, shoulder impingement prevention, and stability"
+  },
+  {
+    name: "Prone Cobra (Baby Cobra)",
+    target: "Lower Back/Chest",
+    equipment: "Bodyweight or Yoga Mat",
+    description: "A gentle back extension that engages the erector spinae and opens the anterior chain while maintaining spinal safety with core engagement.",
+    steps: [
+      "Lie face down with hands under your shoulders and elbows close to your body",
+      "Push your chest upward using your back muscles, keeping your hands helping minimally",
+      "Keep your core engaged and pelvis on the ground throughout the movement",
+      "Hold the top position briefly and lower back down with control"
+    ],
+    setsReps: "3 sets x 10-12 reps",
+    duration: "45-55 seconds per set",
+    conditions: "Helps with lower back tightness, improves back strength, and opens hip flexors"
+  },
+  {
+    name: "Neck Flexor Stretch",
+    target: "Neck",
+    equipment: "Bodyweight",
+    description: "Stretches the anterior neck muscles and upper chest to relieve neck tension and improve forward head posture from excessive screen time.",
+    steps: [
+      "Sit upright or stand with good posture, chest up",
+      "Gently press your chin downward and slightly backward toward your neck, creating a 'double chin'",
+      "Hold this retracted position and feel the stretch along the front and back of your neck",
+      "Breathe deeply and maintain the position"
+    ],
+    setsReps: "Hold 2-3 sets x 30-45 seconds",
+    duration: "30-45 seconds per set",
+    conditions: "Alleviates neck tension, improves posture, and reduces text neck syndrome"
+  },
+];
+
+// REHAB EXERCISE CATEGORIES
+const REHAB_CATEGORIES = {
+  "Mobility": {
+    title: "Mobility",
+    description: "Exercises focused on stretching and improving range of motion",
+    color: "#00d9ff",
+    exercises: ["Hip Flexor Stretch (Kneeling)", "Cat-Cow Stretch", "90/90 Hip Stretch", "Thoracic Rotation", "Ankle Circles", "Piriformis Stretch", "Doorway Chest Stretch"]
+  },
+  "Stability": {
+    title: "Stability",
+    description: "Exercises building joint stability and core control",
+    color: "#00b4d8",
+    exercises: ["Dead Bug", "Bird Dog", "Clamshells", "Pallof Press", "Wall Slides"]
+  },
+  "Pain Relief": {
+    title: "Pain Relief",
+    description: "Therapeutic and recovery exercises",
+    color: "#0096c7",
+    exercises: ["Band Pull-Aparts", "Cervical Nerve Glide", "Foam Roll IT Band"]
+  }
+};
+
+// Render rehab exercises on page load with categories
+document.addEventListener("DOMContentLoaded", function() {
+  const rehabGrid = document.getElementById("rehab-grid");
+  if (rehabGrid) {
+    let html = '';
+    
+    // Create each category section
+    Object.entries(REHAB_CATEGORIES).forEach(([catKey, catData]) => {
+      const categoryExercises = REHAB_EXERCISES.filter(ex => catData.exercises.includes(ex.name));
+      
+      html += `
+        <div class="rehab-category-section">
+          <div class="category-header" onclick="toggleCategory(this)" style="--category-color: ${catData.color}">
+            <div class="category-header-content">
+              <div class="chevron">▼</div>
+              <h2>${catData.title}</h2>
+            </div>
+            <p class="category-description">${catData.description}</p>
+          </div>
+          <div class="category-exercises" style="display: grid;">
+            ${categoryExercises.map(ex => `
+              <div class="rehab-card">
+                <div class="card-header">
+                  <h3>${ex.name}</h3>
+                  <span class="target-badge">${ex.target}</span>
+                </div>
+                <div class="card-body">
+                  <div class="equipment-line">⚙️ ${ex.equipment}</div>
+                  <p class="description">${ex.description}</p>
+                  <div class="steps-title">How to Perform</div>
+                  <ul class="steps">
+                    ${ex.steps.map((step, i) => `<li><span class="num">${i+1}</span><span>${step}</span></li>`).join('')}
+                  </ul>
+                  <div class="sets-reps-info">
+                    <div class="stat">
+                      <div class="val">${ex.setsReps.split('x')[0].trim()}</div>
+                      <div class="lbl">SETS/REPS</div>
+                    </div>
+                    <div class="stat">
+                      <div class="val">${ex.duration}</div>
+                      <div class="lbl">DURATION</div>
+                    </div>
+                  </div>
+                  <div class="conditions">
+                    <strong>For:</strong> ${ex.conditions}
+                  </div>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+    });
+    
+    rehabGrid.innerHTML = html;
+  }
+});
+
+// Toggle category expansion
+function toggleSubCategory(headerEl) {
+  const section = headerEl.closest('.sub-category-section');
+  const exercisesDiv = section.querySelector('.sub-category-exercises');
+  const chevron = headerEl.querySelector('.sub-chevron');
+  const isExpanded = exercisesDiv.style.display !== 'none';
+  exercisesDiv.style.display = isExpanded ? 'none' : 'grid';
+  chevron.innerHTML = isExpanded ? '&#x25B6;' : '&#x25BC;';
+}
+
+function toggleCategory(headerEl) {
+  const section = headerEl.closest('.rehab-category-section');
+  const exercisesDiv = section.querySelector('.category-exercises');
+  const chevron = headerEl.querySelector('.chevron');
+  const isExpanded = exercisesDiv.style.display !== 'none';
+  
+  exercisesDiv.style.display = isExpanded ? 'none' : 'grid';
+  chevron.innerHTML = isExpanded ? '&#x25B6;' : '&#x25BC;';
+}
+</script>
+</body>
+</html>
